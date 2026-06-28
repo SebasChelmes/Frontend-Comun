@@ -1,5 +1,5 @@
 /**
- * Icon set extracted verbatim from "Geminus Frontend.dc.html".
+ * Icon set extracted verbatim from the platform design canvas.
  * Each icon inherits `currentColor` and accepts standard SVG props
  * (size via width/height, stroke colour via the `color` style/prop).
  */

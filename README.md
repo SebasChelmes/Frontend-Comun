@@ -1,8 +1,8 @@
-# Geminus — Frontend común
+# Agentes Hub — Frontend
 
-La **única cara** del ecosistema Geminus (Insights Hub · Agents Hub · Tracker Hub).
-SPA en **React + Vite + TypeScript**, implementada a partir del diseño
-`Geminus Frontend.dc.html` (Claude Design) y de `SPEC-FRONTEND-COMUN.md`.
+La **única cara** de la plataforma (Insights Hub · Agents Hub · Tracker Hub).
+SPA en **React + Vite + TypeScript**, implementada a partir del diseño en
+Claude Design (`.dc.html`) y de `SPEC-FRONTEND-COMUN.md`.
 
 ## Qué incluye
 
@@ -15,14 +15,13 @@ SPA en **React + Vite + TypeScript**, implementada a partir del diseño
 - **Acento conmutable** (índigo `#3A3678` / teal `#1C7C7C` / violeta `#7C3AED`)
   publicado como `--accent`, re-tematiza toda la app.
 
-El estilado (paleta crema + índigo, tipografía DM Sans + DM Mono) sigue el design
-system de Agents Hub — ver [`DESIGN-SYSTEM.md`](DESIGN-SYSTEM.md).
-
 El panel flotante (ícono ⚙ abajo a la derecha) reproduce los *props* del diseño
 (acento + plan) para probar el theming y el gating en vivo.
 
-## Design tokens
+## Estilado
 
+Paleta (base crema + índigo de marca) y tipografía (**DM Sans + DM Mono**) siguen
+el design system de Agents Hub — ver [`DESIGN-SYSTEM.md`](DESIGN-SYSTEM.md).
 Todos los colores/tipos viven en [`src/styles/tokens.css`](src/styles/tokens.css)
 como variables CSS — los componentes no hardcodean colores (criterio de la spec).
 
@@ -31,7 +30,7 @@ como variables CSS — los componentes no hardcodean colores (criterio de la spe
 ```bash
 npm install
 npm run dev      # servidor de desarrollo (http://localhost:5173)
-npm run build    # build de producción (tsc -b && vite build)
+npm run build    # build de producción (tsc --noEmit && vite build)
 npm run preview  # previsualizar el build
 ```
 

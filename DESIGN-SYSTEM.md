@@ -1,8 +1,8 @@
-# Design System — Frontend común Geminus
+# Design System — Agentes Hub
 
 > Design system **implementado** en este frontend (React + Vite).
-> Derivado de **`estilado agents hub.md`** (la guía de estilo de la landing de Agents Hub),
-> que es la fuente de verdad de marca para todo el ecosistema.
+> Derivado de **`estilado agents hub.md`** (la guía de estilo de la landing de
+> Agents Hub), fuente de verdad de marca de la plataforma.
 > Última actualización: 2026-06-28.
 
 Todos los valores viven como **variables CSS** en
@@ -13,7 +13,18 @@ Los tintes suaves se derivan en runtime con `color-mix(... var(--accent) …)`, 
 
 ---
 
-## 1. Tipografía
+## 1. Marca
+
+- **Nombre:** Agentes Hub.
+- **Logo:** una **"A"** en cuadrado redondeado (fondo índigo `--accent`, letra blanca,
+  peso 600, radio ~30% del lado) + wordmark **"Agentes Hub"** (peso 600,
+  `letter-spacing: -0.01em`). En el panel de login se usa una **"A"** gigante de
+  marca de agua a muy baja opacidad como textura.
+- **Voz:** español rioplatense (voseo): "Mapeá", "Analizá", "Probá". Directo y concreto.
+
+---
+
+## 2. Tipografía
 
 | Uso | Fuente | Token |
 |---|---|---|
@@ -28,10 +39,10 @@ Los tintes suaves se derivan en runtime con `color-mix(... var(--accent) …)`, 
 
 ---
 
-## 2. Color (tokens)
+## 3. Color (tokens)
 
 ### Base / superficies
-| Token | Valor | Uso | Origen (Agents Hub) |
+| Token | Valor | Uso | Origen (estilado AH) |
 |---|---|---|---|
 | `--bg` | `#FAF6EC` | Fondo de página (crema) | `--bg` |
 | `--surface` | `#FFFFFF` | Tarjetas, superficies elevadas | `--surface` |
@@ -84,7 +95,7 @@ var(--bg)
 
 ---
 
-## 3. Sombras
+## 4. Sombras
 
 | Token | Valor | Uso |
 |---|---|---|
@@ -97,7 +108,7 @@ Sombras **suaves y difusas**; la elevación se refuerza con borde claro, nunca c
 
 ---
 
-## 4. Radios
+## 5. Radios
 
 | Token | Valor | Uso |
 |---|---|---|
@@ -110,7 +121,7 @@ Sombras **suaves y difusas**; la elevación se refuerza con borde claro, nunca c
 
 ---
 
-## 5. Componentes (clases base)
+## 6. Componentes (clases base)
 
 | Componente | Dónde | Notas |
 |---|---|---|
@@ -122,7 +133,7 @@ Sombras **suaves y difusas**; la elevación se refuerza con borde claro, nunca c
 
 ---
 
-## 6. Gating por plan
+## 7. Gating por plan
 
 `AppContext` deriva, igual que el diseño original `.dc`:
 `showUpgrade = plan === 'FREE'` · `showLocks = plan !== 'PREMIUM+'`.
@@ -130,7 +141,7 @@ Controla la card de upgrade y los candados PREMIUM / PREMIUM+ del sidebar.
 
 ---
 
-## 7. Pendiente / próximos pasos
+## 8. Pendiente / próximos pasos
 
 - **Paleta del flujograma** (`estilado agents hub.md §11`): cuando se integre el
   diagrama Reactflow reutilizado de Insights Hub, mapear los colores por tipo de
@@ -144,5 +155,4 @@ Controla la card de upgrade y los candados PREMIUM / PREMIUM+ del sidebar.
 
 ---
 
-*Fuente de marca: `estilado agents hub.md`. Specs relacionadas:
-`SPEC-FRONTEND-COMUN.md`, `ARQUITECTURA-ECOSISTEMA-GEMINUS.md`.*
+*Fuente de marca: `estilado agents hub.md`. Spec relacionada: `SPEC-FRONTEND-COMUN.md`.*

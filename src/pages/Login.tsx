@@ -25,11 +25,11 @@ export default function Login() {
       <form className="login-card" onSubmit={enter}>
         {/* brand panel */}
         <div className="login-brand">
-          <div className="login-brand__ghost" aria-hidden>G</div>
+          <div className="login-brand__ghost" aria-hidden>A</div>
 
           <div className="login-brand__top">
             <BrandGlyph size={30} radius={9} font={16} />
-            <span className="login-brand__word">Geminus</span>
+            <span className="login-brand__word">Agentes Hub</span>
           </div>
 
           <div className="login-brand__mid">
@@ -45,7 +45,7 @@ export default function Login() {
             </div>
           </div>
 
-          <div className="login-brand__foot mono">ECOSISTEMA GEMINUS</div>
+          <div className="login-brand__foot mono">PLATAFORMA AGENTES HUB</div>
         </div>
 
         {/* form panel */}
