@@ -1,0 +1,97 @@
+/**
+ * Icon set extracted verbatim from "Geminus Frontend.dc.html".
+ * Each icon inherits `currentColor` and accepts standard SVG props
+ * (size via width/height, stroke colour via the `color` style/prop).
+ */
+import type { SVGProps } from 'react';
+
+type IconProps = SVGProps<SVGSVGElement> & { size?: number };
+
+function base({ size = 18, strokeWidth = 1.6, children, ...rest }: IconProps & { children: React.ReactNode }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={strokeWidth}
+      {...rest}
+    >
+      {children}
+    </svg>
+  );
+}
+
+export const HomeIcon = (p: IconProps) =>
+  base({ ...p, children: (<><path d="M3 10.5 12 3l9 7.5" /><path d="M5 9.5V21h14V9.5" /></>) });
+
+export const ProcessIcon = (p: IconProps) =>
+  base({ ...p, children: (<><path d="M12 3 3 8l9 5 9-5-9-5Z" /><path d="m3 13 9 5 9-5" /></>) });
+
+export const CaptureIcon = (p: IconProps) =>
+  base({ ...p, children: (<><circle cx="12" cy="12" r="8" /><circle cx="12" cy="12" r="3" fill="currentColor" stroke="none" /></>) });
+
+export const AnalysisIcon = (p: IconProps) =>
+  base({ ...p, children: <path d="M5 21V11M12 21V5M19 21v-7" /> });
+
+export const AgentsIcon = (p: IconProps) =>
+  base({
+    ...p,
+    children: (
+      <>
+        <rect x="3.5" y="3.5" width="7" height="7" rx="1.6" />
+        <rect x="13.5" y="3.5" width="7" height="7" rx="1.6" />
+        <rect x="3.5" y="13.5" width="7" height="7" rx="1.6" />
+        <rect x="13.5" y="13.5" width="7" height="7" rx="1.6" />
+      </>
+    ),
+  });
+
+export const SettingsIcon = (p: IconProps) =>
+  base({
+    ...p,
+    children: (
+      <>
+        <path d="M4 7h16M4 17h16" />
+        <circle cx="9" cy="7" r="2.4" fill="var(--surface-2)" />
+        <circle cx="15" cy="17" r="2.4" fill="var(--surface-2)" />
+      </>
+    ),
+  });
+
+export const PlanIcon = (p: IconProps) =>
+  base({ ...p, children: (<><rect x="3" y="6" width="18" height="12" rx="2.5" /><path d="M3 10h18" /></>) });
+
+export const LockIcon = (p: IconProps) =>
+  base({ ...p, strokeWidth: 2, children: (<><rect x="5" y="11" width="14" height="9" rx="2" /><path d="M8 11V8a4 4 0 0 1 8 0v3" /></>) });
+
+export const StarIcon = (p: IconProps) =>
+  base({ ...p, strokeWidth: 1.8, children: <path d="m12 3 2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5L12 3Z" /> });
+
+export const SidebarToggleIcon = (p: IconProps) =>
+  base({ ...p, strokeWidth: 1.7, children: (<><rect x="3" y="4" width="18" height="16" rx="2" /><path d="M9 4v16" /></>) });
+
+export const BellIcon = (p: IconProps) =>
+  base({ ...p, children: (<><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" /><path d="M13.5 21a1.7 1.7 0 0 1-3 0" /></>) });
+
+export const PlusIcon = (p: IconProps) =>
+  base({ ...p, strokeWidth: 1.9, children: <path d="M12 5v14M5 12h14" /> });
+
+export const ArrowRightIcon = (p: IconProps) =>
+  base({ ...p, strokeWidth: 1.8, children: <path d="M5 12h14M13 6l6 6-6 6" /> });
+
+export const SearchIcon = (p: IconProps) =>
+  base({ ...p, strokeWidth: 1.7, children: (<><circle cx="11" cy="11" r="7" /><path d="m20 20-3-3" /></>) });
+
+export const SortIcon = (p: IconProps) =>
+  base({ ...p, strokeWidth: 1.7, children: <path d="M4 6h16M7 12h10M10 18h4" /> });
+
+export const LinkIcon = (p: IconProps) =>
+  base({ ...p, strokeWidth: 2, children: <path d="M9 17H7A5 5 0 0 1 7 7h2M15 7h2a5 5 0 0 1 0 10h-2M8 12h8" /> });
+
+export const EyeIcon = (p: IconProps) =>
+  base({ ...p, children: (<><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z" /><circle cx="12" cy="12" r="3" /></>) });
+
+export const MailIcon = (p: IconProps) =>
+  base({ ...p, children: (<><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 7 9 6 9-6" /></>) });

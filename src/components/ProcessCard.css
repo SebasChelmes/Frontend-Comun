@@ -1,0 +1,201 @@
+.pc {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: 18px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.15s ease;
+}
+.pc:hover {
+  border-color: var(--line-strong);
+}
+
+.pc__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pc__type {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  border-radius: var(--r-pill);
+  padding: 4px 9px;
+}
+.pc__type--flow {
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 13%, #fff);
+}
+.pc__type--guide {
+  color: var(--ink-2);
+  background: var(--surface-3);
+}
+
+.pc__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--ink-2);
+}
+.pc__status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--ok);
+}
+.pc__status.is-warn .pc__status-dot {
+  background: var(--warn);
+}
+
+.pc__linked {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  color: var(--ink-3);
+}
+
+.pc__title {
+  font-size: 17px;
+  margin-top: 13px;
+  color: var(--ink);
+}
+.pc__meta {
+  font-size: 11px;
+  color: var(--ink-3);
+  margin-top: 6px;
+}
+
+/* ---- preview tile ---- */
+.pc__preview {
+  margin-top: 13px;
+  height: 78px;
+  border-radius: var(--r-sm);
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+}
+.pc__preview--flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
+.pc__flowrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.pc__edge {
+  width: 14px;
+  height: 1.5px;
+  background: var(--line-strong);
+}
+.pc__node {
+  background: var(--surface);
+  border: 1.5px solid var(--line-soft);
+}
+.pc__node--start {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border-color: var(--accent);
+}
+.pc__node--circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+.pc__node--box {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+}
+.pc__node--diamond {
+  width: 20px;
+  height: 20px;
+  transform: rotate(45deg);
+}
+.pc__node--box-warn {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  border-style: dashed;
+  border-color: var(--warn);
+}
+
+/* guide preview */
+.pc__preview--guide {
+  padding: 10px 11px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  justify-content: center;
+}
+.pc__step {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.pc__step-num {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--line-strong);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pc__step-num.is-active {
+  background: var(--accent);
+}
+.pc__step-thumb {
+  width: 26px;
+  height: 15px;
+  flex: none;
+  border-radius: 3px;
+  background: repeating-linear-gradient(
+    45deg,
+    var(--line-fill),
+    var(--line-fill) 3px,
+    var(--surface-3) 3px,
+    var(--surface-3) 6px
+  );
+}
+.pc__step-bar {
+  flex: 1;
+  height: 5px;
+  border-radius: 3px;
+  background: var(--line-fill);
+}
+
+/* ---- footer ---- */
+.pc__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 14px;
+}
+.pc__when {
+  font-size: 10.5px;
+  color: var(--ink-4);
+}
+.pc__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--accent);
+  text-decoration: none;
+  cursor: pointer;
+}

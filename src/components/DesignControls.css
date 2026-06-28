@@ -1,0 +1,97 @@
+.dctrl {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.dctrl__fab {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.15s ease, color 0.15s ease;
+}
+.dctrl__fab:hover {
+  color: var(--ink);
+  transform: translateY(-1px);
+}
+.dctrl.is-open .dctrl__fab {
+  color: var(--accent);
+}
+
+.dctrl__panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-card);
+  padding: 14px;
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.dctrl__group {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+.dctrl__label {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: var(--ink-3);
+}
+
+.dctrl__swatches {
+  display: flex;
+  gap: 8px;
+}
+.dctrl__swatch {
+  width: 28px;
+  height: 28px;
+  border-radius: 9px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  outline: 1px solid var(--line);
+  outline-offset: -1px;
+}
+.dctrl__swatch.is-active {
+  border-color: var(--ink);
+}
+
+.dctrl__segs {
+  display: flex;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+  padding: 3px;
+}
+.dctrl__seg {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: var(--ink-2);
+  padding: 6px 4px;
+  border-radius: var(--r-pill);
+  cursor: pointer;
+}
+.dctrl__seg.is-active {
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: var(--shadow-chip);
+}

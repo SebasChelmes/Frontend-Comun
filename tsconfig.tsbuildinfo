@@ -1,0 +1,1 @@
+{"root":["./src/main.tsx","./src/components/brandmark.tsx","./src/components/designcontrols.tsx","./src/components/processcard.tsx","./src/components/sidebar.tsx","./src/components/icons.tsx","./src/context/appcontext.tsx","./src/data/processes.ts","./src/pages/login.tsx","./src/pages/procesos.tsx"],"errors":true,"version":"5.9.3"}

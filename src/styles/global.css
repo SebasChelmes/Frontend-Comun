@@ -1,0 +1,95 @@
+@import './tokens.css';
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--ink);
+  background: var(--surface-2);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font-family: var(--font-sans);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--line-fill);
+  border-radius: 4px;
+}
+
+/* mono utility for the eyebrow / label typography used everywhere */
+.mono {
+  font-family: var(--font-mono);
+}
+
+/* ---- shared buttons (design's pill buttons) ---- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 14px;
+  border-radius: var(--r-pill);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: opacity 0.15s ease, transform 0.15s ease, background 0.15s ease,
+    border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn--block {
+  width: 100%;
+}
+
+.btn--primary {
+  background: var(--ink);
+  color: #fff;
+  padding: 12px 20px;
+}
+.btn--primary:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.btn--ghost {
+  background: var(--surface);
+  color: var(--ink);
+  border-color: var(--line);
+  padding: 12px 20px;
+}
+.btn--ghost:hover {
+  border-color: var(--ink);
+}
