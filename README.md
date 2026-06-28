@@ -12,8 +12,11 @@ SPA en **React + Vite + TypeScript**, implementada a partir del diseño
   y **guías digitales** (Tracker Hub).
 - **Gating por plan** (`FREE` / `PRO` / `PREMIUM+`): tarjeta de upgrade y candados
   premium se muestran según el plan, igual que en el diseño.
-- **Acento conmutable** (`#F88379` / `#22d3ee` / `#a855f7`) publicado como
-  `--accent`, re-tematiza toda la app.
+- **Acento conmutable** (índigo `#3A3678` / teal `#1C7C7C` / violeta `#7C3AED`)
+  publicado como `--accent`, re-tematiza toda la app.
+
+El estilado (paleta crema + índigo, tipografía DM Sans + DM Mono) sigue el design
+system de Agents Hub — ver [`DESIGN-SYSTEM.md`](DESIGN-SYSTEM.md).
 
 El panel flotante (ícono ⚙ abajo a la derecha) reproduce los *props* del diseño
 (acento + plan) para probar el theming y el gating en vivo.
