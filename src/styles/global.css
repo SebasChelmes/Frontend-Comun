@@ -13,8 +13,14 @@ body,
 body {
   margin: 0;
   font-family: var(--font-sans);
+  line-height: 1.55;
   color: var(--ink);
-  background: var(--surface-2);
+  /* textura de marca: dos gradientes radiales muy sutiles sobre el crema */
+  background:
+    radial-gradient(ellipse 80% 60% at 12% 22%, rgba(58, 54, 120, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 88% 78%, rgba(14, 132, 102, 0.05) 0%, transparent 55%),
+    var(--bg);
+  background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }

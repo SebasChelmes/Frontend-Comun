@@ -5,7 +5,6 @@
   align-items: center;
   justify-content: center;
   padding: 40px 24px;
-  background: var(--surface-2);
 }
 
 .login-eyebrow {
@@ -39,9 +38,9 @@
   overflow: hidden;
   background: linear-gradient(
     158deg,
-    var(--accent) 0%,
-    color-mix(in srgb, var(--accent) 62%, #fde3d9) 46%,
-    #fde3d9 100%
+    color-mix(in srgb, var(--accent) 26%, var(--bg)) 0%,
+    color-mix(in srgb, var(--accent) 13%, var(--bg)) 50%,
+    var(--bg) 100%
   );
 }
 
@@ -52,7 +51,7 @@
   font-size: 380px;
   line-height: 1;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.17);
+  color: color-mix(in srgb, var(--accent) 9%, transparent);
   user-select: none;
 }
 
@@ -82,7 +81,7 @@
   margin-top: 14px;
   font-size: 16px;
   line-height: 1.5;
-  color: rgba(11, 1, 20, 0.66);
+  color: var(--ink-2);
   max-width: 300px;
 }
 .login-brand__pills {
@@ -95,9 +94,9 @@
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  background: rgba(255, 255, 255, 0.7);
+  background: color-mix(in srgb, var(--surface) 70%, transparent);
   backdrop-filter: blur(6px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--line);
   border-radius: var(--r-pill);
   padding: 7px 13px;
   font-size: 13px;
@@ -107,14 +106,14 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--ink);
+  background: var(--accent);
 }
 
 .login-brand__foot {
   position: relative;
   font-size: 11px;
   letter-spacing: 0.16em;
-  color: rgba(11, 1, 20, 0.5);
+  color: var(--ink-3);
 }
 
 /* ---- form panel ---- */

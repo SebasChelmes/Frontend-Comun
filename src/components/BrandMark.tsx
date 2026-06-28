@@ -6,7 +6,7 @@ export function BrandGlyph({ size = 28, radius = 8, font = 15 }: { size?: number
         width: size,
         height: size,
         borderRadius: radius,
-        background: 'var(--ink)',
+        background: 'var(--accent)',
         color: '#fff',
         display: 'flex',
         alignItems: 'center',

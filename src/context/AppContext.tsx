@@ -16,7 +16,8 @@ import {
 
 export type Plan = 'FREE' | 'PRO' | 'PREMIUM+';
 
-export const ACCENT_OPTIONS = ['#F88379', '#22d3ee', '#a855f7'] as const;
+/** Marca: índigo (primario) · teal (apoyo) · violeta (handoff/avatares) */
+export const ACCENT_OPTIONS = ['#3A3678', '#1C7C7C', '#7C3AED'] as const;
 export const PLAN_OPTIONS: Plan[] = ['FREE', 'PRO', 'PREMIUM+'];
 
 interface AppState {
@@ -32,7 +33,7 @@ interface AppState {
 const AppContext = createContext<AppState | null>(null);
 
 export function AppProvider({ children }: { children: ReactNode }) {
-  const [accent, setAccent] = useState<string>(ACCENT_OPTIONS[0]);
+  const [accent, setAccent] = useState<string>(ACCENT_OPTIONS[0]); // índigo de marca
   const [plan, setPlan] = useState<Plan>('FREE');
 
   useEffect(() => {

@@ -1,47 +1,50 @@
 /* ============================================================
    Geminus — design tokens
-   Extracted from "Geminus Frontend.dc.html".
-   Components reference these vars; no hardcoded colors elsewhere.
+   Paleta y tipografía tomadas de "estilado agents hub.md"
+   (design system de la landing de Agents Hub).
+   Componentes referencian estas vars; no hay colores hardcodeados.
    ============================================================ */
 
 :root {
-  /* Brand accent — switchable (see design props: F88379 / 22d3ee / a855f7) */
-  --accent: #f88379;
+  /* Marca / acción — índigo (switchable: índigo / teal / violeta) */
+  --accent: #3a3678;
 
   /* Ink / text */
-  --ink: #0b0114;        /* primary text */
-  --ink-2: #4a4456;      /* secondary text */
-  --ink-3: #8a8694;      /* muted / mono labels */
-  --ink-4: #a8a4ae;      /* faint mono labels */
+  --ink: #1e1b3a;        /* text-primary (índigo casi negro) */
+  --ink-2: #5a5870;      /* text-secondary (párrafos) */
+  --ink-3: #908ea4;      /* text-tertiary (metadatos, eyebrows, placeholders) */
+  --ink-4: #a8a6b8;      /* faint mono labels */
 
   /* Surfaces */
-  --surface: #ffffff;    /* cards, panels */
-  --surface-2: #faf9f8;  /* sidebar, sunken areas */
-  --surface-3: #f0eeec;  /* hover fill, chips */
+  --bg: #faf6ec;         /* fondo de página (crema) */
+  --surface: #ffffff;    /* tarjetas y superficies elevadas */
+  --surface-2: #f5f0e4;  /* surface-alt: sidebar, lienzos, zonas hundidas, chips */
+  --surface-3: #f1ebdd;  /* hover de superficies claras */
 
   /* Lines */
-  --line: #eceaee;       /* default border */
-  --line-strong: #d9d5dd;
-  --line-fill: #e2dfe3;  /* skeleton fills, scrollbar */
-  --line-soft: #c9c4ce;  /* diagram node borders */
+  --line: rgba(30, 27, 58, 0.1);     /* border */
+  --line-strong: rgba(30, 27, 58, 0.18);
+  --line-fill: #e6dfcf;  /* rellenos de skeleton */
+  --line-soft: #b6b2c4;  /* bordes de nodos del diagrama */
 
   /* Status */
-  --ok: #22c55e;
-  --warn: #f59e0b;
+  --ok: #0e8466;         /* acento verde — éxito / valor positivo */
+  --warn: #d97706;       /* ámbar — decisión / advertencia */
 
   /* Typography */
   --font-sans: 'DM Sans', Arial, sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --font-mono: 'DM Mono', monospace;
 
-  /* Elevation */
-  --shadow-card: 0 1px 3px rgba(11, 1, 20, 0.06);
-  --shadow-card-sm: 0 1px 2px rgba(11, 1, 20, 0.05);
-  --shadow-chip: 0 1px 2px rgba(11, 1, 20, 0.04);
+  /* Elevation — sombras suaves con tinte índigo */
+  --shadow-card: 0 1px 3px rgba(30, 27, 58, 0.05), 0 4px 16px rgba(30, 27, 58, 0.06);
+  --shadow-card-sm: 0 1px 2px rgba(30, 27, 58, 0.06);
+  --shadow-chip: 0 1px 2px rgba(30, 27, 58, 0.05);
+  --shadow-elevated: 0 12px 32px rgba(30, 27, 58, 0.12);
 
   /* Radii */
   --r-pill: 999px;
   --r-xl: 28px;
-  --r-lg: 18px;
+  --r-lg: 20px;
   --r-md: 14px;
   --r-sm: 12px;
   --r-xs: 11px;

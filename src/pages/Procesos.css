@@ -4,7 +4,6 @@
   align-items: center;
   justify-content: center;
   padding: 40px 24px;
-  background: var(--surface-2);
 }
 
 /* the app window (matches the design's 1500×960 framed shell) */
