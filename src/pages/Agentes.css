@@ -2,33 +2,13 @@
 
 .ax-header {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   gap: 24px;
 }
 .ax-h1 {
   font-size: 30px;
   color: var(--ink);
-}
-.ax-lead {
-  margin-top: 8px;
-  font-size: 15px;
-  color: var(--ink-2);
-  max-width: 600px;
-  text-wrap: pretty;
-}
-.ax-stats {
-  display: flex;
-  gap: 7px;
-  margin-top: 14px;
-}
-.ax-stat {
-  font-size: 11px;
-  color: var(--ink-2);
-  background: var(--surface-2);
-  border: 1px solid var(--line);
-  border-radius: var(--r-pill);
-  padding: 5px 11px;
 }
 .ax-new {
   flex: none;
