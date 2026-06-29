@@ -1,3 +1,5 @@
+import { useLocation, useNavigate } from 'react-router-dom';
+
 import { useApp } from '../context/AppContext';
 import { BrandGlyph } from './BrandMark';
 import {
@@ -16,6 +18,9 @@ import './Sidebar.css';
 /* ---------- expanded sidebar ---------- */
 export function Sidebar() {
   const { planLabel, showLocks, showUpgrade } = useApp();
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
+  const isActive = (path: string) => pathname.startsWith(path);
 
   return (
     <aside className="sb">
@@ -34,8 +39,11 @@ export function Sidebar() {
 
         <div className="sb__section mono">RELEVAMIENTO</div>
 
-        <a className="sb__item is-active">
-          <ProcessIcon size={18} style={{ color: 'var(--accent)' }} />
+        <a
+          className={`sb__item ${isActive('/procesos') ? 'is-active' : ''}`}
+          onClick={() => navigate('/procesos')}
+        >
+          <ProcessIcon size={18} className="sb__ico" style={isActive('/procesos') ? { color: 'var(--accent)' } : undefined} />
           Procesos
         </a>
 
@@ -56,8 +64,11 @@ export function Sidebar() {
           {showLocks && <span className="sb__tag mono">PREMIUM</span>}
         </a>
 
-        <a className="sb__item">
-          <AgentsIcon size={18} className="sb__ico" />
+        <a
+          className={`sb__item ${isActive('/agentes') ? 'is-active' : ''}`}
+          onClick={() => navigate('/agentes')}
+        >
+          <AgentsIcon size={18} className="sb__ico" style={isActive('/agentes') ? { color: 'var(--accent)' } : undefined} />
           Agentes / Hub
           {showLocks && <span className="sb__tag mono">PREMIUM+</span>}
         </a>
@@ -112,14 +123,28 @@ export function Sidebar() {
 
 /* ---------- collapsed rail ---------- */
 export function SidebarRail() {
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
+  const isActive = (path: string) => pathname.startsWith(path);
+
   return (
     <aside className="sbr">
       <BrandGlyph size={30} radius={9} />
       <a className="sbr__item"><HomeIcon size={19} /></a>
-      <a className="sbr__item is-active"><ProcessIcon size={19} /></a>
+      <a
+        className={`sbr__item ${isActive('/procesos') ? 'is-active' : ''}`}
+        onClick={() => navigate('/procesos')}
+      >
+        <ProcessIcon size={19} />
+      </a>
       <a className="sbr__item"><CaptureIcon size={19} /></a>
       <a className="sbr__item"><AnalysisIcon size={19} /></a>
-      <a className="sbr__item"><AgentsIcon size={19} /></a>
+      <a
+        className={`sbr__item ${isActive('/agentes') ? 'is-active' : ''}`}
+        onClick={() => navigate('/agentes')}
+      >
+        <AgentsIcon size={19} />
+      </a>
       <div className="sbr__spacer" />
       <div className="sb__avatar">M</div>
     </aside>

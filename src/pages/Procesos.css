@@ -1,97 +1,4 @@
-.px-screen {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 40px 24px;
-}
-
-/* the app window (matches the design's 1500×960 framed shell) */
-.px-shell {
-  display: flex;
-  width: min(1500px, 100%);
-  height: min(960px, calc(100vh - 80px));
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--r-xl);
-  overflow: hidden;
-  box-shadow: var(--shadow-card);
-}
-
-.px-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-}
-
-/* ---- top bar ---- */
-.px-topbar {
-  height: 58px;
-  flex: none;
-  border-bottom: 1px solid var(--line);
-  display: flex;
-  align-items: center;
-  padding: 0 24px;
-  gap: 14px;
-}
-.px-iconbtn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 9px;
-  border: 1px solid var(--line);
-  background: var(--surface);
-  color: var(--ink-2);
-  cursor: pointer;
-  transition: background 0.15s ease;
-}
-.px-iconbtn:hover {
-  background: var(--surface-2);
-}
-.px-crumb {
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  color: var(--ink-4);
-}
-.px-topbar__right {
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.px-help {
-  font-size: 13px;
-  color: var(--ink-2);
-  text-decoration: none;
-  padding: 7px 12px;
-  border-radius: 9px;
-  cursor: pointer;
-}
-.px-help:hover {
-  background: var(--surface-2);
-}
-.px-bell {
-  position: relative;
-}
-.px-bell__dot {
-  position: absolute;
-  top: 6px;
-  right: 7px;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--accent);
-}
-
-/* ---- scroll body ---- */
-.px-body {
-  flex: 1;
-  overflow-y: auto;
-  padding: 30px 34px;
-}
+/* Pantalla Procesos — el shell (sidebar/topbar/body) vive en AppShell.css */
 
 .px-header {
   display: flex;
@@ -211,8 +118,5 @@
 @media (max-width: 720px) {
   .px-grid {
     grid-template-columns: 1fr;
-  }
-  .px-shell {
-    height: auto;
   }
 }

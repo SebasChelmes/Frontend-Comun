@@ -1,0 +1,204 @@
+.aem__overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: color-mix(in srgb, var(--ink) 38%, transparent);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  animation: aem-fade 0.15s ease;
+}
+@keyframes aem-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.aem {
+  width: 460px;
+  max-width: 100%;
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow-elevated);
+  padding: 24px;
+  animation: aem-pop 0.16s ease;
+}
+@keyframes aem-pop {
+  from { transform: translateY(8px) scale(0.99); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+
+.aem__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+.aem__kicker {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: var(--accent);
+}
+.aem__title {
+  font-size: 21px;
+  margin-top: 6px;
+  color: var(--ink);
+}
+.aem__close {
+  flex: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.aem__close:hover {
+  background: var(--surface-2);
+}
+
+/* ---- live preview ---- */
+.aem__preview {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 20px;
+  padding: 16px;
+  border-radius: var(--r-md);
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+}
+.aem__avatar {
+  width: 56px;
+  height: 56px;
+  flex: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  line-height: 1;
+  box-shadow: var(--shadow-card-sm);
+}
+.aem__preview-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.aem__preview-role {
+  font-size: 11px;
+  color: var(--ink-3);
+  margin-top: 4px;
+}
+
+/* ---- fields ---- */
+.aem__field {
+  margin-top: 20px;
+}
+.aem__label {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--ink-3);
+  margin-bottom: 9px;
+}
+.aem__input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  color: var(--ink);
+  background: var(--surface);
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.aem__input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent);
+}
+
+/* ---- color picker ---- */
+.aem__colors {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.aem__color {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-card-sm);
+  transition: transform 0.12s ease;
+}
+.aem__color:hover {
+  transform: translateY(-1px);
+}
+.aem__color.is-active {
+  border-color: var(--ink);
+  box-shadow: 0 0 0 3px var(--surface), 0 0 0 4px var(--ink);
+}
+
+/* ---- emoji picker ---- */
+.aem__emojis {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 8px;
+}
+.aem__emoji {
+  aspect-ratio: 1;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  font-size: 19px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.12s ease, border-color 0.12s ease;
+}
+.aem__emoji:hover {
+  background: var(--surface-2);
+}
+.aem__emoji.is-active {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 10%, #fff);
+}
+
+/* ---- footer ---- */
+.aem__foot {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 26px;
+}
+.aem__btn {
+  padding: 11px 18px;
+}
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+@media (max-width: 520px) {
+  .aem__emojis {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}

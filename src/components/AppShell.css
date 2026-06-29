@@ -1,0 +1,100 @@
+.app-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+}
+
+/* la ventana de la app (1500×960 enmarcada, como en el diseño) */
+.app-shell {
+  display: flex;
+  width: min(1500px, 100%);
+  height: min(960px, calc(100vh - 80px));
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+
+.app-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* ---- top bar ---- */
+.app-topbar {
+  height: 58px;
+  flex: none;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  gap: 14px;
+}
+.app-iconbtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink-2);
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.app-iconbtn:hover {
+  background: var(--surface-2);
+}
+.app-crumb {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--ink-4);
+}
+.app-topbar__right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.app-help {
+  font-size: 13px;
+  color: var(--ink-2);
+  text-decoration: none;
+  padding: 7px 12px;
+  border-radius: 9px;
+  cursor: pointer;
+}
+.app-help:hover {
+  background: var(--surface-2);
+}
+.app-bell {
+  position: relative;
+}
+.app-bell__dot {
+  position: absolute;
+  top: 6px;
+  right: 7px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+/* ---- scroll body ---- */
+.app-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 30px 34px;
+}
+
+@media (max-width: 720px) {
+  .app-shell {
+    height: auto;
+  }
+}

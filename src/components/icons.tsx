@@ -95,3 +95,12 @@ export const EyeIcon = (p: IconProps) =>
 
 export const MailIcon = (p: IconProps) =>
   base({ ...p, children: (<><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 7 9 6 9-6" /></>) });
+
+export const EditIcon = (p: IconProps) =>
+  base({ ...p, strokeWidth: 1.7, children: (<><path d="M12 20h9" /><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z" /></>) });
+
+export const CloseIcon = (p: IconProps) =>
+  base({ ...p, strokeWidth: 1.8, children: <path d="M6 6l12 12M18 6 6 18" /> });
+
+export const CheckIcon = (p: IconProps) =>
+  base({ ...p, strokeWidth: 2, children: <path d="M20 6 9 17l-5-5" /> });
