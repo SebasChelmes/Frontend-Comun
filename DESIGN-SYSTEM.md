@@ -1,4 +1,4 @@
-# Design System — Agentes Hub
+# Design System — Sebach AI
 
 > Design system **implementado** en este frontend (React + Vite).
 > Derivado de **`estilado agents hub.md`** (la guía de estilo de la landing de
@@ -15,10 +15,10 @@ Los tintes suaves se derivan en runtime con `color-mix(... var(--accent) …)`, 
 
 ## 1. Marca
 
-- **Nombre:** Agentes Hub.
-- **Logo:** una **"A"** en cuadrado redondeado (fondo índigo `--accent`, letra blanca,
-  peso 600, radio ~30% del lado) + wordmark **"Agentes Hub"** (peso 600,
-  `letter-spacing: -0.01em`). En el panel de login se usa una **"A"** gigante de
+- **Nombre:** Sebach AI.
+- **Logo:** una **"S"** en cuadrado redondeado (fondo índigo `--accent`, letra blanca,
+  peso 600, radio ~30% del lado) + wordmark **"Sebach AI"** (peso 600,
+  `letter-spacing: -0.01em`). En el panel de login se usa una **"S"** gigante de
   marca de agua a muy baja opacidad como textura.
 - **Voz:** español rioplatense (voseo): "Mapeá", "Analizá", "Probá". Directo y concreto.
 

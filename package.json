@@ -1,9 +1,9 @@
 {
-  "name": "agentes-hub-frontend",
+  "name": "sebach-ai-frontend",
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "description": "Frontend de Agentes Hub — la única cara para Insights, Agents y Tracker Hub.",
+  "description": "Frontend de Sebach AI — la única cara para Insights, Agents y Tracker Hub.",
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",

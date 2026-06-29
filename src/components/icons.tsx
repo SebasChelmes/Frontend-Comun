@@ -126,3 +126,14 @@ export const TerminalIcon = (p: IconProps) =>
 
 export const BoltIcon = (p: IconProps) =>
   base({ ...p, strokeWidth: 1.7, children: <path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z" /> });
+
+export const CpuIcon = (p: IconProps) =>
+  base({
+    ...p,
+    children: (
+      <>
+        <rect x="6" y="6" width="12" height="12" rx="2" />
+        <path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3" />
+      </>
+    ),
+  });

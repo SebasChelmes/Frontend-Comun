@@ -2,6 +2,7 @@ import { useState, type ReactNode } from 'react';
 
 import { useApp } from '../context/AppContext';
 import { DesignControls } from './DesignControls';
+import { ModelSelector } from './ModelSelector';
 import { Sidebar, SidebarRail } from './Sidebar';
 import { BellIcon, SidebarToggleIcon, StarIcon } from './icons';
 import './AppShell.css';
@@ -39,6 +40,7 @@ export function AppShell({ crumb, children }: { crumb: string; children: ReactNo
                   <button className="app-upsell__btn">Mejorar plan</button>
                 </div>
               )}
+              <ModelSelector />
               <a className="app-help">Ayuda</a>
               <button className="app-iconbtn app-bell" aria-label="Notificaciones">
                 <BellIcon size={17} />

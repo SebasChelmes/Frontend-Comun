@@ -1,4 +1,4 @@
-# Agentes Hub — Frontend
+# Sebach AI — Frontend
 
 La **única cara** de la plataforma (Insights Hub · Agents Hub · Tracker Hub).
 SPA en **React + Vite + TypeScript**, implementada a partir del diseño en

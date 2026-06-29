@@ -43,7 +43,7 @@ export function Sidebar() {
       {/* brand */}
       <div className="sb__brand">
         <BrandGlyph size={28} />
-        <span className="sb__brand-word">Agentes Hub</span>
+        <span className="sb__brand-word">Sebach AI</span>
         <span className="sb__plan mono">{planLabel}</span>
       </div>
 
