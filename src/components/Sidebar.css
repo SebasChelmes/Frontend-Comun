@@ -191,6 +191,7 @@
 
 /* user footer */
 .sb__user {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -235,8 +236,25 @@
   text-overflow: ellipsis;
 }
 .sb__user-more {
+  margin-top: 8px;
+  flex: none;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  border-radius: 8px;
   color: var(--ink-3);
+  font-size: 15px;
   cursor: pointer;
+  transition: background 0.12s ease, color 0.12s ease;
+}
+.sb__user-more:hover,
+.sb__user-more.is-open {
+  background: var(--surface-3);
+  color: var(--ink);
 }
 
 /* ===== collapsed rail ===== */

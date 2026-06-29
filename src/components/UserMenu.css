@@ -1,0 +1,139 @@
+.um {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(100% + 8px);
+  z-index: 50;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-elevated);
+  padding: 7px;
+  animation: um-pop 0.14s ease;
+}
+@keyframes um-pop {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: none; }
+}
+
+.um__head {
+  padding: 8px 10px 10px;
+}
+.um__head-name {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.um__head-mail {
+  font-size: 11px;
+  color: var(--ink-3);
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.um__divider {
+  height: 1px;
+  background: var(--line);
+  margin: 6px 4px;
+}
+
+.um__group {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.um__item {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  width: 100%;
+  text-align: left;
+  padding: 9px 10px;
+  border: none;
+  background: transparent;
+  border-radius: 9px;
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--ink-2);
+  cursor: pointer;
+  transition: background 0.12s ease;
+}
+.um__item:hover {
+  background: var(--surface-2);
+}
+.um__ico {
+  color: var(--ink-3);
+  flex: none;
+}
+.um__item:hover .um__ico {
+  color: var(--ink-2);
+}
+
+.um__shortcut {
+  margin-left: auto;
+  font-size: 10.5px;
+  color: var(--ink-4);
+}
+.um__chev {
+  margin-left: auto;
+  color: var(--ink-3);
+  transform: rotate(-90deg);
+  transition: transform 0.16s ease;
+}
+.um__chev.is-open {
+  transform: rotate(0deg);
+}
+
+.um__item--logout {
+  color: var(--ink-2);
+}
+
+/* ---- submenú anidado ---- */
+.um__sub {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  margin: 1px 0 2px 18px;
+  padding-left: 9px;
+  border-left: 1px solid var(--line);
+}
+.um__subitem {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  text-align: left;
+  padding: 8px 10px;
+  border: none;
+  background: transparent;
+  border-radius: 8px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--ink-2);
+  cursor: pointer;
+  transition: background 0.12s ease;
+}
+.um__subitem:hover {
+  background: var(--surface-2);
+}
+.um__subitem.is-active {
+  color: var(--ink);
+}
+.um__subico {
+  color: var(--ink-3);
+  flex: none;
+}
+.um__radio {
+  margin-left: auto;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+}

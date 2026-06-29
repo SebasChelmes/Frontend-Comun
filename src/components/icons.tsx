@@ -137,3 +137,25 @@ export const CpuIcon = (p: IconProps) =>
       </>
     ),
   });
+
+/* menú de usuario */
+export const GlobeIcon = (p: IconProps) =>
+  base({ ...p, children: (<><circle cx="12" cy="12" r="9" /><path d="M3 12h18" /><path d="M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18" /></>) });
+
+export const HelpIcon = (p: IconProps) =>
+  base({ ...p, children: (<><circle cx="12" cy="12" r="9" /><path d="M9.6 9.2a2.5 2.5 0 1 1 3.4 2.5c-.7.4-1 .8-1 1.6" /><path d="M12 17h.01" /></>) });
+
+export const InfoIcon = (p: IconProps) =>
+  base({ ...p, children: (<><circle cx="12" cy="12" r="9" /><path d="M12 11v5" /><path d="M12 8h.01" /></>) });
+
+export const LogoutIcon = (p: IconProps) =>
+  base({ ...p, children: (<><path d="M15 4h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-3" /><path d="m10 16-4-4 4-4" /><path d="M6 12h12" /></>) });
+
+export const ShieldIcon = (p: IconProps) =>
+  base({ ...p, children: <path d="M12 3 5 6v5c0 4 3 7 7 8 4-1 7-4 7-8V6l-7-3Z" /> });
+
+export const DocIcon = (p: IconProps) =>
+  base({ ...p, children: (<><path d="M6 3h8l4 4v14H6Z" /><path d="M14 3v4h4" /><path d="M9 13h6M9 16.5h6" /></>) });
+
+export const PlayCircleIcon = (p: IconProps) =>
+  base({ ...p, children: (<><circle cx="12" cy="12" r="9" /><path d="m10 8.5 5 3.5-5 3.5Z" /></>) });

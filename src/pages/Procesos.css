@@ -2,33 +2,13 @@
 
 .px-header {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   gap: 24px;
 }
 .px-h1 {
   font-size: 30px;
   color: var(--ink);
-}
-.px-lead {
-  margin-top: 8px;
-  font-size: 15px;
-  color: var(--ink-2);
-  max-width: 560px;
-  text-wrap: pretty;
-}
-.px-stats {
-  display: flex;
-  gap: 7px;
-  margin-top: 14px;
-}
-.px-stat {
-  font-size: 11px;
-  color: var(--ink-2);
-  background: var(--surface-2);
-  border: 1px solid var(--line);
-  border-radius: var(--r-pill);
-  padding: 5px 11px;
 }
 .px-new {
   flex: none;

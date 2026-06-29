@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { useApp } from '../context/AppContext';
 import { BrandGlyph } from './BrandMark';
+import { UserMenu } from './UserMenu';
 import {
   AgentsIcon,
   AnalysisIcon,
@@ -12,7 +13,6 @@ import {
   ChevronDownIcon,
   HomeIcon,
   LockIcon,
-  PlanIcon,
   PlugIcon,
   ProcessIcon,
   ServerIcon,
@@ -37,6 +37,22 @@ export function Sidebar() {
   const navigate = useNavigate();
   const isActive = (path: string) => pathname.startsWith(path);
   const [hubOpen, setHubOpen] = useState(() => pathname.startsWith('/agentes'));
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const userRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!userMenuOpen) return;
+    const onDown = (e: MouseEvent) => {
+      if (userRef.current && !userRef.current.contains(e.target as Node)) setUserMenuOpen(false);
+    };
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setUserMenuOpen(false);
+    document.addEventListener('mousedown', onDown);
+    document.addEventListener('keydown', onKey);
+    return () => {
+      document.removeEventListener('mousedown', onDown);
+      document.removeEventListener('keydown', onKey);
+    };
+  }, [userMenuOpen]);
 
   return (
     <aside className="sb">
@@ -119,10 +135,6 @@ export function Sidebar() {
           <SettingsIcon size={18} className="sb__ico" />
           Configuración
         </a>
-        <a className="sb__item">
-          <PlanIcon size={18} className="sb__ico" />
-          Plan / Suscripción
-        </a>
       </nav>
 
       {/* usage meter */}
@@ -137,13 +149,22 @@ export function Sidebar() {
       </div>
 
       {/* user footer */}
-      <div className="sb__user">
+      <div className="sb__user" ref={userRef}>
+        {userMenuOpen && <UserMenu onClose={() => setUserMenuOpen(false)} />}
         <div className="sb__avatar">M</div>
         <div className="sb__user-info">
           <div className="sb__user-name">Martina Ríos</div>
           <div className="sb__user-mail mono">martina@empresa.com</div>
         </div>
-        <span className="sb__user-more" role="button" aria-label="Más">⋮</span>
+        <button
+          className={`sb__user-more ${userMenuOpen ? 'is-open' : ''}`}
+          aria-label="Opciones de usuario"
+          aria-haspopup="menu"
+          aria-expanded={userMenuOpen}
+          onClick={() => setUserMenuOpen((o) => !o)}
+        >
+          ⋮
+        </button>
       </div>
     </aside>
   );

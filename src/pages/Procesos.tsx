@@ -27,18 +27,7 @@ export default function Procesos() {
   return (
     <AppShell crumb="RELEVAMIENTO / PROCESOS">
       <header className="px-header">
-        <div>
-          <h1 className="px-h1">Procesos</h1>
-          <p className="px-lead">
-            Todos los procesos de tu empresa — flujogramas de procesos manuales y guías de
-            procesos digitales, en una sola grilla.
-          </p>
-          <div className="px-stats">
-            <span className="px-stat mono">12 procesos</span>
-            <span className="px-stat mono">5 manuales</span>
-            <span className="px-stat mono">7 digitales</span>
-          </div>
-        </div>
+        <h1 className="px-h1">Procesos</h1>
         <button className="btn btn--primary px-new">
           <PlusIcon size={16} />
           Nuevo proceso
