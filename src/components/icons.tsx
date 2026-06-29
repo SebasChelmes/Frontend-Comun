@@ -107,3 +107,22 @@ export const CheckIcon = (p: IconProps) =>
 
 export const UserIcon = (p: IconProps) =>
   base({ ...p, children: (<><circle cx="12" cy="8" r="3.4" /><path d="M5.5 20a6.5 6.5 0 0 1 13 0" /></>) });
+
+export const ChevronDownIcon = (p: IconProps) =>
+  base({ ...p, strokeWidth: 1.8, children: <path d="m6 9 6 6 6-6" /> });
+
+/* sub-opciones del Hub de Agentes IA */
+export const PlugIcon = (p: IconProps) =>
+  base({ ...p, children: (<><path d="M8 8V4M16 8V4" /><rect x="6" y="8" width="12" height="5" rx="2" /><path d="M12 13v3a4 4 0 0 0 4 4h1" /></>) });
+
+export const ServerIcon = (p: IconProps) =>
+  base({ ...p, children: (<><rect x="3" y="4" width="18" height="7" rx="2" /><rect x="3" y="13" width="18" height="7" rx="2" /><path d="M7 7.5h.01M7 16.5h.01" /></>) });
+
+export const BookIcon = (p: IconProps) =>
+  base({ ...p, children: (<><path d="M5 5a2 2 0 0 1 2-2h12v15H7a2 2 0 0 0-2 2Z" /><path d="M8 8h7M8 11.5h7" /></>) });
+
+export const TerminalIcon = (p: IconProps) =>
+  base({ ...p, children: (<><rect x="3" y="4" width="18" height="16" rx="2.5" /><path d="m7 9 3 3-3 3M13 15h4" /></>) });
+
+export const BoltIcon = (p: IconProps) =>
+  base({ ...p, strokeWidth: 1.7, children: <path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z" /> });

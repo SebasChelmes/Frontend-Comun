@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { useApp } from '../context/AppContext';
@@ -5,14 +6,29 @@ import { BrandGlyph } from './BrandMark';
 import {
   AgentsIcon,
   AnalysisIcon,
+  BoltIcon,
+  BookIcon,
   CaptureIcon,
+  ChevronDownIcon,
   HomeIcon,
   LockIcon,
   PlanIcon,
+  PlugIcon,
   ProcessIcon,
+  ServerIcon,
   SettingsIcon,
+  TerminalIcon,
 } from './icons';
 import './Sidebar.css';
+
+/* sub-opciones del Hub de Agentes IA */
+const HUB_SUBITEMS = [
+  { label: 'Conectores', Icon: PlugIcon },
+  { label: 'MCP Local', Icon: ServerIcon },
+  { label: 'Skills', Icon: BookIcon },
+  { label: 'Comandos', Icon: TerminalIcon },
+  { label: 'Automatizaciones', Icon: BoltIcon },
+];
 
 /* ---------- expanded sidebar ---------- */
 export function Sidebar() {
@@ -20,6 +36,7 @@ export function Sidebar() {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const isActive = (path: string) => pathname.startsWith(path);
+  const [hubOpen, setHubOpen] = useState(() => pathname.startsWith('/agentes'));
 
   return (
     <aside className="sb">
@@ -64,13 +81,37 @@ export function Sidebar() {
         </a>
 
         <a
-          className={`sb__item ${isActive('/agentes') ? 'is-active' : ''}`}
-          onClick={() => navigate('/agentes')}
+          className={`sb__item sb__parent ${isActive('/agentes') ? 'is-active' : ''}`}
+          onClick={() => {
+            navigate('/agentes');
+            setHubOpen(true);
+          }}
         >
           <AgentsIcon size={18} className="sb__ico" style={isActive('/agentes') ? { color: 'var(--accent)' } : undefined} />
-          Agentes / Hub
-          {showLocks && <span className="sb__tag mono">PREMIUM+</span>}
+          <span className="sb__parent-label">Hub de Agentes IA</span>
+          <span
+            className="sb__chevron-btn"
+            role="button"
+            aria-label={hubOpen ? 'Contraer' : 'Expandir'}
+            onClick={(e) => {
+              e.stopPropagation();
+              setHubOpen((o) => !o);
+            }}
+          >
+            <ChevronDownIcon size={15} className={`sb__chevron ${hubOpen ? 'is-open' : ''}`} />
+          </span>
         </a>
+
+        {hubOpen && (
+          <div className="sb__sub">
+            {HUB_SUBITEMS.map(({ label, Icon }) => (
+              <a className="sb__subitem" key={label}>
+                <Icon size={16} className="sb__subico" />
+                {label}
+              </a>
+            ))}
+          </div>
+        )}
 
         <div className="sb__section mono">CUENTA</div>
 
