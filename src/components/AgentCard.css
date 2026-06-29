@@ -84,3 +84,38 @@
   line-height: 1.5;
   color: var(--ink-2);
 }
+
+/* ---- métricas (pegadas al fondo de la card) ---- */
+.ag__stats {
+  margin-top: auto;
+  padding-top: 16px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 13px 16px;
+  border-top: 1px solid var(--line);
+}
+.ag__stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+.ag__stat-label {
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  color: var(--ink-4);
+}
+.ag__stat-value {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink);
+}
+.ag__status-dot {
+  width: 7px;
+  height: 7px;
+  flex: none;
+  border-radius: 50%;
+}

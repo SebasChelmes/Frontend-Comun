@@ -1,10 +1,11 @@
 /**
- * Datos de la pantalla "Agentes / Hub".
- * Cards de agentes editables (nombre + avatar), con integraciones y horas/semana.
+ * Datos de la pantalla "Hub de Agentes".
+ * Cards de agentes editables (nombre + avatar), con estado y métricas de uso.
  * Contenido tomado de las pantallas de referencia.
  */
 
-/* ---------- integraciones (registro con colores de marca, estilado §10) ---------- */
+/* ---------- integraciones (registro con colores de marca, estilado §10) ----------
+   Reservado: hoy no se muestran en la card, pero se conservan para el detalle del agente. */
 export interface Integration {
   key: string;
   label: string; // monograma mostrado en el chip
@@ -43,6 +44,8 @@ export const AVATAR_EMOJIS = [
 ] as const;
 
 /* ---------- agentes ---------- */
+export type AgentStatus = 'activo' | 'pausado' | 'inactivo';
+
 export interface Agent {
   id: string;
   name: string;
@@ -54,8 +57,16 @@ export interface Agent {
   /** Reservado para futura personalización (emoji + color). No se muestra por ahora. */
   avatarEmoji?: string;
   avatarColor?: string;
-  integrations: string[]; // keys de INTEGRATIONS
-  hoursPerWeek: number; // estimación de horas ahorradas / semana
+  integrations: string[]; // keys de INTEGRATIONS (reservado)
+  hoursPerWeek: number; // estimación de horas ahorradas / semana (reservado)
+  /** Estado operativo del agente. */
+  status: AgentStatus;
+  /** Última ejecución (relativo). */
+  lastRun: string;
+  /** Ejecuciones en el mes en curso. */
+  runsThisMonth: number;
+  /** Tasa de éxito (%) de las ejecuciones. */
+  successRate: number;
 }
 
 export const AGENTS: Agent[] = [
@@ -65,10 +76,12 @@ export const AGENTS: Agent[] = [
     role: 'Asistente personal',
     category: 'Productividad',
     description: 'Limpia tu bandeja, envía correos y gestiona tu calendario.',
-    avatarEmoji: '🤖',
-    avatarColor: '#3A3678',
     integrations: ['gmail', 'calendar', 'drive', 'outlook'],
     hoursPerWeek: 10,
+    status: 'activo',
+    lastRun: 'hace 2 h',
+    runsThisMonth: 128,
+    successRate: 99,
   },
   {
     id: 'contable',
@@ -76,10 +89,12 @@ export const AGENTS: Agent[] = [
     role: 'Contable',
     category: 'Finanzas',
     description: 'Categoriza gastos, concilia cuentas y prepara informes.',
-    avatarEmoji: '🧮',
-    avatarColor: '#0D9488',
     integrations: ['sheets', 'drive'],
     hoursPerWeek: 8,
+    status: 'activo',
+    lastRun: 'hace 5 h',
+    runsThisMonth: 64,
+    successRate: 98,
   },
   {
     id: 'gerente-rrhh',
@@ -87,10 +102,12 @@ export const AGENTS: Agent[] = [
     role: 'Gerente de RRHH',
     category: 'Recursos Humanos',
     description: 'Publica ofertas, revisa CVs, hace onboarding y nómina.',
-    avatarEmoji: '👥',
-    avatarColor: '#7C3AED',
     integrations: ['linkedin', 'gmail'],
     hoursPerWeek: 6,
+    status: 'pausado',
+    lastRun: 'hace 3 días',
+    runsThisMonth: 22,
+    successRate: 95,
   },
   {
     id: 'servicio-cliente',
@@ -98,10 +115,12 @@ export const AGENTS: Agent[] = [
     role: 'Rep. de Servicio al Cliente',
     category: 'Soporte',
     description: 'Lee tickets, redacta respuestas, procesa reembolsos y escala los casos.',
-    avatarEmoji: '🎧',
-    avatarColor: '#D97706',
     integrations: ['zendesk', 'gmail', 'slack', 'whatsapp'],
     hoursPerWeek: 12,
+    status: 'activo',
+    lastRun: 'hace 12 min',
+    runsThisMonth: 240,
+    successRate: 97,
   },
   {
     id: 'rep-ventas',
@@ -109,10 +128,12 @@ export const AGENTS: Agent[] = [
     role: 'Rep. de ventas',
     category: 'Comercial',
     description: 'Sigue leads, manda recordatorios, actualiza el CRM y arma propuestas.',
-    avatarEmoji: '📈',
-    avatarColor: '#2563EB',
     integrations: ['hubspot', 'gmail', 'calendar'],
     hoursPerWeek: 9,
+    status: 'activo',
+    lastRun: 'hace 1 día',
+    runsThisMonth: 87,
+    successRate: 96,
   },
   {
     id: 'gerente-oficina',
@@ -120,9 +141,18 @@ export const AGENTS: Agent[] = [
     role: 'Gerente de oficina',
     category: 'Operaciones',
     description: 'Organiza documentos, coordina horarios y comunicaciones internas.',
-    avatarEmoji: '🗂️',
-    avatarColor: '#0E8466',
     integrations: ['drive', 'slack', 'calendar'],
     hoursPerWeek: 7,
+    status: 'inactivo',
+    lastRun: 'hace 2 semanas',
+    runsThisMonth: 15,
+    successRate: 92,
   },
 ];
+
+/** Etiqueta + color de token para cada estado. */
+export const STATUS_META: Record<AgentStatus, { label: string; color: string }> = {
+  activo: { label: 'Activo', color: 'var(--ok)' },
+  pausado: { label: 'Pausado', color: 'var(--warn)' },
+  inactivo: { label: 'Inactivo', color: 'var(--ink-4)' },
+};
