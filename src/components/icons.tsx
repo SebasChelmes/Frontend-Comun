@@ -159,3 +159,6 @@ export const DocIcon = (p: IconProps) =>
 
 export const PlayCircleIcon = (p: IconProps) =>
   base({ ...p, children: (<><circle cx="12" cy="12" r="9" /><path d="m10 8.5 5 3.5-5 3.5Z" /></>) });
+
+export const PanelIcon = (p: IconProps) =>
+  base({ ...p, children: (<><rect x="3" y="4" width="18" height="16" rx="2" /><path d="M3 9h18M9 9v11" /></>) });

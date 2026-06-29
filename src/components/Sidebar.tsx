@@ -13,10 +13,10 @@ import {
   ChevronDownIcon,
   HomeIcon,
   LockIcon,
+  PanelIcon,
   PlugIcon,
   ProcessIcon,
   ServerIcon,
-  SettingsIcon,
   TerminalIcon,
 } from './icons';
 import './Sidebar.css';
@@ -39,6 +39,11 @@ export function Sidebar() {
   const [hubOpen, setHubOpen] = useState(() => pathname.startsWith('/agentes'));
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const userRef = useRef<HTMLDivElement>(null);
+
+  // cerrar el menú de usuario al cambiar de ruta (evita que quede abierto al navegar)
+  useEffect(() => {
+    setUserMenuOpen(false);
+  }, [pathname]);
 
   useEffect(() => {
     if (!userMenuOpen) return;
@@ -132,8 +137,8 @@ export function Sidebar() {
         <div className="sb__section mono">CUENTA</div>
 
         <a className="sb__item">
-          <SettingsIcon size={18} className="sb__ico" />
-          Configuración
+          <PanelIcon size={18} className="sb__ico" />
+          Panel de Agencia
         </a>
       </nav>
 

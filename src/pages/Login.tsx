@@ -6,8 +6,6 @@ import { ArrowRightIcon, EyeIcon, MailIcon } from '../components/icons';
 import { DesignControls } from '../components/DesignControls';
 import './Login.css';
 
-const PILLS = ['Insights Hub', 'Agents Hub', 'Tracker Hub'];
-
 export default function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState('martina@empresa.com');
@@ -35,14 +33,6 @@ export default function Login() {
           <div className="login-brand__mid">
             <h1>Una sola plataforma para tus procesos.</h1>
             <p>Mapeá, analizá y automatizá — todo en un mismo lugar, con un solo acceso.</p>
-            <div className="login-brand__pills">
-              {PILLS.map((p) => (
-                <span className="login-pill" key={p}>
-                  <span className="login-pill__dot" />
-                  {p}
-                </span>
-              ))}
-            </div>
           </div>
 
           <div className="login-brand__foot mono">PLATAFORMA SEBACH AI</div>
@@ -53,7 +43,6 @@ export default function Login() {
           <div className="login-form__inner">
             <div className="login-form__kicker mono">ACCESO ÚNICO</div>
             <h2 className="login-form__title">Iniciá sesión</h2>
-            <p className="login-form__sub">Una sola cuenta para Insights, Agents y Tracker Hub.</p>
 
             <div className="field">
               <label className="field__label mono" htmlFor="email">EMAIL</label>

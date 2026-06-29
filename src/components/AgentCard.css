@@ -3,6 +3,7 @@
   border: 1px solid var(--line);
   border-radius: var(--r-lg);
   padding: 18px;
+  min-height: 224px; /* igualar el alto de las cards de Procesos */
   box-shadow: var(--shadow-card);
   display: flex;
   flex-direction: column;
