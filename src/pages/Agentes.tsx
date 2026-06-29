@@ -19,7 +19,7 @@ export default function Agentes() {
   return (
     <AppShell crumb="INTELIGENCIA / AGENTES">
       <header className="ax-header">
-        <h1 className="ax-h1">Hub</h1>
+        <h1 className="ax-h1">Hub de Agentes</h1>
         <button className="btn btn--primary ax-new">
           <PlusIcon size={16} />
           Nuevo agente

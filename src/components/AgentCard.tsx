@@ -1,5 +1,4 @@
 import type { Agent } from '../data/agents';
-import { INTEGRATIONS } from '../data/agents';
 import { EditIcon, UserIcon } from './icons';
 import './AgentCard.css';
 
@@ -19,21 +18,6 @@ export function AgentCard({ agent, onEdit }: { agent: Agent; onEdit: (a: Agent) 
       </div>
 
       <p className="ag__desc">{agent.description}</p>
-
-      <div className="ag__foot">
-        <div className="ag__ints">
-          {agent.integrations.map((key) => {
-            const it = INTEGRATIONS[key];
-            if (!it) return null;
-            return (
-              <span key={key} className="ag__int" style={{ background: it.color }} title={it.key}>
-                {it.label}
-              </span>
-            );
-          })}
-        </div>
-        <span className="ag__hours mono">~{agent.hoursPerWeek} hs/sem</span>
-      </div>
     </article>
   );
 }

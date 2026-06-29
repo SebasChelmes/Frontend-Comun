@@ -11,13 +11,12 @@ import {
   PlanIcon,
   ProcessIcon,
   SettingsIcon,
-  StarIcon,
 } from './icons';
 import './Sidebar.css';
 
 /* ---------- expanded sidebar ---------- */
 export function Sidebar() {
-  const { planLabel, showLocks, showUpgrade } = useApp();
+  const { planLabel, showLocks } = useApp();
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const isActive = (path: string) => pathname.startsWith(path);
@@ -84,18 +83,6 @@ export function Sidebar() {
           Plan / Suscripción
         </a>
       </nav>
-
-      {showUpgrade && (
-        <div className="sb__upgrade">
-          <span className="sb__upgrade-close" role="button" aria-label="Cerrar">✕</span>
-          <div className="sb__upgrade-title">
-            <StarIcon size={15} style={{ color: 'var(--accent)' }} />
-            Pasá a PRO
-          </div>
-          <p>Procesos ilimitados y análisis con IA para tus dolores operativos.</p>
-          <button className="btn btn--primary btn--block sb__upgrade-btn">Mejorar plan</button>
-        </div>
-      )}
 
       {/* usage meter */}
       <div className="sb__usage">

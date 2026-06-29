@@ -1,8 +1,9 @@
 import { useState, type ReactNode } from 'react';
 
+import { useApp } from '../context/AppContext';
 import { DesignControls } from './DesignControls';
 import { Sidebar, SidebarRail } from './Sidebar';
-import { BellIcon, SidebarToggleIcon } from './icons';
+import { BellIcon, SidebarToggleIcon, StarIcon } from './icons';
 import './AppShell.css';
 
 /**
@@ -11,6 +12,7 @@ import './AppShell.css';
  */
 export function AppShell({ crumb, children }: { crumb: string; children: ReactNode }) {
   const [collapsed, setCollapsed] = useState(false);
+  const { showUpgrade } = useApp();
 
   return (
     <div className="app-screen">
@@ -28,6 +30,15 @@ export function AppShell({ crumb, children }: { crumb: string; children: ReactNo
             </button>
             <span className="app-crumb mono">{crumb}</span>
             <div className="app-topbar__right">
+              {showUpgrade && (
+                <div className="app-upsell">
+                  <span className="app-upsell__lead">
+                    <StarIcon size={14} className="app-upsell__star" />
+                    Pasá a <b>PRO</b>
+                  </span>
+                  <button className="app-upsell__btn">Mejorar plan</button>
+                </div>
+              )}
               <a className="app-help">Ayuda</a>
               <button className="app-iconbtn app-bell" aria-label="Notificaciones">
                 <BellIcon size={17} />

@@ -95,42 +95,6 @@
   padding: 2px 7px;
 }
 
-/* upgrade card */
-.sb__upgrade {
-  position: relative;
-  margin-top: 12px;
-  padding: 14px;
-  border-radius: var(--r-md);
-  background: color-mix(in srgb, var(--accent) 12%, #fff);
-  border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
-}
-.sb__upgrade-close {
-  position: absolute;
-  top: 11px;
-  right: 12px;
-  color: var(--ink-3);
-  cursor: pointer;
-  font-size: 14px;
-}
-.sb__upgrade-title {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  font-weight: 600;
-  font-size: 14px;
-}
-.sb__upgrade p {
-  margin-top: 6px;
-  font-size: 12.5px;
-  line-height: 1.45;
-  color: var(--ink-2);
-}
-.sb__upgrade-btn {
-  margin-top: 11px;
-  padding: 8px;
-  font-size: 13px;
-}
-
 /* usage meter */
 .sb__usage {
   margin-top: 12px;
