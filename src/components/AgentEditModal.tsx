@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import type { Agent } from '../data/agents';
-import { AVATAR_COLORS, AVATAR_EMOJIS } from '../data/agents';
-import { CheckIcon, CloseIcon } from './icons';
+import { CloseIcon, UserIcon } from './icons';
 import './AgentEditModal.css';
 
 interface Props {
@@ -13,8 +12,6 @@ interface Props {
 
 export function AgentEditModal({ agent, onSave, onClose }: Props) {
   const [name, setName] = useState(agent.name);
-  const [emoji, setEmoji] = useState(agent.avatarEmoji);
-  const [color, setColor] = useState(agent.avatarColor);
 
   // cerrar con Escape
   useEffect(() => {
@@ -27,12 +24,18 @@ export function AgentEditModal({ agent, onSave, onClose }: Props) {
 
   function save() {
     if (!canSave) return;
-    onSave({ ...agent, name: name.trim(), avatarEmoji: emoji, avatarColor: color });
+    onSave({ ...agent, name: name.trim() });
   }
 
   return (
     <div className="aem__overlay" onClick={onClose}>
-      <div className="aem" role="dialog" aria-modal="true" aria-label="Editar agente" onClick={(e) => e.stopPropagation()}>
+      <div
+        className="aem"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Editar agente"
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className="aem__head">
           <div>
             <div className="aem__kicker mono">EDITAR AGENTE</div>
@@ -45,9 +48,7 @@ export function AgentEditModal({ agent, onSave, onClose }: Props) {
 
         {/* live preview */}
         <div className="aem__preview">
-          <div className="aem__avatar" style={{ background: color }}>
-            <span aria-hidden>{emoji}</span>
-          </div>
+          <Avatar agent={agent} />
           <div className="aem__preview-meta">
             <div className="aem__preview-name">{name.trim() || 'Sin nombre'}</div>
             <div className="aem__preview-role mono">{agent.category}</div>
@@ -67,38 +68,17 @@ export function AgentEditModal({ agent, onSave, onClose }: Props) {
           />
         </div>
 
-        {/* avatar color */}
+        {/* avatar (placeholder — selección de imagen/foto próximamente) */}
         <div className="aem__field">
-          <span className="aem__label mono">COLOR DEL AVATAR</span>
-          <div className="aem__colors">
-            {AVATAR_COLORS.map((c) => (
-              <button
-                key={c}
-                className={`aem__color ${color === c ? 'is-active' : ''}`}
-                style={{ background: c }}
-                onClick={() => setColor(c)}
-                aria-label={`Color ${c}`}
-              >
-                {color === c && <CheckIcon size={15} />}
+          <span className="aem__label mono">AVATAR</span>
+          <div className="aem__avatar-row">
+            <Avatar agent={agent} small />
+            <div className="aem__avatar-info">
+              <button className="btn btn--ghost aem__avatar-btn" disabled>
+                Elegir imagen
               </button>
-            ))}
-          </div>
-        </div>
-
-        {/* avatar emoji */}
-        <div className="aem__field">
-          <span className="aem__label mono">ÍCONO DEL AVATAR</span>
-          <div className="aem__emojis">
-            {AVATAR_EMOJIS.map((e) => (
-              <button
-                key={e}
-                className={`aem__emoji ${emoji === e ? 'is-active' : ''}`}
-                onClick={() => setEmoji(e)}
-                aria-label={`Emoji ${e}`}
-              >
-                {e}
-              </button>
-            ))}
+              <span className="aem__hint">Próximamente: subí una imagen o foto.</span>
+            </div>
           </div>
         </div>
 
@@ -112,5 +92,17 @@ export function AgentEditModal({ agent, onSave, onClose }: Props) {
         </div>
       </div>
     </div>
+  );
+}
+
+function Avatar({ agent, small }: { agent: Agent; small?: boolean }) {
+  const cls = `aem__avatar ${small ? 'aem__avatar--sm' : ''}`;
+  if (agent.avatarImage) {
+    return <img className={`${cls} aem__avatar--img`} src={agent.avatarImage} alt="" />;
+  }
+  return (
+    <span className={`${cls} aem__avatar--empty`} aria-hidden>
+      <UserIcon size={small ? 18 : 24} />
+    </span>
   );
 }

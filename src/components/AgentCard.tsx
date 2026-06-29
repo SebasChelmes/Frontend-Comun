@@ -1,22 +1,18 @@
 import type { Agent } from '../data/agents';
 import { INTEGRATIONS } from '../data/agents';
-import { EditIcon } from './icons';
+import { EditIcon, UserIcon } from './icons';
 import './AgentCard.css';
 
 export function AgentCard({ agent, onEdit }: { agent: Agent; onEdit: (a: Agent) => void }) {
   return (
     <article className="ag">
       <div className="ag__head">
-        <div className="ag__avatar" style={{ background: agent.avatarColor }}>
-          <span aria-hidden>{agent.avatarEmoji}</span>
-        </div>
+        <Avatar agent={agent} />
         <div className="ag__id">
           <h3 className="ag__name">{agent.name}</h3>
-          <p className="ag__role mono">
-            {agent.role} · {agent.category}
-          </p>
+          <p className="ag__role mono">{agent.category}</p>
         </div>
-        <button className="ag__edit" onClick={() => onEdit(agent)}>
+        <button className="ag__edit" onClick={() => onEdit(agent)} aria-label="Editar agente">
           <EditIcon size={14} />
           Editar
         </button>
@@ -30,12 +26,7 @@ export function AgentCard({ agent, onEdit }: { agent: Agent; onEdit: (a: Agent) 
             const it = INTEGRATIONS[key];
             if (!it) return null;
             return (
-              <span
-                key={key}
-                className="ag__int"
-                style={{ background: it.color }}
-                title={it.key}
-              >
+              <span key={key} className="ag__int" style={{ background: it.color }} title={it.key}>
                 {it.label}
               </span>
             );
@@ -44,5 +35,17 @@ export function AgentCard({ agent, onEdit }: { agent: Agent; onEdit: (a: Agent) 
         <span className="ag__hours mono">~{agent.hoursPerWeek} hs/sem</span>
       </div>
     </article>
+  );
+}
+
+/** Avatar: imagen elegida por el usuario, o placeholder vacío mientras no haya. */
+function Avatar({ agent }: { agent: Agent }) {
+  if (agent.avatarImage) {
+    return <img className="ag__avatar ag__avatar--img" src={agent.avatarImage} alt="" />;
+  }
+  return (
+    <span className="ag__avatar ag__avatar--empty" aria-hidden>
+      <UserIcon size={20} />
+    </span>
   );
 }

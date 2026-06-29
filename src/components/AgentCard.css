@@ -2,42 +2,46 @@
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--r-lg);
-  padding: 20px;
+  padding: 18px;
   box-shadow: var(--shadow-card);
   display: flex;
   flex-direction: column;
-  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  transition: border-color 0.15s ease;
 }
 .ag:hover {
   border-color: var(--line-strong);
-  box-shadow: var(--shadow-elevated);
 }
 
 /* ---- head: avatar + name/role + edit ---- */
 .ag__head {
   display: flex;
-  align-items: flex-start;
-  gap: 14px;
+  align-items: center;
+  gap: 12px;
 }
 .ag__avatar {
-  width: 48px;
-  height: 48px;
+  width: 42px;
+  height: 42px;
   flex: none;
   border-radius: 50%;
+}
+/* avatar vacío: placeholder neutro hasta que el usuario elija imagen / foto */
+.ag__avatar--empty {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 22px;
-  line-height: 1;
-  box-shadow: var(--shadow-card-sm);
+  background: var(--surface-2);
+  border: 1px dashed var(--line-strong);
+  color: var(--ink-4);
+}
+.ag__avatar--img {
+  object-fit: cover;
 }
 .ag__id {
   flex: 1;
   min-width: 0;
-  padding-top: 2px;
 }
 .ag__name {
-  font-size: 18px;
+  font-size: 17px;
   color: var(--ink);
   white-space: nowrap;
   overflow: hidden;
@@ -46,7 +50,7 @@
 .ag__role {
   font-size: 11px;
   color: var(--ink-3);
-  margin-top: 5px;
+  margin-top: 4px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -57,13 +61,13 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 500;
   color: var(--ink-2);
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--r-pill);
-  padding: 7px 13px;
+  padding: 6px 11px;
   cursor: pointer;
   transition: background 0.15s ease, border-color 0.15s ease;
 }
@@ -74,8 +78,8 @@
 
 /* ---- description ---- */
 .ag__desc {
-  margin-top: 14px;
-  font-size: 14.5px;
+  margin-top: 13px;
+  font-size: 13.5px;
   line-height: 1.5;
   color: var(--ink-2);
 }
@@ -86,22 +90,22 @@
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  margin-top: 18px;
+  margin-top: 16px;
 }
 .ag__ints {
   display: flex;
   flex-wrap: wrap;
-  gap: 7px;
+  gap: 6px;
 }
 .ag__int {
-  width: 26px;
-  height: 26px;
-  border-radius: 8px;
+  width: 24px;
+  height: 24px;
+  border-radius: 7px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #fff;
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 600;
   letter-spacing: 0.01em;
   box-shadow: var(--shadow-chip);

@@ -24,7 +24,9 @@ export const INTEGRATIONS: Record<string, Integration> = {
   hubspot: { key: 'hubspot', label: 'H', color: '#FF7A59' },
 };
 
-/* ---------- avatar: paleta + emojis (estilado §10 "avatares de agentes") ---------- */
+/* ---------- avatar: paleta + emojis (reservado para la futura personalización) ----------
+   Por ahora el avatar se muestra vacío (placeholder). Más adelante el usuario podrá
+   elegir su avatar desde otro lugar (imagen / foto) -> Agent.avatarImage. */
 export const AVATAR_COLORS = [
   '#3A3678', // índigo
   '#0D9488', // teal
@@ -47,8 +49,11 @@ export interface Agent {
   role: string;
   category: string;
   description: string;
-  avatarEmoji: string;
-  avatarColor: string;
+  /** Avatar elegido por el usuario (imagen / foto). Vacío = placeholder. */
+  avatarImage?: string;
+  /** Reservado para futura personalización (emoji + color). No se muestra por ahora. */
+  avatarEmoji?: string;
+  avatarColor?: string;
   integrations: string[]; // keys de INTEGRATIONS
   hoursPerWeek: number; // estimación de horas ahorradas / semana
 }
