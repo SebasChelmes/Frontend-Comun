@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, type ComponentType } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { useApp } from '../context/AppContext';
@@ -27,6 +27,18 @@ const HUB_SUBITEMS = [
   { label: 'MCP Local', Icon: ServerIcon },
   { label: 'Skills', Icon: BookIcon },
   { label: 'Comandos', Icon: TerminalIcon },
+];
+
+/* ítems del rail colapsado (mismos del sidebar; con tooltip por ícono) */
+type IconType = ComponentType<{ size?: number }>;
+const RAIL_ITEMS: { label: string; Icon: IconType; path?: string }[] = [
+  { label: 'Inicio', Icon: HomeIcon },
+  { label: 'Procesos', Icon: ProcessIcon, path: '/procesos' },
+  { label: 'Captura', Icon: CaptureIcon },
+  { label: 'Análisis', Icon: AnalysisIcon },
+  { label: 'Hub de Agentes IA', Icon: AgentsIcon, path: '/agentes' },
+  { label: 'Automatizaciones', Icon: BoltIcon },
+  { label: 'Panel de Agencia', Icon: PanelIcon },
 ];
 
 /* ---------- expanded sidebar ---------- */
@@ -169,26 +181,21 @@ export function Sidebar() {
 export function SidebarRail() {
   const { pathname } = useLocation();
   const navigate = useNavigate();
-  const isActive = (path: string) => pathname.startsWith(path);
+  const isActive = (path?: string) => !!path && pathname.startsWith(path);
 
   return (
     <aside className="sbr">
       <BrandGlyph size={30} radius={9} />
-      <a className="sbr__item"><HomeIcon size={19} /></a>
-      <a
-        className={`sbr__item ${isActive('/procesos') ? 'is-active' : ''}`}
-        onClick={() => navigate('/procesos')}
-      >
-        <ProcessIcon size={19} />
-      </a>
-      <a className="sbr__item"><CaptureIcon size={19} /></a>
-      <a className="sbr__item"><AnalysisIcon size={19} /></a>
-      <a
-        className={`sbr__item ${isActive('/agentes') ? 'is-active' : ''}`}
-        onClick={() => navigate('/agentes')}
-      >
-        <AgentsIcon size={19} />
-      </a>
+      {RAIL_ITEMS.map(({ label, Icon, path }) => (
+        <a
+          key={label}
+          className={`sbr__item ${isActive(path) ? 'is-active' : ''}`}
+          data-tip={label}
+          onClick={() => path && navigate(path)}
+        >
+          <Icon size={19} />
+        </a>
+      ))}
       <div className="sbr__spacer" />
       <div className="sb__avatar">M</div>
     </aside>

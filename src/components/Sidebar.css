@@ -249,6 +249,7 @@
   margin-bottom: 14px;
 }
 .sbr__item {
+  position: relative;
   width: 40px;
   height: 40px;
   border-radius: var(--r-xs);
@@ -267,6 +268,33 @@
   box-shadow: var(--shadow-card-sm);
   color: var(--accent);
 }
+
+/* tooltip del rail colapsado (design system) — a la derecha del ícono */
+.sbr__item::after {
+  content: attr(data-tip);
+  position: absolute;
+  left: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%) translateX(-4px);
+  background: var(--ink);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  padding: 6px 10px;
+  border-radius: 8px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  box-shadow: var(--shadow-card);
+  transition: opacity 0.13s ease, transform 0.13s ease;
+  z-index: 60;
+}
+.sbr__item:hover::after {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
 .sbr__spacer {
   flex: 1;
 }

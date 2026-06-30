@@ -1,5 +1,7 @@
-import { useState, type ReactNode } from 'react';
+import { useMemo, useState } from 'react';
+import { Outlet, useLocation } from 'react-router-dom';
 
+import { useAgents } from '../context/AgentsContext';
 import { useApp } from '../context/AppContext';
 import { DesignControls } from './DesignControls';
 import { ModelSelector } from './ModelSelector';
@@ -8,17 +10,38 @@ import { BellIcon, SidebarToggleIcon, StarIcon } from './icons';
 import './AppShell.css';
 
 /**
- * Shell común de la app: ventana enmarcada + sidebar (expandible/rail) + top bar
- * + cuerpo scrolleable. Lo usan las pantallas internas (Procesos, Agentes, …).
+ * Layout común de la app (persistente): sidebar (expandible/rail) + top bar +
+ * cuerpo scrolleable con <Outlet/>. Al ser layout, no se desmonta al navegar
+ * entre pantallas, así el estado del sidebar (colapsado, submenús) persiste.
  */
-export function AppShell({ crumb, children }: { crumb: string; children: ReactNode }) {
+export function AppShell() {
   const [collapsed, setCollapsed] = useState(false);
+  const [animating, setAnimating] = useState(false);
   const { showUpgrade } = useApp();
+  const { pathname } = useLocation();
+  const { getAgent } = useAgents();
+
+  // breadcrumb del top bar, derivado de la ruta actual
+  const crumb = useMemo(() => {
+    if (pathname.startsWith('/procesos')) return 'RELEVAMIENTO / PROCESOS';
+    if (pathname.startsWith('/agentes')) {
+      const m = pathname.match(/^\/agentes\/([^/]+)/);
+      if (m) {
+        const a = getAgent(m[1]);
+        return `INTELIGENCIA / AGENTES${a ? ` / ${a.name.toUpperCase()}` : ''}`;
+      }
+      return 'INTELIGENCIA / AGENTES';
+    }
+    return '';
+  }, [pathname, getAgent]);
 
   return (
     <div className="app-screen">
       <div className="app-shell">
-        <div className={`app-side ${collapsed ? 'is-collapsed' : ''}`}>
+        <div
+          className={`app-side ${collapsed ? 'is-collapsed' : ''} ${animating ? 'is-animating' : ''}`}
+          onTransitionEnd={() => setAnimating(false)}
+        >
           {collapsed ? <SidebarRail /> : <Sidebar />}
         </div>
 
@@ -26,7 +49,10 @@ export function AppShell({ crumb, children }: { crumb: string; children: ReactNo
           <div className="app-topbar">
             <button
               className="app-iconbtn"
-              onClick={() => setCollapsed((c) => !c)}
+              onClick={() => {
+                setCollapsed((c) => !c);
+                setAnimating(true);
+              }}
               aria-label="Plegar barra lateral"
             >
               <SidebarToggleIcon size={17} />
@@ -50,7 +76,9 @@ export function AppShell({ crumb, children }: { crumb: string; children: ReactNo
             </div>
           </div>
 
-          <div className="app-body">{children}</div>
+          <div className="app-body">
+            <Outlet />
+          </div>
         </div>
       </div>
 

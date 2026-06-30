@@ -2,7 +2,6 @@ import { useState } from 'react';
 
 import { AgentCard } from '../components/AgentCard';
 import { AgentEditModal } from '../components/AgentEditModal';
-import { AppShell } from '../components/AppShell';
 import { GridToolbar, type ToolbarFilter } from '../components/GridToolbar';
 import { PlusIcon } from '../components/icons';
 import { useAgents } from '../context/AgentsContext';
@@ -33,7 +32,7 @@ export default function Agentes() {
   }
 
   return (
-    <AppShell crumb="INTELIGENCIA / AGENTES">
+    <>
       <header className="ax-header">
         <h1 className="ax-h1">Hub de Agentes</h1>
         <button className="btn btn--primary ax-new">
@@ -60,6 +59,6 @@ export default function Agentes() {
       {editing && (
         <AgentEditModal agent={editing} onSave={saveAgent} onClose={() => setEditing(null)} />
       )}
-    </AppShell>
+    </>
   );
 }

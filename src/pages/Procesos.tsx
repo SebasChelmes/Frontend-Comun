@@ -1,6 +1,5 @@
 import { useState } from 'react';
 
-import { AppShell } from '../components/AppShell';
 import { GridToolbar, type ToolbarFilter } from '../components/GridToolbar';
 import { ProcessCard } from '../components/ProcessCard';
 import { PlusIcon } from '../components/icons';
@@ -40,7 +39,7 @@ export default function Procesos() {
   }
 
   return (
-    <AppShell crumb="RELEVAMIENTO / PROCESOS">
+    <>
       <header className="px-header">
         <h1 className="px-h1">Procesos</h1>
         <button className="btn btn--primary px-new">
@@ -70,6 +69,6 @@ export default function Procesos() {
           />
         ))}
       </div>
-    </AppShell>
+    </>
   );
 }

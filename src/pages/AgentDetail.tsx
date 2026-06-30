@@ -1,7 +1,6 @@
 import { useState, type ComponentType } from 'react';
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
 
-import { AppShell } from '../components/AppShell';
 import {
   BookIcon,
   CalendarIcon,
@@ -43,10 +42,9 @@ export default function AgentDetail() {
   const status = STATUS_META[agent.status];
 
   return (
-    <AppShell crumb={`INTELIGENCIA / AGENTES / ${agent.name.toUpperCase()}`}>
-      <div className="ad">
-        {/* breadcrumb + identidad */}
-        <div className="ad__crumb mono">
+    <div className="ad">
+      {/* breadcrumb + identidad */}
+      <div className="ad__crumb mono">
           <span className="ad__crumb-link" onClick={() => navigate('/agentes')}>Hub de Agentes</span>
           <span className="ad__crumb-sep">›</span>
           <span>{agent.name}</span>
@@ -79,14 +77,13 @@ export default function AgentDetail() {
           ))}
         </nav>
 
-        {/* panel */}
-        {tab === 'chat' ? (
-          <ChatPanel agent={agent} />
-        ) : (
-          <EmptyPanel label={TABS.find((t) => t.id === tab)!.label} agent={agent} Icon={TABS.find((t) => t.id === tab)!.Icon} />
-        )}
-      </div>
-    </AppShell>
+      {/* panel */}
+      {tab === 'chat' ? (
+        <ChatPanel agent={agent} />
+      ) : (
+        <EmptyPanel label={TABS.find((t) => t.id === tab)!.label} agent={agent} Icon={TABS.find((t) => t.id === tab)!.Icon} />
+      )}
+    </div>
   );
 }
 
