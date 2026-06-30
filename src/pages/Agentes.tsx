@@ -5,13 +5,13 @@ import { AgentEditModal } from '../components/AgentEditModal';
 import { AppShell } from '../components/AppShell';
 import { GridToolbar, type ToolbarFilter } from '../components/GridToolbar';
 import { PlusIcon } from '../components/icons';
-import { AGENTS, type Agent } from '../data/agents';
+import { AGENTS, AGENT_AREAS, type Agent } from '../data/agents';
 import './Agentes.css';
 
-// filtros por categoría (áreas) — "Todos" + las categorías presentes en los agentes
+// filtros por área de empresa
 const FILTERS: ToolbarFilter[] = [
   { id: 'todos', label: 'Todos' },
-  ...Array.from(new Set(AGENTS.map((a) => a.category))).map((c) => ({ id: c, label: c })),
+  ...AGENT_AREAS.map((a) => ({ id: a, label: a })),
 ];
 
 export default function Agentes() {
@@ -21,7 +21,7 @@ export default function Agentes() {
   const [query, setQuery] = useState('');
 
   const visible = agents.filter((a) => {
-    if (filter !== 'todos' && a.category !== filter) return false;
+    if (filter !== 'todos' && a.area !== filter) return false;
     if (query && !a.name.toLowerCase().includes(query.toLowerCase())) return false;
     return true;
   });

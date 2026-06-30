@@ -46,11 +46,18 @@ export const AVATAR_EMOJIS = [
 /* ---------- agentes ---------- */
 export type AgentStatus = 'activo' | 'pausado' | 'inactivo';
 
+/** Áreas de la empresa (filtro del Hub). */
+export type AgentArea = 'Administración' | 'Técnicos' | 'Operativos';
+export const AGENT_AREAS: AgentArea[] = ['Administración', 'Técnicos', 'Operativos'];
+
 export interface Agent {
   id: string;
   name: string;
   role: string;
+  /** Categoría específica que se muestra en la card. */
   category: string;
+  /** Área de la empresa, usada por el filtro del Hub. */
+  area: AgentArea;
   description: string;
   /** Avatar elegido por el usuario (imagen / foto). Vacío = placeholder. */
   avatarImage?: string;
@@ -75,6 +82,7 @@ export const AGENTS: Agent[] = [
     name: 'Asistente personal',
     role: 'Asistente personal',
     category: 'Productividad',
+    area: 'Administración',
     description: 'Limpia tu bandeja, envía correos y gestiona tu calendario.',
     integrations: ['gmail', 'calendar', 'drive', 'outlook'],
     hoursPerWeek: 10,
@@ -88,6 +96,7 @@ export const AGENTS: Agent[] = [
     name: 'Contable',
     role: 'Contable',
     category: 'Finanzas',
+    area: 'Administración',
     description: 'Categoriza gastos, concilia cuentas y prepara informes.',
     integrations: ['sheets', 'drive'],
     hoursPerWeek: 8,
@@ -101,6 +110,7 @@ export const AGENTS: Agent[] = [
     name: 'Gerente de RRHH',
     role: 'Gerente de RRHH',
     category: 'Recursos Humanos',
+    area: 'Administración',
     description: 'Publica ofertas, revisa CVs, hace onboarding y nómina.',
     integrations: ['linkedin', 'gmail'],
     hoursPerWeek: 6,
@@ -114,6 +124,7 @@ export const AGENTS: Agent[] = [
     name: 'Rep. de Servicio al Cliente',
     role: 'Rep. de Servicio al Cliente',
     category: 'Soporte',
+    area: 'Técnicos',
     description: 'Lee tickets, redacta respuestas, procesa reembolsos y escala los casos.',
     integrations: ['zendesk', 'gmail', 'slack', 'whatsapp'],
     hoursPerWeek: 12,
@@ -127,6 +138,7 @@ export const AGENTS: Agent[] = [
     name: 'Rep. de ventas',
     role: 'Rep. de ventas',
     category: 'Comercial',
+    area: 'Operativos',
     description: 'Sigue leads, manda recordatorios, actualiza el CRM y arma propuestas.',
     integrations: ['hubspot', 'gmail', 'calendar'],
     hoursPerWeek: 9,
@@ -140,6 +152,7 @@ export const AGENTS: Agent[] = [
     name: 'Gerente de oficina',
     role: 'Gerente de oficina',
     category: 'Operaciones',
+    area: 'Operativos',
     description: 'Organiza documentos, coordina horarios y comunicaciones internas.',
     integrations: ['drive', 'slack', 'calendar'],
     hoursPerWeek: 7,
