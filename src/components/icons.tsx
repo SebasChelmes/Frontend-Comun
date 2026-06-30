@@ -197,3 +197,6 @@ export const PaperclipIcon = (p: IconProps) =>
 
 export const SendIcon = (p: IconProps) =>
   base({ ...p, strokeWidth: 1.8, children: (<><path d="M22 2 11 13" /><path d="M22 2 15 22l-4-9-9-4Z" /></>) });
+
+export const UploadIcon = (p: IconProps) =>
+  base({ ...p, children: (<><path d="M5 16v2a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2" /><path d="M12 15V3" /><path d="m7 8 5-5 5 5" /></>) });
