@@ -1,8 +1,17 @@
 import type { NodeShape, Process } from '../data/processes';
+import { CardMenu } from './CardMenu';
 import { ArrowRightIcon, CaptureIcon, LinkIcon, ProcessIcon } from './icons';
 import './ProcessCard.css';
 
-export function ProcessCard({ p }: { p: Process }) {
+interface Props {
+  p: Process;
+  onCopyLink?: () => void;
+  onShare?: () => void;
+  onDuplicate?: () => void;
+  onDelete?: () => void;
+}
+
+export function ProcessCard({ p, onCopyLink, onShare, onDuplicate, onDelete }: Props) {
   return (
     <article className="pc">
       <div className="pc__top">
@@ -18,22 +27,31 @@ export function ProcessCard({ p }: { p: Process }) {
           </span>
         )}
 
-        {p.kind === 'flujograma' ? (
-          <span className={`pc__status ${p.status === 'validacion' ? 'is-warn' : ''}`}>
-            <span className="pc__status-dot" />
-            {p.status === 'validacion' ? 'Validación' : 'Analizado'}
-          </span>
-        ) : p.linked ? (
-          <span className="pc__linked mono">
-            <LinkIcon size={11} />
-            {p.statusLabel}
-          </span>
-        ) : (
-          <span className="pc__status">
-            <span className="pc__status-dot" />
-            {p.statusLabel}
-          </span>
-        )}
+        <div className="pc__top-right">
+          {p.kind === 'flujograma' ? (
+            <span className={`pc__status ${p.status === 'validacion' ? 'is-warn' : ''}`}>
+              <span className="pc__status-dot" />
+              {p.status === 'validacion' ? 'Validación' : 'Analizado'}
+            </span>
+          ) : p.linked ? (
+            <span className="pc__linked mono">
+              <LinkIcon size={11} />
+              {p.statusLabel}
+            </span>
+          ) : (
+            <span className="pc__status">
+              <span className="pc__status-dot" />
+              {p.statusLabel}
+            </span>
+          )}
+
+          <CardMenu
+            onCopyLink={onCopyLink}
+            onShare={onShare}
+            onDuplicate={onDuplicate}
+            onDelete={onDelete}
+          />
+        </div>
       </div>
 
       <h3 className="pc__title">{p.title}</h3>

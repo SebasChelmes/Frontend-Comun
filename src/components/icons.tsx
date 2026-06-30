@@ -162,3 +162,19 @@ export const PlayCircleIcon = (p: IconProps) =>
 
 export const PanelIcon = (p: IconProps) =>
   base({ ...p, children: (<><rect x="3" y="4" width="18" height="16" rx="2" /><path d="M3 9h18M9 9v11" /></>) });
+
+/* menú de acciones de card */
+export const MoreIcon = (p: IconProps) =>
+  base({ ...p, strokeWidth: 2, children: (<><circle cx="12" cy="5" r="1.4" /><circle cx="12" cy="12" r="1.4" /><circle cx="12" cy="19" r="1.4" /></>) });
+
+export const ShareIcon = (p: IconProps) =>
+  base({ ...p, children: (<><circle cx="18" cy="5" r="2.6" /><circle cx="6" cy="12" r="2.6" /><circle cx="18" cy="19" r="2.6" /><path d="m8.3 10.7 7.4-4.4M8.3 13.3l7.4 4.4" /></>) });
+
+export const CopyIcon = (p: IconProps) =>
+  base({ ...p, children: (<><rect x="9" y="9" width="11" height="11" rx="2" /><path d="M5 15V5a2 2 0 0 1 2-2h8" /></>) });
+
+export const TrashIcon = (p: IconProps) =>
+  base({ ...p, children: (<><path d="M4 7h16" /><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2" /><path d="M6 7l1 13a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1l1-13" /><path d="M10 11v6M14 11v6" /></>) });
+
+export const ScaleIcon = (p: IconProps) =>
+  base({ ...p, children: (<><path d="M12 3v18" /><path d="M7 7h10M5 21h14" /><path d="m7 7-3 6a3 3 0 0 0 6 0Z" /><path d="m17 7 3 6a3 3 0 0 1-6 0Z" /></>) });

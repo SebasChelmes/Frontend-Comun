@@ -109,17 +109,6 @@
     display: none;
   }
 }
-.app-help {
-  font-size: 13px;
-  color: var(--ink-2);
-  text-decoration: none;
-  padding: 7px 12px;
-  border-radius: 9px;
-  cursor: pointer;
-}
-.app-help:hover {
-  background: var(--surface-2);
-}
 .app-bell {
   position: relative;
 }

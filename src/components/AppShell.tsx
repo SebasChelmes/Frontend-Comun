@@ -41,7 +41,6 @@ export function AppShell({ crumb, children }: { crumb: string; children: ReactNo
                 </div>
               )}
               <ModelSelector />
-              <a className="app-help">Ayuda</a>
               <button className="app-iconbtn app-bell" aria-label="Notificaciones">
                 <BellIcon size={17} />
                 <span className="app-bell__dot" />

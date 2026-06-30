@@ -1,28 +1,43 @@
 import { useState } from 'react';
 
 import { AppShell } from '../components/AppShell';
+import { GridToolbar, type ToolbarFilter } from '../components/GridToolbar';
 import { ProcessCard } from '../components/ProcessCard';
-import { PlusIcon, SearchIcon, SortIcon } from '../components/icons';
-import { PROCESSES } from '../data/processes';
+import { PlusIcon } from '../components/icons';
+import { PROCESSES, type Process } from '../data/processes';
 import './Procesos.css';
 
-type Filter = 'todos' | 'manuales' | 'digitales';
-const FILTERS: { id: Filter; label: string }[] = [
+const FILTERS: ToolbarFilter[] = [
   { id: 'todos', label: 'Todos' },
   { id: 'manuales', label: 'Manuales' },
   { id: 'digitales', label: 'Digitales' },
 ];
 
 export default function Procesos() {
-  const [filter, setFilter] = useState<Filter>('todos');
+  const [processes, setProcesses] = useState<Process[]>(PROCESSES);
+  const [filter, setFilter] = useState('todos');
   const [query, setQuery] = useState('');
 
-  const visible = PROCESSES.filter((p) => {
+  const visible = processes.filter((p) => {
     if (filter === 'manuales' && p.kind !== 'flujograma') return false;
     if (filter === 'digitales' && p.kind !== 'guia') return false;
     if (query && !p.title.toLowerCase().includes(query.toLowerCase())) return false;
     return true;
   });
+
+  function duplicate(p: Process) {
+    const copy: Process = { ...p, id: `${p.id}-copia-${Date.now()}`, title: `${p.title} (copia)` };
+    setProcesses((list) => {
+      const i = list.findIndex((x) => x.id === p.id);
+      return [...list.slice(0, i + 1), copy, ...list.slice(i + 1)];
+    });
+  }
+  function remove(p: Process) {
+    setProcesses((list) => list.filter((x) => x.id !== p.id));
+  }
+  function copyLink(p: Process) {
+    navigator.clipboard?.writeText(`https://app.sebach.ai/procesos/${p.id}`);
+  }
 
   return (
     <AppShell crumb="RELEVAMIENTO / PROCESOS">
@@ -34,37 +49,25 @@ export default function Procesos() {
         </button>
       </header>
 
-      {/* toolbar */}
-      <div className="px-toolbar">
-        <div className="px-seg">
-          {FILTERS.map((f) => (
-            <span
-              key={f.id}
-              className={`px-seg__opt ${filter === f.id ? 'is-active' : ''}`}
-              onClick={() => setFilter(f.id)}
-            >
-              {f.label}
-            </span>
-          ))}
-        </div>
-        <div className="px-search">
-          <SearchIcon size={16} style={{ color: 'var(--ink-3)' }} />
-          <input
-            placeholder="Buscar proceso…"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-          />
-        </div>
-        <button className="px-sort">
-          <SortIcon size={15} />
-          Ordenar
-        </button>
-      </div>
+      <GridToolbar
+        filters={FILTERS}
+        active={filter}
+        onFilter={setFilter}
+        query={query}
+        onQuery={setQuery}
+        searchPlaceholder="Buscar proceso…"
+      />
 
-      {/* grid */}
       <div className="px-grid">
         {visible.map((p) => (
-          <ProcessCard key={p.id} p={p} />
+          <ProcessCard
+            key={p.id}
+            p={p}
+            onCopyLink={() => copyLink(p)}
+            onShare={() => copyLink(p)}
+            onDuplicate={() => duplicate(p)}
+            onDelete={() => remove(p)}
+          />
         ))}
       </div>
     </AppShell>

@@ -3,13 +3,28 @@ import { useState } from 'react';
 import { AgentCard } from '../components/AgentCard';
 import { AgentEditModal } from '../components/AgentEditModal';
 import { AppShell } from '../components/AppShell';
+import { GridToolbar, type ToolbarFilter } from '../components/GridToolbar';
 import { PlusIcon } from '../components/icons';
 import { AGENTS, type Agent } from '../data/agents';
 import './Agentes.css';
 
+// filtros por categoría (áreas) — "Todos" + las categorías presentes en los agentes
+const FILTERS: ToolbarFilter[] = [
+  { id: 'todos', label: 'Todos' },
+  ...Array.from(new Set(AGENTS.map((a) => a.category))).map((c) => ({ id: c, label: c })),
+];
+
 export default function Agentes() {
   const [agents, setAgents] = useState<Agent[]>(AGENTS);
   const [editing, setEditing] = useState<Agent | null>(null);
+  const [filter, setFilter] = useState('todos');
+  const [query, setQuery] = useState('');
+
+  const visible = agents.filter((a) => {
+    if (filter !== 'todos' && a.category !== filter) return false;
+    if (query && !a.name.toLowerCase().includes(query.toLowerCase())) return false;
+    return true;
+  });
 
   function saveAgent(updated: Agent) {
     setAgents((list) => list.map((a) => (a.id === updated.id ? updated : a)));
@@ -26,8 +41,17 @@ export default function Agentes() {
         </button>
       </header>
 
+      <GridToolbar
+        filters={FILTERS}
+        active={filter}
+        onFilter={setFilter}
+        query={query}
+        onQuery={setQuery}
+        searchPlaceholder="Buscar agente…"
+      />
+
       <div className="ax-grid">
-        {agents.map((a) => (
+        {visible.map((a) => (
           <AgentCard key={a.id} agent={a} onEdit={setEditing} />
         ))}
       </div>

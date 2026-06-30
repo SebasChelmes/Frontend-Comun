@@ -142,17 +142,6 @@ export function Sidebar() {
         </a>
       </nav>
 
-      {/* usage meter */}
-      <div className="sb__usage">
-        <div className="sb__usage-head">
-          <span className="mono">ESTE MES</span>
-          <span className="mono">3 / 5 procesos</span>
-        </div>
-        <div className="sb__meter">
-          <div className="sb__meter-fill" style={{ width: '60%' }} />
-        </div>
-      </div>
-
       {/* user footer */}
       <div className="sb__user" ref={userRef}>
         {userMenuOpen && <UserMenu onClose={() => setUserMenuOpen(false)} />}

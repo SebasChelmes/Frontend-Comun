@@ -10,6 +10,7 @@ import {
   LogoutIcon,
   PlanIcon,
   PlayCircleIcon,
+  ScaleIcon,
   SettingsIcon,
   ShieldIcon,
 } from './icons';
@@ -18,6 +19,7 @@ import './UserMenu.css';
 const LANGUAGES = ['Español', 'English'];
 const MORE_INFO = [
   { label: 'Tutoriales', Icon: PlayCircleIcon },
+  { label: 'Términos y Condiciones', Icon: ScaleIcon },
   { label: 'Políticas de uso', Icon: DocIcon },
   { label: 'Políticas de privacidad y seguridad', Icon: ShieldIcon },
 ];
