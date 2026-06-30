@@ -14,7 +14,8 @@ import {
   TerminalIcon,
   UserIcon,
 } from '../components/icons';
-import { AGENTS, STATUS_META, type Agent } from '../data/agents';
+import { useAgents } from '../context/AgentsContext';
+import { STATUS_META, type Agent } from '../data/agents';
 import './AgentDetail.css';
 
 type IconType = ComponentType<{ size?: number }>;
@@ -33,9 +34,10 @@ const TABS: { id: TabId; label: string; Icon: IconType }[] = [
 export default function AgentDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { getAgent } = useAgents();
   const [tab, setTab] = useState<TabId>('chat');
 
-  const agent = AGENTS.find((a) => a.id === id);
+  const agent = getAgent(id);
   if (!agent) return <Navigate to="/agentes" replace />;
 
   const status = STATUS_META[agent.status];
@@ -69,7 +71,7 @@ export default function AgentDetail() {
               key={tid}
               className={`ad__tab ${tab === tid ? 'is-active' : ''}`}
               onClick={() => setTab(tid)}
-              title={label}
+              data-tip={label}
               aria-label={label}
             >
               <Icon size={19} />

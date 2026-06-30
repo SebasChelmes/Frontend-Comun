@@ -18,6 +18,21 @@
   box-shadow: var(--shadow-card);
 }
 
+/* contenedor del sidebar — anima el ancho al colapsar/expandir */
+.app-side {
+  flex: none;
+  width: 266px;
+  display: flex;
+  overflow: hidden;
+  background: var(--surface-2);
+  border-right: 1px solid var(--line);
+  transition: width 0.26s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: width;
+}
+.app-side.is-collapsed {
+  width: 64px;
+}
+
 .app-content {
   flex: 1;
   display: flex;

@@ -2,6 +2,7 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
 
+import { AgentsProvider } from './context/AgentsContext';
 import { AppProvider } from './context/AppContext';
 import AgentDetail from './pages/AgentDetail';
 import Agentes from './pages/Agentes';
@@ -21,7 +22,9 @@ const router = createBrowserRouter([
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <AppProvider>
-      <RouterProvider router={router} />
+      <AgentsProvider>
+        <RouterProvider router={router} />
+      </AgentsProvider>
     </AppProvider>
   </StrictMode>,
 );

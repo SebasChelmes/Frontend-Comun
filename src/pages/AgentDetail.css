@@ -87,6 +87,7 @@
   border-bottom: 1px solid var(--line);
 }
 .ad__tab {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -106,6 +107,32 @@
 .ad__tab.is-active {
   color: var(--accent);
   border-bottom-color: var(--accent);
+}
+
+/* tooltip con el design system (reemplaza al title nativo) */
+.ad__tab::after {
+  content: attr(data-tip);
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-3px);
+  background: var(--ink);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  padding: 5px 9px;
+  border-radius: 8px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  box-shadow: var(--shadow-card);
+  transition: opacity 0.13s ease, transform 0.13s ease;
+  z-index: 30;
+}
+.ad__tab:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }
 
 /* panel */

@@ -1,12 +1,20 @@
 /* ===== expanded sidebar ===== */
+/* (el fondo y borde derecho viven en .app-side, que anima el ancho) */
 .sb {
   width: 266px;
   flex: none;
-  background: var(--surface-2);
-  border-right: 1px solid var(--line);
   display: flex;
   flex-direction: column;
   padding: 18px 14px;
+  animation: side-fade 0.22s ease;
+}
+@keyframes side-fade {
+  from {
+    opacity: 0.35;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .sb__brand {
@@ -230,13 +238,12 @@
 .sbr {
   width: 64px;
   flex: none;
-  background: var(--surface-2);
-  border-right: 1px solid var(--line);
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 18px 0;
   gap: 6px;
+  animation: side-fade 0.22s ease;
 }
 .sbr > span:first-child {
   margin-bottom: 14px;

@@ -5,7 +5,8 @@ import { AgentEditModal } from '../components/AgentEditModal';
 import { AppShell } from '../components/AppShell';
 import { GridToolbar, type ToolbarFilter } from '../components/GridToolbar';
 import { PlusIcon } from '../components/icons';
-import { AGENTS, AGENT_AREAS, type Agent } from '../data/agents';
+import { useAgents } from '../context/AgentsContext';
+import { AGENT_AREAS, type Agent } from '../data/agents';
 import './Agentes.css';
 
 // filtros por área de empresa
@@ -15,7 +16,7 @@ const FILTERS: ToolbarFilter[] = [
 ];
 
 export default function Agentes() {
-  const [agents, setAgents] = useState<Agent[]>(AGENTS);
+  const { agents, updateAgent } = useAgents();
   const [editing, setEditing] = useState<Agent | null>(null);
   const [filter, setFilter] = useState('todos');
   const [query, setQuery] = useState('');
@@ -27,7 +28,7 @@ export default function Agentes() {
   });
 
   function saveAgent(updated: Agent) {
-    setAgents((list) => list.map((a) => (a.id === updated.id ? updated : a)));
+    updateAgent(updated);
     setEditing(null);
   }
 

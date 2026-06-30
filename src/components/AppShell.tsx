@@ -18,7 +18,9 @@ export function AppShell({ crumb, children }: { crumb: string; children: ReactNo
   return (
     <div className="app-screen">
       <div className="app-shell">
-        {collapsed ? <SidebarRail /> : <Sidebar />}
+        <div className={`app-side ${collapsed ? 'is-collapsed' : ''}`}>
+          {collapsed ? <SidebarRail /> : <Sidebar />}
+        </div>
 
         <div className="app-content">
           <div className="app-topbar">

@@ -35,7 +35,7 @@ export function Sidebar() {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const isActive = (path: string) => pathname.startsWith(path);
-  const [hubOpen, setHubOpen] = useState(() => pathname.startsWith('/agentes'));
+  const [hubOpen, setHubOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const userRef = useRef<HTMLDivElement>(null);
 
@@ -102,10 +102,7 @@ export function Sidebar() {
 
         <a
           className={`sb__item sb__parent ${isActive('/agentes') ? 'is-active' : ''}`}
-          onClick={() => {
-            navigate('/agentes');
-            setHubOpen(true);
-          }}
+          onClick={() => navigate('/agentes')}
         >
           <AgentsIcon size={18} className="sb__ico" style={isActive('/agentes') ? { color: 'var(--accent)' } : undefined} />
           <span className="sb__parent-label">Hub de Agentes IA</span>
