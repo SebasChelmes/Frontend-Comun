@@ -1,0 +1,255 @@
+/* Paneles de los tabs del agente (Archivos, Agenda, Comandos, Skills, Bandeja) */
+.ap {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: 22px 2px 8px;
+}
+
+.ap__section {
+  display: flex;
+  flex-direction: column;
+}
+
+/* head (título + subtítulo + acción) */
+.ap__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+.ap__title {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.ap__title-ico {
+  color: var(--accent);
+}
+.ap__sub {
+  font-size: 11px;
+  color: var(--ink-3);
+  margin-top: 6px;
+}
+.ap__actions {
+  display: flex;
+  gap: 9px;
+  flex: none;
+}
+.ap__btn {
+  padding: 9px 14px;
+  font-size: 13px;
+  flex: none;
+}
+
+.ap__divider {
+  height: 1px;
+  background: var(--line);
+  margin: 26px 0;
+}
+
+/* empty boxeado (Archivos) */
+.ap__empty {
+  margin-top: 14px;
+  border: 1px solid var(--line);
+  background: var(--surface-2);
+  border-radius: var(--r-md);
+  padding: 34px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+  text-align: center;
+}
+.ap__empty-ico {
+  width: 50px;
+  height: 50px;
+  border-radius: var(--r-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--ink-4);
+}
+.ap__empty-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.ap__empty-text {
+  font-size: 13px;
+  color: var(--ink-3);
+  max-width: 420px;
+}
+
+/* empty centrado y plano (Agenda, Bandeja) */
+.ap__center {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.ap__plain {
+  text-align: center;
+  max-width: 420px;
+}
+.ap__plain-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.ap__plain-text {
+  margin-top: 8px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink-3);
+}
+
+/* grilla de cards (comandos / skills) */
+.ap__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 16px;
+}
+.ap__card {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: 14px;
+  box-shadow: var(--shadow-card-sm);
+}
+.ap__card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.ap__card-ico {
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: color-mix(in srgb, var(--accent) 13%, #fff);
+  color: var(--accent);
+}
+.ap__card-ico--skill {
+  background: color-mix(in srgb, #7c3aed 13%, #fff);
+  color: #7c3aed;
+}
+.ap__card-tools {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.ap__card-tool {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border: none;
+  background: transparent;
+  border-radius: 7px;
+  color: var(--ink-3);
+  cursor: pointer;
+  transition: background 0.12s ease, color 0.12s ease;
+}
+.ap__card-tool:hover {
+  background: var(--surface-2);
+  color: var(--ink);
+}
+.ap__card-name {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--accent);
+  margin-top: 12px;
+  word-break: break-word;
+}
+.ap__card-name--skill {
+  color: #7c3aed;
+}
+.ap__card-title {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-top: 6px;
+}
+.ap__card-desc {
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--ink-3);
+  margin-top: 6px;
+}
+.ap__run {
+  margin-top: 14px;
+  width: 100%;
+  padding: 9px;
+  font-size: 13px;
+}
+
+/* nota inferior (Skills) */
+.ap__note {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  padding: 13px 16px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  font-size: 13px;
+  color: var(--ink-2);
+}
+.ap__note-ico {
+  color: var(--accent);
+  flex: none;
+}
+
+/* sub-tabs (Bandeja) */
+.ap__subtabs {
+  display: flex;
+  gap: 4px;
+  border-bottom: 1px solid var(--line);
+}
+.ap__subtab {
+  padding: 10px 15px;
+  border: none;
+  background: transparent;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-3);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: color 0.12s ease, border-color 0.12s ease;
+}
+.ap__subtab:hover {
+  color: var(--ink);
+}
+.ap__subtab.is-active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+@media (max-width: 1100px) {
+  .ap__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 720px) {
+  .ap__grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -200,3 +200,6 @@ export const SendIcon = (p: IconProps) =>
 
 export const UploadIcon = (p: IconProps) =>
   base({ ...p, children: (<><path d="M5 16v2a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2" /><path d="M12 15V3" /><path d="m7 8 5-5 5 5" /></>) });
+
+export const PlayIcon = (p: IconProps) =>
+  base({ ...p, strokeWidth: 1.8, children: <path d="M7 5v14l11-7Z" /> });

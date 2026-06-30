@@ -2,18 +2,22 @@ import { useState, type ComponentType } from 'react';
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
 
 import {
+  CommandsPanel,
+  FilesPanel,
+  InboxPanel,
+  SchedulesPanel,
+  SkillsPanel,
+} from '../components/AgentPanels';
+import {
   BookIcon,
   CalendarIcon,
   ChatIcon,
-  DocIcon,
   FolderIcon,
   InboxIcon,
-  LinkIcon,
   PaperclipIcon,
   PlugIcon,
   SendIcon,
   TerminalIcon,
-  UploadIcon,
   UserIcon,
 } from '../components/icons';
 import { useAgents } from '../context/AgentsContext';
@@ -85,67 +89,17 @@ export default function AgentDetail() {
         <ChatPanel agent={agent} />
       ) : tab === 'archivos' ? (
         <FilesPanel agent={agent} />
+      ) : tab === 'agenda' ? (
+        <SchedulesPanel agent={agent} />
+      ) : tab === 'comandos' ? (
+        <CommandsPanel agent={agent} />
+      ) : tab === 'skills' ? (
+        <SkillsPanel agent={agent} />
+      ) : tab === 'bandeja' ? (
+        <InboxPanel agent={agent} />
       ) : (
         <EmptyPanel label={TABS.find((t) => t.id === tab)!.label} agent={agent} Icon={TABS.find((t) => t.id === tab)!.Icon} />
       )}
-    </div>
-  );
-}
-
-/* ---------- Archivos ---------- */
-function FilesPanel({ agent }: { agent: Agent }) {
-  return (
-    <div className="af">
-      {/* base de conocimiento */}
-      <section className="af__section">
-        <div className="af__head">
-          <div className="af__head-text">
-            <h3 className="af__title">
-              <BookIcon size={17} className="af__title-ico" />
-              Base de conocimiento
-            </h3>
-            <p className="af__sub mono">
-              Documentos y URLs que {agent.name} puede consultar al responder
-            </p>
-          </div>
-          <div className="af__actions">
-            <button className="btn btn--ghost af__btn">
-              <LinkIcon size={15} />
-              URL
-            </button>
-            <button className="btn btn--primary af__btn">
-              <UploadIcon size={15} />
-              Subir archivo
-            </button>
-          </div>
-        </div>
-        <div className="af__empty">
-          <span className="af__empty-ico"><BookIcon size={22} /></span>
-          <p className="af__empty-title">Sin documentos en la base de conocimiento</p>
-          <p className="af__empty-text">
-            Subí un PDF, TXT, CSV o agregá una URL para que {agent.name} pueda consultarlos.
-          </p>
-        </div>
-      </section>
-
-      <div className="af__divider" />
-
-      {/* archivos generados */}
-      <section className="af__section">
-        <div className="af__head">
-          <div className="af__head-text">
-            <h3 className="af__title">
-              <DocIcon size={17} className="af__title-ico" />
-              Archivos generados
-            </h3>
-            <p className="af__sub mono">Documentos que {agent.name} ha creado</p>
-          </div>
-        </div>
-        <div className="af__empty">
-          <span className="af__empty-ico"><DocIcon size={22} /></span>
-          <p className="af__empty-text">Todavía no hay archivos generados por {agent.name}.</p>
-        </div>
-      </section>
     </div>
   );
 }
