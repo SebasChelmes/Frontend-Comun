@@ -1,0 +1,251 @@
+/* Detalle de agente — vive dentro del AppShell (cuerpo scrolleable) */
+.ad {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+}
+
+/* breadcrumb */
+.ad__crumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--ink-3);
+}
+.ad__crumb-link {
+  cursor: pointer;
+}
+.ad__crumb-link:hover {
+  color: var(--ink);
+}
+.ad__crumb-sep {
+  color: var(--ink-4);
+}
+
+/* identidad */
+.ad__head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 16px;
+}
+.ad__avatar {
+  width: 54px;
+  height: 54px;
+  flex: none;
+  border-radius: 50%;
+}
+.ad__avatar--empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface-2);
+  border: 1px dashed var(--line-strong);
+  color: var(--ink-4);
+}
+.ad__avatar--img {
+  object-fit: cover;
+}
+.ad__id {
+  flex: 1;
+  min-width: 0;
+}
+.ad__name {
+  font-size: 24px;
+  color: var(--ink);
+}
+.ad__role {
+  font-size: 12px;
+  color: var(--ink-3);
+  margin-top: 4px;
+}
+.ad__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12.5px;
+  color: var(--ink-2);
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+  padding: 6px 12px;
+}
+.ad__status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+/* tabs (icon-only con tooltip, activo con borde inferior accent) */
+.ad__tabs {
+  display: flex;
+  gap: 4px;
+  margin-top: 22px;
+  border-bottom: 1px solid var(--line);
+}
+.ad__tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 42px;
+  border: none;
+  background: transparent;
+  color: var(--ink-3);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: color 0.12s ease, border-color 0.12s ease;
+}
+.ad__tab:hover {
+  color: var(--ink);
+}
+.ad__tab.is-active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* panel */
+.ad__panel {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---- chat ---- */
+.ad__chat-sub {
+  font-size: 11.5px;
+  color: var(--ink-3);
+  padding: 16px 2px;
+  border-bottom: 1px solid var(--line);
+}
+.ad__chat-sub b {
+  color: var(--ink-2);
+  font-weight: 500;
+}
+.ad__chat-body {
+  flex: 1;
+  min-height: 220px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ad__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin: auto;
+  padding: 24px;
+  text-align: center;
+}
+.ad__empty-ico {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--r-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  color: var(--ink-3);
+}
+.ad__empty-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.ad__empty-text {
+  font-size: 14px;
+  color: var(--ink-3);
+  max-width: 320px;
+}
+.ad__empty b {
+  color: var(--ink-2);
+  font-weight: 500;
+}
+
+/* mensajes */
+.ad__msgs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 18px 2px;
+  justify-content: flex-start;
+}
+.ad__msg {
+  align-self: flex-end;
+  max-width: 70%;
+  background: var(--accent);
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 16px 16px 4px 16px;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+/* composer */
+.ad__composer {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+  padding: 10px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+}
+.ad__attach,
+.ad__send {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex: none;
+  border-radius: 11px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink-2);
+  cursor: pointer;
+  transition: background 0.12s ease, color 0.12s ease, opacity 0.12s ease;
+}
+.ad__attach:hover {
+  background: var(--surface-2);
+  color: var(--ink);
+}
+.ad__send {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #fff;
+}
+.ad__send:hover {
+  opacity: 0.9;
+}
+.ad__send:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.ad__input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  color: var(--ink);
+}
+
+/* ---- placeholder de otras tabs ---- */
+.ad__placeholder {
+  align-items: center;
+  justify-content: center;
+}

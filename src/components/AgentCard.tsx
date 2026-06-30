@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom';
+
 import type { Agent } from '../data/agents';
 import { STATUS_META } from '../data/agents';
 import { EditIcon, UserIcon } from './icons';
@@ -5,16 +7,24 @@ import './AgentCard.css';
 
 export function AgentCard({ agent, onEdit }: { agent: Agent; onEdit: (a: Agent) => void }) {
   const status = STATUS_META[agent.status];
+  const navigate = useNavigate();
 
   return (
-    <article className="ag">
+    <article className="ag" onClick={() => navigate(`/agentes/${agent.id}`)} role="button" tabIndex={0}>
       <div className="ag__head">
         <Avatar agent={agent} />
         <div className="ag__id">
           <h3 className="ag__name">{agent.name}</h3>
           <p className="ag__role mono">{agent.category}</p>
         </div>
-        <button className="ag__edit" onClick={() => onEdit(agent)} aria-label="Editar agente">
+        <button
+          className="ag__edit"
+          onClick={(e) => {
+            e.stopPropagation();
+            onEdit(agent);
+          }}
+          aria-label="Editar agente"
+        >
           <EditIcon size={14} />
           Editar
         </button>

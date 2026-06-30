@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
 
 import { AppProvider } from './context/AppContext';
+import AgentDetail from './pages/AgentDetail';
 import Agentes from './pages/Agentes';
 import Login from './pages/Login';
 import Procesos from './pages/Procesos';
@@ -13,6 +14,7 @@ const router = createBrowserRouter([
   { path: '/login', element: <Login /> },
   { path: '/procesos', element: <Procesos /> },
   { path: '/agentes', element: <Agentes /> },
+  { path: '/agentes/:id', element: <AgentDetail /> },
   { path: '*', element: <Navigate to="/login" replace /> },
 ]);
 

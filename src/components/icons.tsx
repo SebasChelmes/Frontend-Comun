@@ -178,3 +178,22 @@ export const TrashIcon = (p: IconProps) =>
 
 export const ScaleIcon = (p: IconProps) =>
   base({ ...p, children: (<><path d="M12 3v18" /><path d="M7 7h10M5 21h14" /><path d="m7 7-3 6a3 3 0 0 0 6 0Z" /><path d="m17 7 3 6a3 3 0 0 1-6 0Z" /></>) });
+
+/* detalle de agente: tabs + chat */
+export const ChatIcon = (p: IconProps) =>
+  base({ ...p, children: <path d="M20 11.5a7.5 7.5 0 0 1-10.9 6.7L4 19.5l1.3-4.1A7.5 7.5 0 1 1 20 11.5Z" /> });
+
+export const FolderIcon = (p: IconProps) =>
+  base({ ...p, children: <path d="M4 7a2 2 0 0 1 2-2h3l2 2.2h7A2 2 0 0 1 20 9v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z" /> });
+
+export const CalendarIcon = (p: IconProps) =>
+  base({ ...p, children: (<><rect x="4" y="5" width="16" height="16" rx="2.2" /><path d="M4 9.5h16M8 3v4M16 3v4" /></>) });
+
+export const InboxIcon = (p: IconProps) =>
+  base({ ...p, children: (<><path d="M4 13 6.4 6a2 2 0 0 1 1.9-1.3h7.4A2 2 0 0 1 17.6 6L20 13v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z" /><path d="M4 13h4l1.3 2.2h5.4L16 13h4" /></>) });
+
+export const PaperclipIcon = (p: IconProps) =>
+  base({ ...p, children: <path d="M20.5 11.5 12 20a5 5 0 0 1-7-7l8.4-8.4a3.4 3.4 0 1 1 4.8 4.8L9.7 14.8a1.7 1.7 0 0 1-2.4-2.4l7.4-7.3" /> });
+
+export const SendIcon = (p: IconProps) =>
+  base({ ...p, strokeWidth: 1.8, children: (<><path d="M22 2 11 13" /><path d="M22 2 15 22l-4-9-9-4Z" /></>) });
