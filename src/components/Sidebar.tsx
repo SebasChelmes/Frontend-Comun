@@ -27,7 +27,6 @@ const HUB_SUBITEMS = [
   { label: 'MCP Local', Icon: ServerIcon },
   { label: 'Skills', Icon: BookIcon },
   { label: 'Comandos', Icon: TerminalIcon },
-  { label: 'Automatizaciones', Icon: BoltIcon },
 ];
 
 /* ---------- expanded sidebar ---------- */
@@ -133,6 +132,11 @@ export function Sidebar() {
             ))}
           </div>
         )}
+
+        <a className="sb__item">
+          <BoltIcon size={18} className="sb__ico" />
+          Automatizaciones
+        </a>
 
         <div className="sb__section mono">CUENTA</div>
 
