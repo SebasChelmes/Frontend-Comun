@@ -30,6 +30,8 @@
   /* Status */
   --ok: #0e8466;         /* acento verde — éxito / valor positivo */
   --warn: #d97706;       /* ámbar — decisión / advertencia */
+  --danger: #dc2626;     /* rojo — acciones destructivas (eliminar) */
+  --violet: #7c3aed;     /* violeta — skills / handoff */
 
   /* Typography */
   --font-sans: 'DM Sans', Arial, sans-serif;

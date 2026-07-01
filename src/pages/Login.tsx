@@ -2,14 +2,15 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { BrandGlyph } from '../components/BrandMark';
-import { ArrowRightIcon, EyeIcon, MailIcon } from '../components/icons';
+import { ArrowRightIcon, EyeIcon, EyeOffIcon, MailIcon } from '../components/icons';
 import { DesignControls } from '../components/DesignControls';
 import './Login.css';
 
 export default function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState('martina@empresa.com');
-  const [password, setPassword] = useState('passphrase');
+  const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
   function enter(e: React.FormEvent) {
     e.preventDefault();
@@ -64,14 +65,20 @@ export default function Login() {
                 <input
                   id="password"
                   className="field__input"
-                  type="password"
+                  type={showPassword ? 'text' : 'password'}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   autoComplete="current-password"
                 />
-                <span className="field__eye" role="button" aria-label="Mostrar contraseña">
-                  <EyeIcon size={18} />
-                </span>
+                <button
+                  type="button"
+                  className="field__eye"
+                  onClick={() => setShowPassword((s) => !s)}
+                  aria-label={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
+                  aria-pressed={showPassword}
+                >
+                  {showPassword ? <EyeOffIcon size={18} /> : <EyeIcon size={18} />}
+                </button>
               </div>
             </div>
 

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, type ComponentType } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { useApp } from '../context/AppContext';
+import { useDismiss } from '../hooks/useDismiss';
 import { BrandGlyph } from './BrandMark';
 import { UserMenu } from './UserMenu';
 import {
@@ -21,6 +22,8 @@ import {
 } from './icons';
 import './Sidebar.css';
 
+type IconType = ComponentType<{ size?: number }>;
+
 /* sub-opciones del Hub de Agentes IA */
 const HUB_SUBITEMS = [
   { label: 'Conectores', Icon: PlugIcon },
@@ -30,7 +33,6 @@ const HUB_SUBITEMS = [
 ];
 
 /* ítems del rail colapsado (mismos del sidebar; con tooltip por ícono) */
-type IconType = ComponentType<{ size?: number }>;
 const RAIL_ITEMS: { label: string; Icon: IconType; path?: string }[] = [
   { label: 'Inicio', Icon: HomeIcon },
   { label: 'Procesos', Icon: ProcessIcon, path: '/procesos' },
@@ -55,20 +57,10 @@ export function Sidebar() {
   useEffect(() => {
     setUserMenuOpen(false);
   }, [pathname]);
+  useDismiss(userMenuOpen, userRef, () => setUserMenuOpen(false));
 
-  useEffect(() => {
-    if (!userMenuOpen) return;
-    const onDown = (e: MouseEvent) => {
-      if (userRef.current && !userRef.current.contains(e.target as Node)) setUserMenuOpen(false);
-    };
-    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setUserMenuOpen(false);
-    document.addEventListener('mousedown', onDown);
-    document.addEventListener('keydown', onKey);
-    return () => {
-      document.removeEventListener('mousedown', onDown);
-      document.removeEventListener('keydown', onKey);
-    };
-  }, [userMenuOpen]);
+  const procesosActive = isActive('/procesos');
+  const agentesActive = isActive('/agentes');
 
   return (
     <aside className="sb">
@@ -80,79 +72,84 @@ export function Sidebar() {
       </div>
 
       <nav className="sb__nav">
-        <a className="sb__item">
+        <button type="button" className="sb__item">
           <HomeIcon size={18} className="sb__ico" />
           Inicio
-        </a>
+        </button>
 
         <div className="sb__section mono">RELEVAMIENTO</div>
 
-        <a
-          className={`sb__item ${isActive('/procesos') ? 'is-active' : ''}`}
+        <button
+          type="button"
+          className={`sb__item ${procesosActive ? 'is-active' : ''}`}
           onClick={() => navigate('/procesos')}
+          aria-current={procesosActive ? 'page' : undefined}
         >
-          <ProcessIcon size={18} className="sb__ico" style={isActive('/procesos') ? { color: 'var(--accent)' } : undefined} />
+          <ProcessIcon size={18} className="sb__ico" style={procesosActive ? { color: 'var(--accent)' } : undefined} />
           Procesos
-        </a>
+        </button>
 
-        <a className="sb__item">
+        <button type="button" className="sb__item">
           <CaptureIcon size={18} className="sb__ico" />
           Captura
           <span className="sb__dot" />
-        </a>
+        </button>
 
         <div className="sb__section sb__section--row mono">
           <span>INTELIGENCIA</span>
           {showLocks && <LockIcon size={11} style={{ color: 'var(--ink-4)' }} />}
         </div>
 
-        <a className="sb__item">
+        <button type="button" className="sb__item">
           <AnalysisIcon size={18} className="sb__ico" />
           Análisis
           {showLocks && <span className="sb__tag mono">PREMIUM</span>}
-        </a>
+        </button>
 
-        <a
-          className={`sb__item sb__parent ${isActive('/agentes') ? 'is-active' : ''}`}
-          onClick={() => navigate('/agentes')}
-        >
-          <AgentsIcon size={18} className="sb__ico" style={isActive('/agentes') ? { color: 'var(--accent)' } : undefined} />
-          <span className="sb__parent-label">Hub de Agentes IA</span>
-          <span
+        {/* Hub: botón principal (navega) + botón chevron (despliega el submenú) */}
+        <div className={`sb__item sb__parent ${agentesActive ? 'is-active' : ''}`}>
+          <button
+            type="button"
+            className="sb__parent-main"
+            onClick={() => navigate('/agentes')}
+            aria-current={agentesActive ? 'page' : undefined}
+          >
+            <AgentsIcon size={18} className="sb__ico" style={agentesActive ? { color: 'var(--accent)' } : undefined} />
+            <span className="sb__parent-label">Hub de Agentes IA</span>
+          </button>
+          <button
+            type="button"
             className="sb__chevron-btn"
-            role="button"
             aria-label={hubOpen ? 'Contraer' : 'Expandir'}
-            onClick={(e) => {
-              e.stopPropagation();
-              setHubOpen((o) => !o);
-            }}
+            aria-expanded={hubOpen}
+            onClick={() => setHubOpen((o) => !o)}
           >
             <ChevronDownIcon size={15} className={`sb__chevron ${hubOpen ? 'is-open' : ''}`} />
-          </span>
-        </a>
+          </button>
+        </div>
 
         {hubOpen && (
           <div className="sb__sub">
             {HUB_SUBITEMS.map(({ label, Icon }) => (
-              <a className="sb__subitem" key={label}>
+              <button type="button" className="sb__subitem" key={label}>
                 <Icon size={16} className="sb__subico" />
                 {label}
-              </a>
+              </button>
             ))}
           </div>
         )}
 
-        <a className="sb__item">
+        <button type="button" className="sb__item">
           <BoltIcon size={18} className="sb__ico" />
           Automatizaciones
-        </a>
+        </button>
 
         <div className="sb__section mono">CUENTA</div>
 
-        <a className="sb__item">
+        <button type="button" className="sb__item">
           <PanelIcon size={18} className="sb__ico" />
           Panel de Agencia
-        </a>
+        </button>
       </nav>
 
       {/* user footer */}
@@ -164,6 +161,7 @@ export function Sidebar() {
           <div className="sb__user-mail mono">martina@empresa.com</div>
         </div>
         <button
+          type="button"
           className={`sb__user-more ${userMenuOpen ? 'is-open' : ''}`}
           aria-label="Opciones de usuario"
           aria-haspopup="menu"
@@ -186,16 +184,22 @@ export function SidebarRail() {
   return (
     <aside className="sbr">
       <BrandGlyph size={30} radius={9} />
-      {RAIL_ITEMS.map(({ label, Icon, path }) => (
-        <a
-          key={label}
-          className={`sbr__item ${isActive(path) ? 'is-active' : ''}`}
-          data-tip={label}
-          onClick={() => path && navigate(path)}
-        >
-          <Icon size={19} />
-        </a>
-      ))}
+      {RAIL_ITEMS.map(({ label, Icon, path }) => {
+        const active = isActive(path);
+        return (
+          <button
+            type="button"
+            key={label}
+            className={`sbr__item ${active ? 'is-active' : ''}`}
+            data-tip={label}
+            aria-label={label}
+            aria-current={active ? 'page' : undefined}
+            onClick={() => path && navigate(path)}
+          >
+            <Icon size={19} />
+          </button>
+        );
+      })}
       <div className="sbr__spacer" />
       <div className="sb__avatar">M</div>
     </aside>

@@ -1,5 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 
+import { useDismiss } from '../hooks/useDismiss';
 import { CopyIcon, LinkIcon, MoreIcon, ShareIcon, TrashIcon } from './icons';
 import './CardMenu.css';
 
@@ -15,20 +16,7 @@ interface Props {
 export function CardMenu({ onCopyLink, onShare, onDuplicate, onDelete }: Props) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!open) return;
-    const onDown = (e: MouseEvent) => {
-      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
-    };
-    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(false);
-    document.addEventListener('mousedown', onDown);
-    document.addEventListener('keydown', onKey);
-    return () => {
-      document.removeEventListener('mousedown', onDown);
-      document.removeEventListener('keydown', onKey);
-    };
-  }, [open]);
+  useDismiss(open, ref, () => setOpen(false));
 
   const run = (fn?: () => void) => () => {
     setOpen(false);

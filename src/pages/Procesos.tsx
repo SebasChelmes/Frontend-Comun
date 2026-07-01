@@ -4,7 +4,6 @@ import { GridToolbar, type ToolbarFilter } from '../components/GridToolbar';
 import { ProcessCard } from '../components/ProcessCard';
 import { PlusIcon } from '../components/icons';
 import { PROCESSES, type Process } from '../data/processes';
-import './Procesos.css';
 
 const FILTERS: ToolbarFilter[] = [
   { id: 'todos', label: 'Todos' },
@@ -34,15 +33,25 @@ export default function Procesos() {
   function remove(p: Process) {
     setProcesses((list) => list.filter((x) => x.id !== p.id));
   }
+  function linkFor(p: Process) {
+    return `https://app.sebach.ai/procesos/${p.id}`;
+  }
   function copyLink(p: Process) {
-    navigator.clipboard?.writeText(`https://app.sebach.ai/procesos/${p.id}`);
+    navigator.clipboard?.writeText(linkFor(p));
+  }
+  function share(p: Process) {
+    if (navigator.share) {
+      navigator.share({ title: p.title, url: linkFor(p) }).catch(() => {});
+    } else {
+      copyLink(p);
+    }
   }
 
   return (
     <>
-      <header className="px-header">
-        <h1 className="px-h1">Procesos</h1>
-        <button className="btn btn--primary px-new">
+      <header className="page-header">
+        <h1 className="page-title">Procesos</h1>
+        <button className="btn btn--primary page-new">
           <PlusIcon size={16} />
           Nuevo proceso
         </button>
@@ -57,13 +66,13 @@ export default function Procesos() {
         searchPlaceholder="Buscar proceso…"
       />
 
-      <div className="px-grid">
+      <div className="page-grid">
         {visible.map((p) => (
           <ProcessCard
             key={p.id}
             p={p}
             onCopyLink={() => copyLink(p)}
-            onShare={() => copyLink(p)}
+            onShare={() => share(p)}
             onDuplicate={() => duplicate(p)}
             onDelete={() => remove(p)}
           />

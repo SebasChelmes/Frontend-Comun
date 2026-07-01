@@ -144,8 +144,8 @@
   color: var(--accent);
 }
 .ap__card-ico--skill {
-  background: color-mix(in srgb, #7c3aed 13%, #fff);
-  color: #7c3aed;
+  background: color-mix(in srgb, var(--violet) 13%, #fff);
+  color: var(--violet);
 }
 .ap__card-tools {
   display: flex;
@@ -177,7 +177,7 @@
   word-break: break-word;
 }
 .ap__card-name--skill {
-  color: #7c3aed;
+  color: var(--violet);
 }
 .ap__card-title {
   font-size: 13.5px;

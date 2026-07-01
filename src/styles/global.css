@@ -46,6 +46,25 @@ button {
   font-family: var(--font-sans);
 }
 
+/* foco visible consistente por teclado (no aplica a inputs, que tienen su propio anillo) */
+:where(button, a[href], [role='button'], [tabindex='0']):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* respetar preferencia de menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -98,4 +117,40 @@ button {
 }
 .btn--ghost:hover {
   border-color: var(--ink);
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* ---- encabezado + grilla compartidos por las páginas (Procesos, Agentes) ---- */
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.page-title {
+  font-size: 30px;
+  color: var(--ink);
+}
+.page-new {
+  flex: none;
+}
+.page-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 22px;
+}
+@media (max-width: 1100px) {
+  .page-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 720px) {
+  .page-grid {
+    grid-template-columns: 1fr;
+  }
 }

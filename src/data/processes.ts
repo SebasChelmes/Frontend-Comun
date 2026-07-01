@@ -7,7 +7,6 @@
 export type ProcessKind = 'flujograma' | 'guia';
 
 export type FlowStatus = 'analizado' | 'validacion';
-export type GuideStatus = 'listo';
 
 interface BaseProcess {
   id: string;

@@ -75,6 +75,8 @@ Opciones de acento (panel ⚙ / `ACCENT_OPTIONS` en
 |---|---|---|
 | `--ok` | `#0E8466` | Éxito / "Analizado" / "Listo" (verde de acento) |
 | `--warn` | `#D97706` | Decisión / "Validación" / advertencia (ámbar) |
+| `--danger` | `#DC2626` | Acciones destructivas (Eliminar) |
+| `--violet` | `#7C3AED` | Skills / handoff |
 
 ### Bordes
 | Token | Valor | Uso |
@@ -148,8 +150,10 @@ Controla la card de upgrade y los candados PREMIUM / PREMIUM+ del sidebar.
   nodo (MANUAL / AUTO / DECISION / WAIT / handoff…) a tokens propios.
 - **Iconografía:** el set actual son SVGs propios extraídos del diseño; la guía de
   Agents Hub recomienda estandarizar en **Lucide** para toda la app.
-- **Motion:** reveal escalonado, hover `.2s`, respeto de `prefers-reduced-motion`
-  (aún no implementado; los hovers ya usan transiciones cortas).
+- **Motion:** `prefers-reduced-motion: reduce` ya respetado globalmente
+  ([global.css](src/styles/global.css)); pendiente el reveal escalonado al hacer scroll.
+- **Foco:** anillo de foco visible por teclado global en botones/links
+  (`:focus-visible` en [global.css](src/styles/global.css)).
 - **Sombra elevada / formularios destacados** (`--shadow-elevated`) cuando aparezcan
   modales o la CTA final.
 

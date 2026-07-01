@@ -1,0 +1,15 @@
+.avatar {
+  flex: none;
+  border-radius: 50%;
+}
+.avatar--empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface-2);
+  border: 1px dashed var(--line-strong);
+  color: var(--ink-4);
+}
+.avatar--img {
+  object-fit: cover;
+}

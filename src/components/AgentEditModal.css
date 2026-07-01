@@ -77,27 +77,7 @@
   background: var(--surface-2);
   border: 1px solid var(--line);
 }
-.aem__avatar {
-  width: 56px;
-  height: 56px;
-  flex: none;
-  border-radius: 50%;
-}
-.aem__avatar--sm {
-  width: 44px;
-  height: 44px;
-}
-.aem__avatar--empty {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--surface);
-  border: 1px dashed var(--line-strong);
-  color: var(--ink-4);
-}
-.aem__avatar--img {
-  object-fit: cover;
-}
+/* (el avatar vive en Avatar.tsx / Avatar.css) */
 .aem__preview-name {
   font-size: 16px;
   font-weight: 600;
@@ -167,8 +147,4 @@
 }
 .aem__btn {
   padding: 11px 18px;
-}
-.btn:disabled {
-  opacity: 0.45;
-  cursor: not-allowed;
 }

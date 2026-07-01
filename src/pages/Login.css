@@ -168,12 +168,23 @@
 }
 .field__eye {
   position: absolute;
-  right: 12px;
+  right: 10px;
   top: 50%;
   transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  border: none;
+  background: transparent;
   color: var(--ink-3);
   cursor: pointer;
-  display: flex;
+  border-radius: 8px;
+  transition: color 0.12s ease, background 0.12s ease;
+}
+.field__eye:hover {
+  color: var(--ink);
+  background: var(--surface-2);
 }
 
 .login-submit {

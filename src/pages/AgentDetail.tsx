@@ -8,6 +8,7 @@ import {
   SchedulesPanel,
   SkillsPanel,
 } from '../components/AgentPanels';
+import { Avatar } from '../components/Avatar';
 import {
   BookIcon,
   CalendarIcon,
@@ -18,7 +19,6 @@ import {
   PlugIcon,
   SendIcon,
   TerminalIcon,
-  UserIcon,
 } from '../components/icons';
 import { useAgents } from '../context/AgentsContext';
 import { STATUS_META, type Agent } from '../data/agents';
@@ -58,7 +58,7 @@ export default function AgentDetail() {
         </div>
 
         <header className="ad__head">
-          <Avatar agent={agent} />
+          <Avatar agent={agent} size={54} iconSize={26} />
           <div className="ad__id">
             <h1 className="ad__name">{agent.name}</h1>
             <div className="ad__role mono">{agent.category}</div>
@@ -170,16 +170,5 @@ function EmptyPanel({ label, agent, Icon }: { label: string; agent: Agent; Icon:
         </p>
       </div>
     </div>
-  );
-}
-
-function Avatar({ agent }: { agent: Agent }) {
-  if (agent.avatarImage) {
-    return <img className="ad__avatar ad__avatar--img" src={agent.avatarImage} alt="" />;
-  }
-  return (
-    <span className="ad__avatar ad__avatar--empty" aria-hidden>
-      <UserIcon size={26} />
-    </span>
   );
 }

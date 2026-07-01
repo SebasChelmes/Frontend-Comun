@@ -38,17 +38,28 @@ npm run preview  # previsualizar el build
 
 ```
 src/
-  main.tsx              # entry + router (/login, /procesos)
-  context/AppContext    # accent + plan (props del diseño) → --accent, gating
-  pages/                # Login, Procesos (+ CSS)
-  components/           # Sidebar (expandido/rail), ProcessCard, icons, BrandMark, DesignControls
-  data/processes.ts     # las 6 cards de ejemplo del diseño
-  styles/               # tokens.css + global.css
+  main.tsx                 # entry + router (layout AppShell + rutas anidadas)
+  context/
+    AppContext             # accent + plan → --accent, gating
+    AgentsContext          # store compartido de agentes (persiste ediciones)
+  hooks/useDismiss         # click-afuera + Escape para dropdowns
+  pages/
+    Login (+ css)
+    Procesos               # grilla + CardMenu (compartir/duplicar/eliminar)
+    Agentes                # Hub de Agentes (filtros + búsqueda)
+    AgentDetail (+ css)    # detalle del agente + tabs (Chat, Archivos, …)
+  components/
+    AppShell (+ css)       # layout: sidebar (expandible/rail) + top bar + Outlet
+    Sidebar, UserMenu, ModelSelector, DesignControls
+    GridToolbar, CardMenu, ProcessCard, AgentCard, AgentEditModal
+    AgentPanels            # paneles de tabs del agente (Archivos/Agenda/…)
+    Avatar, BrandMark, icons
+  data/                    # processes.ts, agents.ts (datos de ejemplo)
+  styles/                  # tokens.css + global.css
 ```
 
 ## Próximos pasos (según specs)
 
-Esta entrega cubre el **esqueleto del shell** y la sección **Procesos** (Fase 1 de
-`SPEC-FRONTEND-COMUN.md §10`). Lo siguiente: login real con Supabase (BFF de sesión),
-conectar Agents Hub, vista Scribe editable + export PDF, y el diagrama Reactflow
-reutilizado de Insights Hub.
+Esta entrega cubre el **shell**, **Procesos** y el **Hub de Agentes** (con detalle del
+agente). Lo siguiente: login real con Supabase (BFF de sesión), conectar la API de
+Agents Hub, vista Scribe editable + export PDF, y el diagrama Reactflow de Insights Hub.

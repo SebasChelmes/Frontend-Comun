@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 
 import type { Agent } from '../data/agents';
-import { CloseIcon, UserIcon } from './icons';
+import { Avatar } from './Avatar';
+import { CloseIcon } from './icons';
 import './AgentEditModal.css';
 
 interface Props {
@@ -48,7 +49,7 @@ export function AgentEditModal({ agent, onSave, onClose }: Props) {
 
         {/* live preview */}
         <div className="aem__preview">
-          <Avatar agent={agent} />
+          <Avatar agent={agent} size={56} iconSize={24} />
           <div className="aem__preview-meta">
             <div className="aem__preview-name">{name.trim() || 'Sin nombre'}</div>
             <div className="aem__preview-role mono">{agent.category}</div>
@@ -72,7 +73,7 @@ export function AgentEditModal({ agent, onSave, onClose }: Props) {
         <div className="aem__field">
           <span className="aem__label mono">AVATAR</span>
           <div className="aem__avatar-row">
-            <Avatar agent={agent} small />
+            <Avatar agent={agent} size={44} iconSize={18} />
             <div className="aem__avatar-info">
               <button className="btn btn--ghost aem__avatar-btn" disabled>
                 Elegir imagen
@@ -92,17 +93,5 @@ export function AgentEditModal({ agent, onSave, onClose }: Props) {
         </div>
       </div>
     </div>
-  );
-}
-
-function Avatar({ agent, small }: { agent: Agent; small?: boolean }) {
-  const cls = `aem__avatar ${small ? 'aem__avatar--sm' : ''}`;
-  if (agent.avatarImage) {
-    return <img className={`${cls} aem__avatar--img`} src={agent.avatarImage} alt="" />;
-  }
-  return (
-    <span className={`${cls} aem__avatar--empty`} aria-hidden>
-      <UserIcon size={small ? 18 : 24} />
-    </span>
   );
 }

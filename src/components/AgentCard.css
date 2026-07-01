@@ -25,24 +25,7 @@
   align-items: center;
   gap: 12px;
 }
-.ag__avatar {
-  width: 42px;
-  height: 42px;
-  flex: none;
-  border-radius: 50%;
-}
-/* avatar vacío: placeholder neutro hasta que el usuario elija imagen / foto */
-.ag__avatar--empty {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--surface-2);
-  border: 1px dashed var(--line-strong);
-  color: var(--ink-4);
-}
-.ag__avatar--img {
-  object-fit: cover;
-}
+/* (el avatar vive en Avatar.tsx / Avatar.css) */
 .ag__id {
   flex: 1;
   min-width: 0;

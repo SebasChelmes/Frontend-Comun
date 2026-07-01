@@ -6,7 +6,6 @@ import { GridToolbar, type ToolbarFilter } from '../components/GridToolbar';
 import { PlusIcon } from '../components/icons';
 import { useAgents } from '../context/AgentsContext';
 import { AGENT_AREAS, type Agent } from '../data/agents';
-import './Agentes.css';
 
 // filtros por área de empresa
 const FILTERS: ToolbarFilter[] = [
@@ -33,9 +32,9 @@ export default function Agentes() {
 
   return (
     <>
-      <header className="ax-header">
-        <h1 className="ax-h1">Hub de Agentes</h1>
-        <button className="btn btn--primary ax-new">
+      <header className="page-header">
+        <h1 className="page-title">Hub de Agentes</h1>
+        <button className="btn btn--primary page-new">
           <PlusIcon size={16} />
           Nuevo agente
         </button>
@@ -50,7 +49,7 @@ export default function Agentes() {
         searchPlaceholder="Buscar agente…"
       />
 
-      <div className="ax-grid">
+      <div className="page-grid">
         {visible.map((a) => (
           <AgentCard key={a.id} agent={a} onEdit={setEditing} />
         ))}
