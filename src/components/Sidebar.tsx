@@ -34,7 +34,7 @@ const HUB_SUBITEMS = [
 
 /* ítems del rail colapsado (mismos del sidebar; con tooltip por ícono) */
 const RAIL_ITEMS: { label: string; Icon: IconType; path?: string }[] = [
-  { label: 'Inicio', Icon: HomeIcon },
+  { label: 'Inicio', Icon: HomeIcon, path: '/inicio' },
   { label: 'Procesos', Icon: ProcessIcon, path: '/procesos' },
   { label: 'Captura', Icon: CaptureIcon },
   { label: 'Análisis', Icon: AnalysisIcon },
@@ -59,6 +59,7 @@ export function Sidebar() {
   }, [pathname]);
   useDismiss(userMenuOpen, userRef, () => setUserMenuOpen(false));
 
+  const inicioActive = isActive('/inicio');
   const procesosActive = isActive('/procesos');
   const agentesActive = isActive('/agentes');
 
@@ -72,8 +73,13 @@ export function Sidebar() {
       </div>
 
       <nav className="sb__nav">
-        <button type="button" className="sb__item">
-          <HomeIcon size={18} className="sb__ico" />
+        <button
+          type="button"
+          className={`sb__item ${inicioActive ? 'is-active' : ''}`}
+          onClick={() => navigate('/inicio')}
+          aria-current={inicioActive ? 'page' : undefined}
+        >
+          <HomeIcon size={18} className="sb__ico" style={inicioActive ? { color: 'var(--accent)' } : undefined} />
           Inicio
         </button>
 

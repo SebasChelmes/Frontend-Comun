@@ -33,6 +33,16 @@
   --danger: #dc2626;     /* rojo — acciones destructivas (eliminar) */
   --violet: #7c3aed;     /* violeta — skills / handoff */
 
+  /* Charts — color semántico por hub + apoyos (dashboard de Inicio) */
+  --chart-insights: #3a3678; /* Insights Hub (índigo) */
+  --chart-tracker: #1c7c7c;  /* Tracker Hub (teal) */
+  --chart-agents: #7c3aed;   /* Agents Hub (violeta) */
+  --chart-ok: #0e8466;       /* verde */
+  --chart-warn: #d97706;     /* ámbar */
+  --chart-danger: #dc2626;   /* rojo */
+  --chart-cyan: #22d3ee;     /* cian de apoyo */
+  --chart-blue: #2563eb;     /* azul de apoyo */
+
   /* Typography */
   --font-sans: 'DM Sans', Arial, sans-serif;
   --font-mono: 'DM Mono', monospace;

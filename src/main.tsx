@@ -7,6 +7,7 @@ import { AgentsProvider } from './context/AgentsContext';
 import { AppProvider } from './context/AppContext';
 import AgentDetail from './pages/AgentDetail';
 import Agentes from './pages/Agentes';
+import Inicio from './pages/Inicio';
 import Login from './pages/Login';
 import Procesos from './pages/Procesos';
 import './styles/global.css';
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
     // layout persistente (sidebar + top bar) — no se desmonta al navegar
     element: <AppShell />,
     children: [
+      { path: '/inicio', element: <Inicio /> },
       { path: '/procesos', element: <Procesos /> },
       { path: '/agentes', element: <Agentes /> },
       { path: '/agentes/:id', element: <AgentDetail /> },

@@ -14,7 +14,7 @@ export default function Login() {
 
   function enter(e: React.FormEvent) {
     e.preventDefault();
-    navigate('/procesos');
+    navigate('/inicio');
   }
 
   return (

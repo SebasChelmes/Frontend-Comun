@@ -23,6 +23,7 @@ export function AppShell() {
 
   // breadcrumb del top bar, derivado de la ruta actual
   const crumb = useMemo(() => {
+    if (pathname.startsWith('/inicio')) return 'INICIO';
     if (pathname.startsWith('/procesos')) return 'RELEVAMIENTO / PROCESOS';
     if (pathname.startsWith('/agentes')) {
       const m = pathname.match(/^\/agentes\/([^/]+)/);
