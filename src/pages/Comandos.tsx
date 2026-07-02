@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import '../styles/lib-page.css';
+import { EmptyIcon, EmptyState } from '../components/EmptyState';
 import {
   ChevronDownIcon,
   HelpIcon,
@@ -50,15 +51,11 @@ export default function Comandos() {
       <span className="lib-count mono">0 COMANDOS</span>
 
       {/* ── empty state ── */}
-      <div className="lib-empty">
-        <div className="lib-empty__icon">
-          <TerminalIcon size={26} />
-        </div>
-        <p className="lib-empty__title">Todavía no tenés comandos</p>
-        <p className="lib-empty__desc">
-          Creá tu primer comando o importá uno existente para empezar.
-        </p>
-      </div>
+      <EmptyState
+        media={<EmptyIcon><TerminalIcon size={26} /></EmptyIcon>}
+        title="Todavía no tenés comandos"
+        description="Creá tu primer comando o importá uno existente para empezar."
+      />
 
       {/* ── FAQ acordeón ── */}
       <div

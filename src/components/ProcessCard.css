@@ -1,15 +1,8 @@
+/* chrome (surface/borde/radio/sombra/hover) en .card-surface (global.css) */
 .pc {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--r-lg);
   padding: 18px;
-  box-shadow: var(--shadow-card);
   display: flex;
   flex-direction: column;
-  transition: border-color 0.15s ease;
-}
-.pc:hover {
-  border-color: var(--line-strong);
 }
 
 .pc__top {

@@ -72,41 +72,6 @@
 }
 
 /* ---- empty state — mismo chrome que .pc (ProcessCard) ---- */
-.lib-empty {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--r-lg);
-  box-shadow: var(--shadow-card);
-  padding: 56px 24px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  text-align: center;
-}
-.lib-empty__icon {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: var(--surface-2);
-  border: 1px solid var(--line);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--ink-3);
-  margin-bottom: 4px;
-}
-.lib-empty__title {
-  font-size: 16px;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  color: var(--ink);
-}
-.lib-empty__desc {
-  font-size: 13.5px;
-  color: var(--ink-2);
-}
-
 /* ---- tarjeta de tip / info (Skills) ---- */
 .lib-tip {
   background: var(--surface);

@@ -1,5 +1,6 @@
 import { type ComponentType, useState } from 'react';
 
+import { EmptyIcon, EmptyState } from '../components/EmptyState';
 import {
   ArrowRightIcon,
   CheckCircleIcon,
@@ -77,7 +78,7 @@ function TabHead({ desc, children }: { desc?: string; children: React.ReactNode 
 /* card de proveedor disponible — mismo patrón que ProcessCard */
 function ProviderCard({ p }: { p: Provider }) {
   return (
-    <article className="cn-card">
+    <article className="cn-card card-surface">
       <div className="cn-card__top">
         <span className="cn-card__type mono">
           <CheckCircleIcon size={11} strokeWidth={2} />
@@ -111,7 +112,7 @@ function ProviderCard({ p }: { p: Provider }) {
 /* card de proveedor próximamente */
 function SoonCard({ p }: { p: SoonProvider }) {
   return (
-    <article className="cn-card cn-card--soon">
+    <article className="cn-card cn-card--soon card-surface">
       <div className="cn-card__top">
         <span className="cn-card__type cn-card__type--soon mono">
           INTEGRACIÓN
@@ -188,15 +189,12 @@ function PropiosTab({ subTab, onSubTab }: { subTab: SubTabId; onSubTab: (t: SubT
         </button>
       </div>
 
-      <div className="cn-empty">
-        <div className="cn-empty__icon">
-          {subTab === 'db' ? <DatabaseIcon size={26} /> : <PlugIcon size={26} />}
-        </div>
-        <div className="cn-empty__title">Sin conectores configurados</div>
-        <div className="cn-empty__desc">
-          Agregá un conector para que los agentes puedan<br />operar sobre tus sistemas propios.
-        </div>
-      </div>
+      <EmptyState
+        variant="plain"
+        media={<EmptyIcon>{subTab === 'db' ? <DatabaseIcon size={26} /> : <PlugIcon size={26} />}</EmptyIcon>}
+        title="Sin conectores configurados"
+        description={<>Agregá un conector para que los agentes puedan<br />operar sobre tus sistemas propios.</>}
+      />
     </div>
   );
 }
@@ -212,15 +210,12 @@ function WebhooksTab() {
         </button>
       </TabHead>
 
-      <div className="cn-empty">
-        <div className="cn-empty__icon">
-          <WebhookIcon size={26} />
-        </div>
-        <div className="cn-empty__title">Sin webhooks configurados</div>
-        <div className="cn-empty__desc">
-          Creá tu primer webhook para que tus agentes<br />reaccionen automáticamente a eventos de otros sistemas.
-        </div>
-      </div>
+      <EmptyState
+        variant="plain"
+        media={<EmptyIcon><WebhookIcon size={26} /></EmptyIcon>}
+        title="Sin webhooks configurados"
+        description={<>Creá tu primer webhook para que tus agentes<br />reaccionen automáticamente a eventos de otros sistemas.</>}
+      />
     </div>
   );
 }

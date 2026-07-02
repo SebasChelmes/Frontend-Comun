@@ -1,3 +1,4 @@
+import { EmptyState } from '../components/EmptyState';
 import { BoltIcon, CalendarIcon, MailIcon, PlusIcon } from '../components/icons';
 import './Automatizaciones.css';
 
@@ -19,24 +20,17 @@ export default function Automatizaciones() {
       </div>
 
       {/* ── empty state ── */}
-      <div className="auto-empty">
-        <div className="auto-empty__icons">
-          <div className="auto-icon-box auto-icon-box--teal">
-            <MailIcon size={22} />
+      <EmptyState
+        media={
+          <div className="auto-empty__icons">
+            <div className="auto-icon-box auto-icon-box--teal"><MailIcon size={22} /></div>
+            <div className="auto-icon-box auto-icon-box--dark"><CalendarIcon size={22} /></div>
+            <div className="auto-icon-box auto-icon-box--violet"><BoltIcon size={22} /></div>
           </div>
-          <div className="auto-icon-box auto-icon-box--dark">
-            <CalendarIcon size={22} />
-          </div>
-          <div className="auto-icon-box auto-icon-box--violet">
-            <BoltIcon size={22} />
-          </div>
-        </div>
-
-        <p className="auto-empty__title">Sin automatizaciones todavía</p>
-        <p className="auto-empty__desc">
-          Creá tu primera automatización para que tus agentes actúen sin intervención manual.
-        </p>
-      </div>
+        }
+        title="Sin automatizaciones todavía"
+        description="Creá tu primera automatización para que tus agentes actúen sin intervención manual."
+      />
     </div>
   );
 }

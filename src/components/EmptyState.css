@@ -1,0 +1,65 @@
+/* Estado vacío compartido — ver EmptyState.tsx */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+}
+
+.empty-state__media {
+  margin-bottom: 4px;
+}
+
+.empty-state__icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  color: var(--ink-3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-state__title {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin: 0;
+}
+
+.empty-state__desc {
+  font-size: 13.5px;
+  color: var(--ink-2);
+  line-height: 1.6;
+  max-width: 400px;
+  margin: 0;
+}
+
+.empty-state__action {
+  margin-top: 6px;
+}
+
+/* ---- variantes de chrome ---- */
+.empty-state--card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-card);
+  padding: 56px 24px;
+}
+
+.empty-state--inset {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: 34px 24px;
+}
+
+.empty-state--plain {
+  padding: 60px 24px;
+}

@@ -1,4 +1,5 @@
 import '../styles/lib-page.css';
+import { EmptyIcon, EmptyState } from '../components/EmptyState';
 import {
   BookIcon,
   InfoIcon,
@@ -54,15 +55,11 @@ export default function Skills() {
       <span className="lib-count mono">0 SKILLS</span>
 
       {/* ── empty state ── */}
-      <div className="lib-empty">
-        <div className="lib-empty__icon">
-          <BookIcon size={26} />
-        </div>
-        <p className="lib-empty__title">Todavía no tenés skills</p>
-        <p className="lib-empty__desc">
-          Creá tu primera skill o importá una existente para empezar.
-        </p>
-      </div>
+      <EmptyState
+        media={<EmptyIcon><BookIcon size={26} /></EmptyIcon>}
+        title="Todavía no tenés skills"
+        description="Creá tu primera skill o importá una existente para empezar."
+      />
 
       {/* ── tip: cómo referenciar una skill ── */}
       <div className="lib-tip">

@@ -1,6 +1,7 @@
 import { useState, type ComponentType, type ReactNode } from 'react';
 
 import type { Agent } from '../data/agents';
+import { EmptyIcon, EmptyState } from './EmptyState';
 import {
   BookIcon,
   ChevronDownIcon,
@@ -59,23 +60,20 @@ function PanelHead({
 
 function BoxedEmpty({ icon: Icon, title, text }: { icon: IconType; title?: string; text: string }) {
   return (
-    <div className="ap__empty">
-      <span className="ap__empty-ico">
-        <Icon size={22} />
-      </span>
-      {title && <p className="ap__empty-title">{title}</p>}
-      <p className="ap__empty-text">{text}</p>
-    </div>
+    <EmptyState
+      variant="inset"
+      className="ap__empty-slot"
+      media={<EmptyIcon><Icon size={22} /></EmptyIcon>}
+      title={title}
+      description={text}
+    />
   );
 }
 
 function CenterEmpty({ title, text }: { title: string; text: string }) {
   return (
     <div className="ap__center">
-      <div className="ap__plain">
-        <p className="ap__plain-title">{title}</p>
-        <p className="ap__plain-text">{text}</p>
-      </div>
+      <EmptyState variant="plain" title={title} description={text} />
     </div>
   );
 }

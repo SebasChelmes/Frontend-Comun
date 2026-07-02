@@ -11,7 +11,7 @@ export function AgentCard({ agent, onEdit }: { agent: Agent; onEdit: (a: Agent) 
   const navigate = useNavigate();
 
   return (
-    <article className="ag" onClick={() => navigate(`/agentes/${agent.id}`)} role="button" tabIndex={0}>
+    <article className="ag card-surface" onClick={() => navigate(`/agentes/${agent.id}`)} role="button" tabIndex={0}>
       <div className="ag__head">
         <Avatar agent={agent} size={42} iconSize={20} />
         <div className="ag__id">

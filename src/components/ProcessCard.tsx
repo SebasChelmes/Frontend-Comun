@@ -21,7 +21,7 @@ export function ProcessCard({ p, onCopyLink, onShare, onDuplicate, onDelete }: P
   }
 
   return (
-    <article className="pc">
+    <article className="pc card-surface">
       <div className="pc__top">
         {p.kind === 'flujograma' ? (
           <span className="pc__type pc__type--flow mono">
