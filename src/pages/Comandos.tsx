@@ -4,6 +4,7 @@ import { EmptyIcon, EmptyState } from '../components/EmptyState';
 import {
   ChevronDownIcon,
   HelpIcon,
+  InfoIcon,
   PlusIcon,
   SearchIcon,
   TerminalIcon,
@@ -18,10 +19,16 @@ export default function Comandos() {
       {/* ── encabezado ── */}
       <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 16 }}>
         <div>
-          <h1 className="page-title lib-page-title">
-            <TerminalIcon size={24} className="lib-page-title__icon" />
-            Biblioteca de Comandos
-          </h1>
+          <div className="lib-title">
+            <h1 className="page-title">Biblioteca de Comandos</h1>
+            <span
+              className="lib-info"
+              data-tip="Los comandos son prompts reutilizables que podés invocar en cualquier conversación con tus agentes IA."
+              aria-label="Los comandos son prompts reutilizables que podés invocar en cualquier conversación con tus agentes IA."
+            >
+              <InfoIcon size={17} />
+            </span>
+          </div>
           <p style={{ fontSize: 13.5, color: 'var(--ink-2)', margin: '4px 0 0', lineHeight: 1.55 }}>
             Creá y organizá los prompts reutilizables de tus agentes IA.
           </p>
@@ -50,8 +57,11 @@ export default function Comandos() {
         />
       </div>
 
-      {/* ── contador ── */}
-      <span className="lib-count mono">0 COMANDOS</span>
+      {/* ── contador (rótulo de la lista, con ícono) ── */}
+      <span className="lib-count mono">
+        <TerminalIcon size={14} className="lib-count__icon" />
+        0 COMANDOS
+      </span>
 
       {/* ── empty state ── */}
       <EmptyState

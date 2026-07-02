@@ -15,15 +15,13 @@ export default function Skills() {
       <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 16 }}>
         <div>
           <div className="lib-title">
-            <h1 className="page-title lib-page-title">
-              <BookIcon size={24} className="lib-page-title__icon" />
-              Biblioteca de Skills
-            </h1>
+            <h1 className="page-title">Biblioteca de Skills</h1>
             <span
               className="lib-info"
-              title="Las skills son instrucciones reutilizables que podés referenciar en tus comandos con la sintaxis ## Skills requeridas."
+              data-tip="Las skills son instrucciones reutilizables que podés referenciar en tus comandos con la sintaxis ## Skills requeridas."
+              aria-label="Las skills son instrucciones reutilizables que podés referenciar en tus comandos con la sintaxis ## Skills requeridas."
             >
-              <InfoIcon size={16} />
+              <InfoIcon size={17} />
             </span>
           </div>
           <p style={{ fontSize: 13.5, color: 'var(--ink-2)', margin: '4px 0 0', lineHeight: 1.55 }}>
@@ -54,8 +52,11 @@ export default function Skills() {
         />
       </div>
 
-      {/* ── contador ── */}
-      <span className="lib-count mono">0 SKILLS</span>
+      {/* ── contador (rótulo de la lista, con ícono) ── */}
+      <span className="lib-count mono">
+        <BookIcon size={14} className="lib-count__icon" />
+        0 SKILLS
+      </span>
 
       {/* ── empty state ── */}
       <EmptyState
