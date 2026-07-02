@@ -77,10 +77,9 @@ export default function AgentDetail() {
               key={tid}
               className={`ad__tab ${tab === tid ? 'is-active' : ''}`}
               onClick={() => setTab(tid)}
-              data-tip={label}
-              aria-label={label}
             >
               <Icon size={19} />
+              <span className="ad__tab-label">{label}</span>
             </button>
           ))}
         </nav>
