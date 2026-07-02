@@ -54,7 +54,7 @@ export default function PanelDeAgencia() {
 
       <div className="page-grid pa-grid">
         {CLIENTS.map((c) => (
-          <div key={c.id} className={`pa-card${c.active ? ' pa-card--active' : ''}`}>
+          <div key={c.id} className="pa-card">
             {/* top */}
             <div className="pa-card__top">
               <div className="pa-card__avatar">
@@ -90,11 +90,13 @@ export default function PanelDeAgencia() {
               </div>
             </div>
 
-            {/* footer CTA */}
-            <button type="button" className="btn btn--ghost pa-card__cta">
-              Trabajar con este cliente
-              <ArrowRightIcon size={14} />
-            </button>
+            {/* footer CTA — solo cuando no está activo */}
+            {!c.active && (
+              <button type="button" className="btn btn--ghost pa-card__cta">
+                Trabajar con este cliente
+                <ArrowRightIcon size={14} />
+              </button>
+            )}
           </div>
         ))}
       </div>

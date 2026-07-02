@@ -38,14 +38,6 @@
 .pa-card:hover {
   border-color: var(--line-strong);
 }
-/* card activa: borde accent */
-.pa-card--active {
-  border-color: var(--accent);
-}
-.pa-card--active:hover {
-  border-color: var(--accent);
-  box-shadow: var(--shadow-card), 0 0 0 3px color-mix(in srgb, var(--accent) 10%, transparent);
-}
 
 /* ---- top: avatar + nombre + badge ---- */
 .pa-card__top {
