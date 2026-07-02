@@ -25,6 +25,12 @@ export function AppShell() {
   const crumb = useMemo(() => {
     if (pathname.startsWith('/inicio')) return 'INICIO';
     if (pathname.startsWith('/procesos')) return 'RELEVAMIENTO / PROCESOS';
+    if (pathname.startsWith('/conectores')) return 'HUB DE AGENTES IA / CONECTORES';
+    if (pathname.startsWith('/mcp-local')) return 'HUB DE AGENTES IA / MCP LOCAL';
+    if (pathname.startsWith('/skills')) return 'HUB DE AGENTES IA / SKILLS';
+    if (pathname.startsWith('/comandos')) return 'HUB DE AGENTES IA / COMANDOS';
+    if (pathname.startsWith('/automatizaciones')) return 'AUTOMATIZACIONES';
+    if (pathname.startsWith('/panel-de-agencia')) return 'CUENTA / PANEL DE AGENCIA';
     if (pathname.startsWith('/agentes')) {
       const m = pathname.match(/^\/agentes\/([^/]+)/);
       if (m) {

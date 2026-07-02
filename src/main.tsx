@@ -7,9 +7,15 @@ import { AgentsProvider } from './context/AgentsContext';
 import { AppProvider } from './context/AppContext';
 import AgentDetail from './pages/AgentDetail';
 import Agentes from './pages/Agentes';
+import Automatizaciones from './pages/Automatizaciones';
+import Comandos from './pages/Comandos';
+import Conectores from './pages/Conectores';
 import Inicio from './pages/Inicio';
+import McpLocal from './pages/McpLocal';
 import Login from './pages/Login';
 import Procesos from './pages/Procesos';
+import PanelDeAgencia from './pages/PanelDeAgencia';
+import Skills from './pages/Skills';
 import './styles/global.css';
 
 const router = createBrowserRouter([
@@ -23,6 +29,12 @@ const router = createBrowserRouter([
       { path: '/procesos', element: <Procesos /> },
       { path: '/agentes', element: <Agentes /> },
       { path: '/agentes/:id', element: <AgentDetail /> },
+      { path: '/conectores', element: <Conectores /> },
+      { path: '/mcp-local', element: <McpLocal /> },
+      { path: '/skills', element: <Skills /> },
+      { path: '/comandos', element: <Comandos /> },
+      { path: '/automatizaciones', element: <Automatizaciones /> },
+      { path: '/panel-de-agencia', element: <PanelDeAgencia /> },
     ],
   },
   { path: '*', element: <Navigate to="/login" replace /> },

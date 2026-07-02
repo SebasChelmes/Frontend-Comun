@@ -1,0 +1,309 @@
+/* ===== Conectores ===== */
+.cn {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* título inline con ícono de info */
+.cn-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.cn-info {
+  display: inline-flex;
+  align-items: center;
+  color: var(--ink-3);
+  cursor: help;
+  padding: 2px;
+  transition: color 0.15s;
+}
+.cn-info:hover {
+  color: var(--ink-2);
+}
+
+/* ---- tabs principales ---- */
+.cn-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--line);
+  margin-top: 18px;
+}
+.cn-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--ink-3);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 10px 16px;
+  margin-bottom: -1px;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+.cn-tab:hover {
+  color: var(--ink);
+}
+.cn-tab.is-active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* ---- cuerpo de cada tab ---- */
+.cn-body {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding-top: 24px;
+}
+
+/* ---- cabecera compartida (descripción izq + botón der) ---- */
+.cn-tab-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.cn-tab-head__desc {
+  font-size: 14px;
+  color: var(--ink-2);
+  flex: 1;
+}
+
+/* ---- sección con label ---- */
+.cn-section {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.cn-section__label {
+  font-size: 10.5px;
+  letter-spacing: 0.09em;
+  color: var(--ink-3);
+}
+
+/* ---- grilla de proveedores — mismas columnas y gap que .page-grid ---- */
+.cn-providers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+/* ================================================================
+   PROVIDER CARD — patrón idéntico a ProcessCard (.pc)
+   ================================================================ */
+.cn-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);          /* igual que .pc */
+  padding: 18px;                        /* igual que .pc */
+  box-shadow: var(--shadow-card);       /* igual que .pc */
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.15s ease;
+}
+.cn-card:hover {
+  border-color: var(--line-strong);     /* igual que .pc:hover */
+}
+.cn-card--soon {
+  opacity: 0.6;
+}
+.cn-card--soon:hover {
+  border-color: var(--line);
+}
+
+/* top row: badge + status — igual que .pc__top */
+.cn-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+/* badge de tipo — igual que .pc__type--flow */
+.cn-card__type {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  border-radius: var(--r-pill);
+  padding: 4px 9px;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 13%, #fff);
+}
+.cn-card__type--soon {
+  color: var(--ink-2);
+  background: var(--surface-3);
+}
+
+/* estado disponible — igual que .pc__status */
+.cn-card__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--ink-2);
+}
+.cn-card__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--ok);
+}
+
+/* próximamente inline — igual que .pc__linked */
+.cn-card__linked {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  color: var(--ink-3);
+}
+
+/* título — igual que .pc__title */
+.cn-card__title {
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  margin: 0;
+  margin-top: 13px;
+  color: var(--ink);
+}
+
+/* meta — igual que .pc__meta */
+.cn-card__meta {
+  font-size: 11px;
+  color: var(--ink-3);
+  margin-top: 6px;
+}
+
+/* área de preview con el ícono centrado — igual que .pc__preview */
+.cn-card__preview {
+  margin-top: 13px;
+  height: 78px;
+  border-radius: var(--r-sm);
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cn-card__preview--soon {
+  opacity: 0.5;
+}
+
+/* ícono del proveedor (cuadrado coloreado con ícono blanco) */
+.cn-card__icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  flex: none;
+}
+
+/* footer — igual que .pc__foot */
+.cn-card__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 14px;
+}
+
+/* CTA con flecha — igual que .pc__cta */
+.cn-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--accent);
+  text-decoration: none;
+  cursor: pointer;
+}
+.cn-card__cta--muted {
+  color: var(--ink-4);
+  cursor: default;
+  font-weight: 400;
+}
+
+/* ---- Sub-tabs ---- */
+.cn-subtabs {
+  display: flex;
+  border-bottom: 1px solid var(--line);
+}
+.cn-subtab {
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--ink-3);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 8px 14px;
+  margin-bottom: -1px;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+.cn-subtab:hover {
+  color: var(--ink);
+}
+.cn-subtab.is-active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* ---- estado vacío ---- */
+.cn-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 60px 24px;
+  text-align: center;
+}
+.cn-empty__icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-3);
+}
+.cn-empty__title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.cn-empty__desc {
+  font-size: 13.5px;
+  color: var(--ink-2);
+  line-height: 1.6;
+}
+
+/* ---- responsive — mirrors page-grid breakpoints ---- */
+@media (max-width: 1100px) {
+  .cn-providers {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 720px) {
+  .cn-providers {
+    grid-template-columns: 1fr;
+  }
+  .cn-tab-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

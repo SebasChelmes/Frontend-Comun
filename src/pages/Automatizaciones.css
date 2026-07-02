@@ -1,0 +1,76 @@
+/* ===== Automatizaciones ===== */
+.auto {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* encabezado */
+.auto-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+/* usa .page-title de global.css para font-size consistente */
+.auto-head__sub {
+  font-size: 13.5px;
+  color: var(--ink-2);
+  margin: 4px 0 0;
+  line-height: 1.55;
+}
+.auto-head__cta {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex: none;
+}
+
+/* empty state — mismo chrome que ProcessCard */
+.auto-empty {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-card);
+  padding: 64px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+/* fila de tres cajas de ícono */
+.auto-empty__icons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.auto-icon-box {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--r-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+.auto-icon-box--teal   { background: #0d9488; }   /* teal-600 */
+.auto-icon-box--dark   { background: #3730a3; }   /* indigo-700 */
+.auto-icon-box--violet { background: var(--violet); }
+
+.auto-empty__title {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin: 0;
+}
+.auto-empty__desc {
+  font-size: 13.5px;
+  color: var(--ink-2);
+  max-width: 400px;
+  margin: 0;
+  line-height: 1.6;
+}

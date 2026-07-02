@@ -25,11 +25,11 @@ import './Sidebar.css';
 type IconType = ComponentType<{ size?: number }>;
 
 /* sub-opciones del Hub de Agentes IA */
-const HUB_SUBITEMS = [
-  { label: 'Conectores', Icon: PlugIcon },
-  { label: 'MCP Local', Icon: ServerIcon },
-  { label: 'Skills', Icon: BookIcon },
-  { label: 'Comandos', Icon: TerminalIcon },
+const HUB_SUBITEMS: { label: string; Icon: IconType; path?: string }[] = [
+  { label: 'Conectores', Icon: PlugIcon, path: '/conectores' },
+  { label: 'MCP Local', Icon: ServerIcon, path: '/mcp-local' },
+  { label: 'Skills', Icon: BookIcon, path: '/skills' },
+  { label: 'Comandos', Icon: TerminalIcon, path: '/comandos' },
 ];
 
 /* ítems del rail colapsado (mismos del sidebar; con tooltip por ícono) */
@@ -39,8 +39,8 @@ const RAIL_ITEMS: { label: string; Icon: IconType; path?: string }[] = [
   { label: 'Captura', Icon: CaptureIcon },
   { label: 'Análisis', Icon: AnalysisIcon },
   { label: 'Hub de Agentes IA', Icon: AgentsIcon, path: '/agentes' },
-  { label: 'Automatizaciones', Icon: BoltIcon },
-  { label: 'Panel de Agencia', Icon: PanelIcon },
+  { label: 'Automatizaciones', Icon: BoltIcon, path: '/automatizaciones' },
+  { label: 'Panel de Agencia', Icon: PanelIcon, path: '/panel-de-agencia' },
 ];
 
 /* ---------- expanded sidebar ---------- */
@@ -49,7 +49,13 @@ export function Sidebar() {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const isActive = (path: string) => pathname.startsWith(path);
-  const [hubOpen, setHubOpen] = useState(false);
+  const [hubOpen, setHubOpen] = useState(() =>
+    pathname.startsWith('/agentes') ||
+    pathname.startsWith('/conectores') ||
+    pathname.startsWith('/mcp-local') ||
+    pathname.startsWith('/skills') ||
+    pathname.startsWith('/comandos'),
+  );
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const userRef = useRef<HTMLDivElement>(null);
 
@@ -61,7 +67,12 @@ export function Sidebar() {
 
   const inicioActive = isActive('/inicio');
   const procesosActive = isActive('/procesos');
-  const agentesActive = isActive('/agentes');
+  const conectoresActive = isActive('/conectores');
+  const mcpActive = isActive('/mcp-local');
+  const skillsActive = isActive('/skills');
+  const comandosActive = isActive('/comandos');
+  const autoActive = isActive('/automatizaciones');
+  const agentesActive = isActive('/agentes') || conectoresActive || mcpActive || skillsActive || comandosActive;
 
   return (
     <aside className="sb">
@@ -136,24 +147,47 @@ export function Sidebar() {
 
         {hubOpen && (
           <div className="sb__sub">
-            {HUB_SUBITEMS.map(({ label, Icon }) => (
-              <button type="button" className="sb__subitem" key={label}>
-                <Icon size={16} className="sb__subico" />
-                {label}
-              </button>
-            ))}
+            {HUB_SUBITEMS.map(({ label, Icon, path }) => {
+              const subActive = !!path && isActive(path);
+              return (
+                <button
+                  type="button"
+                  className={`sb__subitem ${subActive ? 'is-active' : ''}`}
+                  key={label}
+                  onClick={() => path && navigate(path)}
+                  aria-current={subActive ? 'page' : undefined}
+                >
+                  <Icon size={16} />
+                  {label}
+                </button>
+              );
+            })}
           </div>
         )}
 
-        <button type="button" className="sb__item">
-          <BoltIcon size={18} className="sb__ico" />
+        <button
+          type="button"
+          className={`sb__item ${autoActive ? 'is-active' : ''}`}
+          onClick={() => navigate('/automatizaciones')}
+          aria-current={autoActive ? 'page' : undefined}
+        >
+          <BoltIcon size={18} className="sb__ico" style={autoActive ? { color: 'var(--accent)' } : undefined} />
           Automatizaciones
         </button>
 
         <div className="sb__section mono">CUENTA</div>
 
-        <button type="button" className="sb__item">
-          <PanelIcon size={18} className="sb__ico" />
+        <button
+          type="button"
+          className={`sb__item ${isActive('/panel-de-agencia') ? 'is-active' : ''}`}
+          onClick={() => navigate('/panel-de-agencia')}
+          aria-current={isActive('/panel-de-agencia') ? 'page' : undefined}
+        >
+          <PanelIcon
+            size={18}
+            className="sb__ico"
+            style={isActive('/panel-de-agencia') ? { color: 'var(--accent)' } : undefined}
+          />
           Panel de Agencia
         </button>
       </nav>

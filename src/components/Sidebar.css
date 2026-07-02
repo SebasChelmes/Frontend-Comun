@@ -154,13 +154,24 @@
 .sb__chevron {
   color: var(--ink-3);
   transform: rotate(-90deg);
-  transition: transform 0.16s ease;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .sb__chevron.is-open {
   transform: rotate(0deg);
 }
 
 /* ---- submenú anidado ---- */
+@keyframes sb-sub-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .sb__sub {
   display: flex;
   flex-direction: column;
@@ -168,6 +179,7 @@
   margin: 2px 0 2px 19px;
   padding-left: 10px;
   border-left: 1px solid var(--line);
+  animation: sb-sub-in 0.2s cubic-bezier(0.4, 0, 0.2, 1) both;
 }
 .sb__subitem {
   display: flex;
@@ -188,6 +200,13 @@
 }
 .sb__subitem:hover {
   background: var(--surface-3);
+}
+.sb__subitem.is-active {
+  color: var(--ink);
+  background: var(--surface-3);
+}
+.sb__subitem.is-active svg {
+  color: var(--accent);
 }
 .sb__subico {
   color: var(--ink-3);

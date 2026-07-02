@@ -212,3 +212,15 @@ export const UploadIcon = (p: IconProps) =>
 
 export const PlayIcon = (p: IconProps) =>
   base({ ...p, strokeWidth: 1.8, children: <path d="M7 5v14l11-7Z" /> });
+
+export const RefreshIcon = (p: IconProps) =>
+  base({ ...p, children: <path d="M20 11A8 8 0 1 0 18.3 17M20 11V5M20 11h-6" /> });
+
+export const WebhookIcon = (p: IconProps) =>
+  base({ ...p, children: (<><path d="M14 11a4 4 0 0 1 0 6H8a4 4 0 0 1 0-8h1" /><path d="m17 8 3-3-3-3" /><path d="M20 5H9a4 4 0 0 0-4 4v1" /></>) });
+
+export const CheckCircleIcon = (p: IconProps) =>
+  base({ ...p, children: (<><circle cx="12" cy="12" r="9" /><path d="m8.5 12 2.5 2.5 4.5-5" /></>) });
+
+export const DatabaseIcon = (p: IconProps) =>
+  base({ ...p, children: (<><ellipse cx="12" cy="5" rx="8" ry="2.5" /><path d="M4 5v5c0 1.4 3.6 2.5 8 2.5S20 11.4 20 10V5" /><path d="M4 10v5c0 1.4 3.6 2.5 8 2.5S20 16.4 20 15v-5" /></>) });

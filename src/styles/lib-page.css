@@ -1,0 +1,209 @@
+/* ================================================================
+   lib-page.css — estilos compartidos para páginas de "biblioteca"
+   (Skills, Comandos). Importado individualmente por cada página.
+   ================================================================ */
+
+/* contenedor de página */
+.lib {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* título inline con ícono de info */
+.lib-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.lib-info {
+  display: inline-flex;
+  align-items: center;
+  color: var(--ink-3);
+  cursor: help;
+  padding: 2px;
+  transition: color 0.15s;
+}
+.lib-info:hover { color: var(--ink-2); }
+
+/* grupo de botones del encabezado */
+.lib-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* barra de búsqueda — full width con ícono interno */
+.lib-search {
+  position: relative;
+}
+.lib-search__icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--ink-3);
+  pointer-events: none;
+}
+.lib-search__input {
+  width: 100%;
+  padding: 11px 14px 11px 40px;
+  border: 1.5px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  box-sizing: border-box;
+  transition: border-color 0.15s;
+}
+.lib-search__input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 12%, transparent);
+}
+.lib-search__input::placeholder { color: var(--ink-4); }
+
+/* contador — "0 skills" */
+.lib-count {
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  color: var(--ink-3);
+}
+
+/* ---- empty state — mismo chrome que .pc (ProcessCard) ---- */
+.lib-empty {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-card);
+  padding: 56px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+}
+.lib-empty__icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-3);
+  margin-bottom: 4px;
+}
+.lib-empty__title {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.lib-empty__desc {
+  font-size: 13.5px;
+  color: var(--ink-2);
+}
+
+/* ---- tarjeta de tip / info (Skills) ---- */
+.lib-tip {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-card);
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: border-color 0.15s;
+}
+.lib-tip:hover { border-color: var(--line-strong); }
+.lib-tip__head {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.lib-tip__icon { color: var(--violet); flex: none; }
+.lib-tip__desc {
+  font-size: 13.5px;
+  color: var(--ink-2);
+  line-height: 1.6;
+  margin: 0;
+}
+.lib-tip__inline {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 2px 6px;
+  color: var(--ink);
+}
+
+/* ---- bloque de código (dark) ---- */
+.lib-code {
+  background: var(--ink);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.7;
+  border-radius: var(--r-sm);
+  padding: 14px 18px;
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+/* ---- acordeón FAQ (Comandos) ---- */
+.lib-faq {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-card);
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  transition: border-color 0.15s;
+}
+.lib-faq:hover { border-color: var(--line-strong); }
+.lib-faq__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.lib-faq__label {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.lib-faq__label-icon { color: var(--accent); }
+.lib-faq__chev {
+  color: var(--ink-3);
+  transition: transform 0.2s;
+  flex: none;
+}
+.lib-faq__chev.is-open { transform: rotate(180deg); }
+.lib-faq__body {
+  border-top: 1px solid var(--line);
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.lib-faq__body p {
+  font-size: 13.5px;
+  color: var(--ink-2);
+  line-height: 1.65;
+  margin: 0;
+}
+.lib-faq__body strong { color: var(--ink); font-weight: 600; }
