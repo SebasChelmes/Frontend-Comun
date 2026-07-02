@@ -16,6 +16,15 @@
   align-items: center;
   gap: 10px;
 }
+/* ícono del título de la biblioteca (mismo patrón que MCP Local) */
+.lib-page-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.lib-page-title__icon {
+  color: var(--accent);
+}
 .lib-info {
   display: inline-flex;
   align-items: center;

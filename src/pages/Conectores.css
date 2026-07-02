@@ -29,10 +29,13 @@
   border-bottom: 1px solid var(--line);
   margin-top: 18px;
 }
-/* extras propios; base en .tab (global.css) */
+/* tabs principales al estilo stacked (ícono arriba + label debajo), igual que
+   las tabs del detalle de agente (.ad__tab); base de color/estado en .tab */
 .cn-tab {
-  font-size: 13.5px;
-  padding: 10px 16px;
+  flex-direction: column;
+  gap: 5px;
+  padding: 8px 14px 9px;
+  font-size: 11.5px;
 }
 
 /* ---- cuerpo de cada tab ---- */

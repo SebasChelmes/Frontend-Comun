@@ -238,15 +238,15 @@ export default function Conectores() {
 
       <div className="cn-tabs">
         <button type="button" className={`tab cn-tab ${tab === 'proveedores' ? 'is-active' : ''}`} onClick={() => setTab('proveedores')}>
-          <GlobeIcon size={14} />
+          <GlobeIcon size={18} />
           Proveedores
         </button>
         <button type="button" className={`tab cn-tab ${tab === 'propios' ? 'is-active' : ''}`} onClick={() => setTab('propios')}>
-          <LinkIcon size={14} />
+          <LinkIcon size={18} />
           Conectores propios
         </button>
         <button type="button" className={`tab cn-tab ${tab === 'webhooks' ? 'is-active' : ''}`} onClick={() => setTab('webhooks')}>
-          <WebhookIcon size={14} />
+          <WebhookIcon size={18} />
           Webhooks
         </button>
       </div>

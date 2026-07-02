@@ -18,7 +18,10 @@ export default function Comandos() {
       {/* ── encabezado ── */}
       <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 16 }}>
         <div>
-          <h1 className="page-title">Biblioteca de Comandos</h1>
+          <h1 className="page-title lib-page-title">
+            <TerminalIcon size={24} className="lib-page-title__icon" />
+            Biblioteca de Comandos
+          </h1>
           <p style={{ fontSize: 13.5, color: 'var(--ink-2)', margin: '4px 0 0', lineHeight: 1.55 }}>
             Creá y organizá los prompts reutilizables de tus agentes IA.
           </p>
