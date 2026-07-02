@@ -11,6 +11,9 @@ export function DesignControls() {
   const { accent, plan, setAccent, setPlan } = useApp();
   const [open, setOpen] = useState(false);
 
+  // panel solo para desarrollo: no debe exponerse a usuarios finales en producción
+  if (!import.meta.env.DEV) return null;
+
   return (
     <div className={`dctrl ${open ? 'is-open' : ''}`}>
       {open && (

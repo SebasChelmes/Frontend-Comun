@@ -204,4 +204,10 @@
   color: var(--accent);
   text-decoration: none;
   cursor: pointer;
+  background: none;
+  border: none;
+  font-family: var(--font-sans);
+  padding: 0;
+  transition: opacity 0.12s;
 }
+.pc__cta:hover { opacity: 0.75; }

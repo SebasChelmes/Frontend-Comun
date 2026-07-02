@@ -14,6 +14,8 @@ import Inicio from './pages/Inicio';
 import McpLocal from './pages/McpLocal';
 import Login from './pages/Login';
 import Procesos from './pages/Procesos';
+import DiagramaView from './pages/DiagramaView';
+import GuiaView from './pages/GuiaView';
 import PanelDeAgencia from './pages/PanelDeAgencia';
 import Skills from './pages/Skills';
 import './styles/global.css';
@@ -27,6 +29,8 @@ const router = createBrowserRouter([
     children: [
       { path: '/inicio', element: <Inicio /> },
       { path: '/procesos', element: <Procesos /> },
+      { path: '/procesos/:id/diagrama', element: <DiagramaView /> },
+      { path: '/procesos/:id/guia', element: <GuiaView /> },
       { path: '/agentes', element: <Agentes /> },
       { path: '/agentes/:id', element: <AgentDetail /> },
       { path: '/conectores', element: <Conectores /> },

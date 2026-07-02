@@ -24,6 +24,8 @@ export function AppShell() {
   // breadcrumb del top bar, derivado de la ruta actual
   const crumb = useMemo(() => {
     if (pathname.startsWith('/inicio')) return 'INICIO';
+    if (pathname.match(/^\/procesos\/[^/]+\/diagrama/)) return 'RELEVAMIENTO / PROCESOS / DIAGRAMA';
+    if (pathname.match(/^\/procesos\/[^/]+\/guia/))     return 'RELEVAMIENTO / PROCESOS / GUÍA';
     if (pathname.startsWith('/procesos')) return 'RELEVAMIENTO / PROCESOS';
     if (pathname.startsWith('/conectores')) return 'HUB DE AGENTES IA / CONECTORES';
     if (pathname.startsWith('/mcp-local')) return 'HUB DE AGENTES IA / MCP LOCAL';

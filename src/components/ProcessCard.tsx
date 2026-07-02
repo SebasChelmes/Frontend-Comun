@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import type { NodeShape, Process } from '../data/processes';
 import { CardMenu } from './CardMenu';
 import { ArrowRightIcon, CaptureIcon, LinkIcon, ProcessIcon } from './icons';
@@ -12,6 +13,13 @@ interface Props {
 }
 
 export function ProcessCard({ p, onCopyLink, onShare, onDuplicate, onDelete }: Props) {
+  const navigate = useNavigate();
+
+  function handleCta() {
+    if (p.kind === 'flujograma') navigate(`/procesos/${p.id}/diagrama`);
+    else navigate(`/procesos/${p.id}/guia`);
+  }
+
   return (
     <article className="pc">
       <div className="pc__top">
@@ -61,9 +69,9 @@ export function ProcessCard({ p, onCopyLink, onShare, onDuplicate, onDelete }: P
 
       <div className="pc__foot">
         <span className="pc__when mono">{p.when}</span>
-        <a className="pc__cta">
+        <button type="button" className="pc__cta" onClick={handleCta}>
           {p.cta} <ArrowRightIcon size={13} strokeWidth={2} />
-        </a>
+        </button>
       </div>
     </article>
   );
