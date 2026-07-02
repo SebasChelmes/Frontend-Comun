@@ -61,7 +61,7 @@
 .app-crumb {
   font-size: 11px;
   letter-spacing: 0.1em;
-  color: var(--ink-4);
+  color: var(--ink-3); /* breadcrumb es informativo: AA, no --ink-4 decorativo */
 }
 .app-topbar__right {
   margin-left: auto;
@@ -77,18 +77,26 @@
   transform: translateX(-50%);
   z-index: 1;
 
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 4px 4px 4px 13px;
-  border-radius: var(--r-pill);
-  background: color-mix(in srgb, #f59e0b 10%, #fff);
-  border: 1px solid color-mix(in srgb, #f59e0b 30%, transparent);
-}
-.app-upsell__lead {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 9px;
+  padding: 5px 14px;
+  border-radius: var(--r-pill);
+  background: color-mix(in srgb, var(--promo) 10%, #fff);
+  border: 1px solid color-mix(in srgb, var(--promo) 32%, transparent);
+  font-family: var(--font-sans);
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+.app-upsell:hover {
+  background: color-mix(in srgb, var(--promo) 16%, #fff);
+  border-color: color-mix(in srgb, var(--promo) 48%, transparent);
+}
+.app-upsell__star {
+  color: var(--promo);
+  flex: none;
+}
+.app-upsell__lead {
   font-size: 13px;
   color: var(--ink);
   white-space: nowrap;
@@ -96,34 +104,22 @@
 .app-upsell__lead b {
   font-weight: 600;
 }
-.app-upsell__star {
-  color: #f59e0b;
-}
-.app-upsell__btn {
-  background: linear-gradient(120deg, #f59e0b 0%, #f97316 100%);
-  color: #fff;
-  border: none;
-  border-radius: var(--r-pill);
-  font-family: var(--font-sans);
-  font-weight: 600;
+.app-upsell__cta {
   font-size: 12.5px;
-  padding: 6px 13px;
-  cursor: pointer;
-  transition: filter 0.15s ease, transform 0.1s ease;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.15);
-}
-.app-upsell__btn:hover {
-  filter: brightness(1.07);
-  transform: translateY(-1px);
-}
-.app-upsell__btn:active {
-  transform: translateY(0);
-  filter: brightness(0.97);
+  font-weight: 600;
+  color: var(--accent);
+  white-space: nowrap;
+  padding-left: 9px;
+  border-left: 1px solid color-mix(in srgb, var(--promo) 30%, transparent);
 }
 
 @media (max-width: 880px) {
   .app-upsell__lead {
     display: none;
+  }
+  .app-upsell__cta {
+    padding-left: 0;
+    border-left: none;
   }
 }
 .app-bell {

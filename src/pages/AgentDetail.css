@@ -16,6 +16,12 @@
   color: var(--ink-3);
 }
 .ad__crumb-link {
+  font: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  padding: 0;
   cursor: pointer;
 }
 .ad__crumb-link:hover {

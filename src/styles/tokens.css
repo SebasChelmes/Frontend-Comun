@@ -12,7 +12,7 @@
   /* Ink / text */
   --ink: #1e1b3a;        /* text-primary (índigo casi negro) */
   --ink-2: #5a5870;      /* text-secondary (párrafos) */
-  --ink-3: #908ea4;      /* text-tertiary (metadatos, eyebrows, placeholders) */
+  --ink-3: #6e6c82;      /* text-tertiary (metadatos, eyebrows) — AA sobre blanco y crema (~5:1) */
   --ink-4: #a8a6b8;      /* faint mono labels */
 
   /* Surfaces */
@@ -32,6 +32,13 @@
   --warn: #d97706;       /* ámbar — decisión / advertencia */
   --danger: #dc2626;     /* rojo — acciones destructivas (eliminar) */
   --violet: #7c3aed;     /* violeta — skills / handoff */
+
+  /* Promo / upgrade — ámbar de upsell (borde/ícono/acento, nunca fill de botón) */
+  --promo: #f59e0b;
+
+  /* Nodos del flujograma (diagrama de proceso) */
+  --node-manual: #f97316;      /* tarea manual — naranja */
+  --node-manual-ink: #c2410c;  /* texto sobre el badge de tarea manual */
 
   /* Charts — color semántico por hub + apoyos (dashboard de Inicio) */
   --chart-insights: #3a3678; /* Insights Hub (índigo) */

@@ -69,15 +69,13 @@ export function AppShell() {
             </button>
             <span className="app-crumb mono">{crumb}</span>
 
-            {/* upsell centrado absolutamente en el topbar */}
+            {/* upsell centrado absolutamente en el topbar — un solo CTA */}
             {showUpgrade && (
-              <div className="app-upsell">
-                <span className="app-upsell__lead">
-                  <StarIcon size={14} className="app-upsell__star" />
-                  Pasá a <b>PRO</b>
-                </span>
-                <button type="button" className="app-upsell__btn">Mejorar plan</button>
-              </div>
+              <button type="button" className="app-upsell">
+                <StarIcon size={14} className="app-upsell__star" />
+                <span className="app-upsell__lead">Pasá a <b>PRO</b></span>
+                <span className="app-upsell__cta">Mejorar plan</span>
+              </button>
             )}
 
             <div className="app-topbar__right">

@@ -52,7 +52,7 @@ export default function AgentDetail() {
     <div className="ad">
       {/* breadcrumb + identidad */}
       <div className="ad__crumb mono">
-          <span className="ad__crumb-link" onClick={() => navigate('/agentes')}>Hub de Agentes</span>
+          <button type="button" className="ad__crumb-link" onClick={() => navigate('/agentes')}>Hub de Agentes</button>
           <span className="ad__crumb-sep">›</span>
           <span>{agent.name}</span>
         </div>

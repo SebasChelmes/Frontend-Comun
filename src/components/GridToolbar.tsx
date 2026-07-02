@@ -31,13 +31,15 @@ export function GridToolbar({
     <div className="tb-toolbar">
       <div className="tb-seg">
         {filters.map((f) => (
-          <span
+          <button
+            type="button"
             key={f.id}
             className={`tb-seg__opt ${active === f.id ? 'is-active' : ''}`}
             onClick={() => onFilter(f.id)}
+            aria-pressed={active === f.id}
           >
             {f.label}
-          </span>
+          </button>
         ))}
       </div>
       <div className="tb-search">

@@ -15,12 +15,14 @@
   gap: 2px;
 }
 .tb-seg__opt {
+  font-family: var(--font-sans);
   font-size: 13px;
   font-weight: 500;
   color: var(--ink-2);
   padding: 6px 15px;
   border-radius: var(--r-pill);
   cursor: pointer;
+  background: transparent;
   border: 1px solid transparent;
   white-space: nowrap;
 }
