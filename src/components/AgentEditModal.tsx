@@ -42,7 +42,7 @@ export function AgentEditModal({ agent, onSave, onClose }: Props) {
             <div className="aem__kicker mono">EDITAR AGENTE</div>
             <h3 className="aem__title">{agent.role}</h3>
           </div>
-          <button className="aem__close" onClick={onClose} aria-label="Cerrar">
+          <button type="button" className="icon-btn icon-btn--bordered aem__close" onClick={onClose} aria-label="Cerrar">
             <CloseIcon size={18} />
           </button>
         </div>
@@ -75,7 +75,7 @@ export function AgentEditModal({ agent, onSave, onClose }: Props) {
           <div className="aem__avatar-row">
             <Avatar agent={agent} size={44} iconSize={18} />
             <div className="aem__avatar-info">
-              <button className="btn btn--ghost aem__avatar-btn" disabled>
+              <button type="button" className="btn btn--ghost aem__avatar-btn" disabled>
                 Elegir imagen
               </button>
               <span className="aem__hint">Próximamente: subí una imagen o foto.</span>
@@ -84,10 +84,10 @@ export function AgentEditModal({ agent, onSave, onClose }: Props) {
         </div>
 
         <div className="aem__foot">
-          <button className="btn btn--ghost aem__btn" onClick={onClose}>
+          <button type="button" className="btn btn--ghost aem__btn" onClick={onClose}>
             Cancelar
           </button>
-          <button className="btn btn--primary aem__btn" onClick={save} disabled={!canSave}>
+          <button type="button" className="btn btn--primary aem__btn" onClick={save} disabled={!canSave}>
             Guardar cambios
           </button>
         </div>

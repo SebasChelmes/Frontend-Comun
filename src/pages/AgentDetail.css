@@ -212,7 +212,8 @@
   border: 1px solid var(--line);
   border-radius: var(--r-md);
 }
-.ad__attach,
+/* .ad__attach usa .icon-btn.icon-btn--bordered.icon-btn--lg (global.css);
+   .ad__send se mantiene custom (relleno oscuro) */
 .ad__send {
   display: flex;
   align-items: center;
@@ -221,20 +222,11 @@
   height: 40px;
   flex: none;
   border-radius: 11px;
-  border: 1px solid var(--line);
-  background: var(--surface);
-  color: var(--ink-2);
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: #fff;
   cursor: pointer;
   transition: background 0.12s ease, color 0.12s ease, opacity 0.12s ease;
-}
-.ad__attach:hover {
-  background: var(--surface-2);
-  color: var(--ink);
-}
-.ad__send {
-  background: var(--ink);
-  border-color: var(--ink);
-  color: #fff;
 }
 .ad__send:hover {
   opacity: 0.9;

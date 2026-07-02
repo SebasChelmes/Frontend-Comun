@@ -79,7 +79,7 @@ function CenterEmpty({ title, text }: { title: string; text: string }) {
 }
 
 const ghostManage = (
-  <button className="btn btn--ghost ap__btn">
+  <button type="button" className="btn btn--ghost ap__btn">
     <PlusIcon size={15} />
     Gestionar
   </button>
@@ -96,11 +96,11 @@ export function FilesPanel({ agent }: { agent: Agent }) {
           sub={`Documentos y URLs que ${agent.name} puede consultar al responder`}
           action={
             <div className="ap__actions">
-              <button className="btn btn--ghost ap__btn">
+              <button type="button" className="btn btn--ghost ap__btn">
                 <LinkIcon size={15} />
                 URL
               </button>
-              <button className="btn btn--primary ap__btn">
+              <button type="button" className="btn btn--primary ap__btn">
                 <UploadIcon size={15} />
                 Subir archivo
               </button>
@@ -132,7 +132,7 @@ export function SchedulesPanel({ agent }: { agent: Agent }) {
         title="Tareas programadas"
         sub={`Automatizá tareas recurrentes para ${agent.name}`}
         action={
-          <button className="btn btn--primary ap__btn">
+          <button type="button" className="btn btn--primary ap__btn">
             <PlusIcon size={15} />
             Nueva tarea
           </button>
@@ -185,17 +185,17 @@ function CommandCard({ name, desc }: { name: string; desc: string }) {
           <TerminalIcon size={15} />
         </span>
         <div className="ap__card-tools">
-          <button className="ap__card-tool" title="Copiar">
+          <button type="button" className="icon-btn icon-btn--sm" title="Copiar">
             <CopyIcon size={13} />
           </button>
-          <button className="ap__card-tool" aria-label="Más">
+          <button type="button" className="icon-btn icon-btn--sm" aria-label="Más">
             <ChevronDownIcon size={13} />
           </button>
         </div>
       </div>
       <div className="ap__card-name mono">{name}</div>
       <p className="ap__card-desc">{desc}</p>
-      <button className="btn btn--primary ap__run">
+      <button type="button" className="btn btn--primary ap__run">
         <PlayIcon size={14} />
         Ejecutar
       </button>
@@ -221,10 +221,10 @@ function SkillCard({
           <BookIcon size={15} />
         </span>
         <div className="ap__card-tools">
-          <button className="ap__card-tool" aria-label={deletable ? 'Eliminar' : 'Copiar'}>
+          <button type="button" className="icon-btn icon-btn--sm" aria-label={deletable ? 'Eliminar' : 'Copiar'}>
             {deletable ? <TrashIcon size={13} /> : <CopyIcon size={13} />}
           </button>
-          <button className="ap__card-tool" aria-label="Más">
+          <button type="button" className="icon-btn icon-btn--sm" aria-label="Más">
             <ChevronDownIcon size={13} />
           </button>
         </div>
@@ -282,8 +282,9 @@ export function InboxPanel({ agent }: { agent: Agent }) {
       <div className="ap__subtabs">
         {INBOX_SUBS.map((s) => (
           <button
+            type="button"
             key={s.id}
-            className={`ap__subtab ${sub === s.id ? 'is-active' : ''}`}
+            className={`tab ap__subtab ${sub === s.id ? 'is-active' : ''}`}
             onClick={() => setSub(s.id)}
           >
             {s.label}

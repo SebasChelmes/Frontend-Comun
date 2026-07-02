@@ -34,7 +34,7 @@ export default function Agentes() {
     <>
       <header className="page-header">
         <h1 className="page-title">Hub de Agentes</h1>
-        <button className="btn btn--primary page-new">
+        <button type="button" className="btn btn--primary page-new">
           <PlusIcon size={16} />
           Nuevo agente
         </button>

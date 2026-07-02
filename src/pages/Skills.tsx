@@ -29,11 +29,11 @@ export default function Skills() {
         </div>
 
         <div className="lib-actions">
-          <button type="button" className="btn btn--ghost" style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
+          <button type="button" className="btn btn--ghost">
             <UploadIcon size={15} />
             Importar
           </button>
-          <button type="button" className="btn btn--primary" style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
+          <button type="button" className="btn btn--primary">
             <PlusIcon size={15} />
             Nueva skill
           </button>

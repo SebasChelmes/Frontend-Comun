@@ -48,22 +48,11 @@
   margin-top: 6px;
   color: var(--ink);
 }
+/* extras propios; base en .icon-btn.icon-btn--bordered (global.css) */
 .aem__close {
-  flex: none;
   width: 34px;
   height: 34px;
   border-radius: 10px;
-  border: 1px solid var(--line);
-  background: var(--surface);
-  color: var(--ink-2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: background 0.15s ease;
-}
-.aem__close:hover {
-  background: var(--surface-2);
 }
 
 /* ---- live preview ---- */

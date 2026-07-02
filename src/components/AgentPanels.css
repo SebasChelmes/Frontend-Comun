@@ -109,23 +109,7 @@
   align-items: center;
   gap: 2px;
 }
-.ap__card-tool {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 26px;
-  height: 26px;
-  border: none;
-  background: transparent;
-  border-radius: 7px;
-  color: var(--ink-3);
-  cursor: pointer;
-  transition: background 0.12s ease, color 0.12s ease;
-}
-.ap__card-tool:hover {
-  background: var(--surface-2);
-  color: var(--ink);
-}
+/* botones-herramienta de card: ahora .icon-btn.icon-btn--sm (global.css) */
 .ap__card-name {
   font-size: 13.5px;
   font-weight: 500;
@@ -179,25 +163,10 @@
   gap: 4px;
   border-bottom: 1px solid var(--line);
 }
+/* extras propios; base en .tab (global.css) */
 .ap__subtab {
   padding: 10px 15px;
-  border: none;
-  background: transparent;
-  font-family: var(--font-sans);
   font-size: 14px;
-  font-weight: 500;
-  color: var(--ink-3);
-  cursor: pointer;
-  border-bottom: 2px solid transparent;
-  margin-bottom: -1px;
-  transition: color 0.12s ease, border-color 0.12s ease;
-}
-.ap__subtab:hover {
-  color: var(--ink);
-}
-.ap__subtab.is-active {
-  color: var(--accent);
-  border-bottom-color: var(--accent);
 }
 
 @media (max-width: 1100px) {

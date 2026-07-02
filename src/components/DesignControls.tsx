@@ -23,6 +23,7 @@ export function DesignControls() {
             <div className="dctrl__swatches">
               {ACCENT_OPTIONS.map((c) => (
                 <button
+                  type="button"
                   key={c}
                   className={`dctrl__swatch ${accent === c ? 'is-active' : ''}`}
                   style={{ background: c }}
@@ -38,6 +39,7 @@ export function DesignControls() {
             <div className="dctrl__segs">
               {PLAN_OPTIONS.map((p) => (
                 <button
+                  type="button"
                   key={p}
                   className={`dctrl__seg ${plan === p ? 'is-active' : ''}`}
                   onClick={() => setPlan(p)}
@@ -50,7 +52,7 @@ export function DesignControls() {
         </div>
       )}
 
-      <button className="dctrl__fab" onClick={() => setOpen((o) => !o)} aria-label="Controles de diseño">
+      <button type="button" className="dctrl__fab" onClick={() => setOpen((o) => !o)} aria-label="Controles de diseño">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7">
           <circle cx="12" cy="12" r="3" />
           <path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2" />

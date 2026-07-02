@@ -19,6 +19,7 @@ export function AgentCard({ agent, onEdit }: { agent: Agent; onEdit: (a: Agent) 
           <p className="ag__role mono">{agent.category}</p>
         </div>
         <button
+          type="button"
           className="ag__edit"
           onClick={(e) => {
             e.stopPropagation();

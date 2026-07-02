@@ -49,6 +49,7 @@ export function ModelSelector() {
   return (
     <div className="ms" ref={ref}>
       <button
+        type="button"
         className={`ms__btn ${open ? 'is-open' : ''}`}
         onClick={() => setOpen((o) => !o)}
         title="Seleccionar motor LLM"
@@ -72,6 +73,7 @@ export function ModelSelector() {
                 const isSel = m.name === selected;
                 return (
                   <button
+                    type="button"
                     key={m.name}
                     role="option"
                     aria-selected={isSel}

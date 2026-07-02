@@ -124,6 +124,95 @@ button {
   cursor: not-allowed;
 }
 
+/* ---- acción destructiva en texto (ícono + label, sin fondo) ----
+   patrón compartido por los "Eliminar" de GuiaView y DiagramaView; cada uno
+   agrega sus extras (align-self, ancho) en su propio CSS. */
+.btn-danger-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: none;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--danger);
+  cursor: pointer;
+  padding: 6px 8px;
+  border-radius: var(--r-sm);
+  transition: background 0.12s ease;
+}
+.btn-danger-text:hover {
+  background: color-mix(in srgb, var(--danger) 8%, transparent);
+}
+
+/* ---- botón-ícono (acciones cuadradas de solo ícono) ----
+   base sin borde (ghost); .--bordered para los que sí llevan marco;
+   .--sm/.--lg ajustan el tamaño. Cada botón conserva su posición/color
+   especial en su propio CSS si lo necesita. */
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--ink-3);
+  cursor: pointer;
+  transition: background 0.12s ease, color 0.12s ease, border-color 0.12s ease;
+}
+.icon-btn:hover {
+  background: var(--surface-2);
+  color: var(--ink);
+}
+.icon-btn--bordered {
+  border-color: var(--line);
+  background: var(--surface);
+  color: var(--ink-2);
+}
+.icon-btn--sm {
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
+}
+.icon-btn--lg {
+  width: 40px;
+  height: 40px;
+  border-radius: 11px;
+}
+.icon-btn--danger:hover {
+  background: color-mix(in srgb, var(--danger) 8%, transparent);
+  color: var(--danger);
+}
+
+/* ---- tab con subrayado activo (Conectores, paneles del agente) ----
+   base común; cada tab agrega su padding/font-size propio. La activación
+   se marca con .is-active. */
+.tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  color: var(--ink-3);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+.tab:hover {
+  color: var(--ink);
+}
+.tab.is-active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
 /* ---- chrome base de las cards (ProcessCard, AgentCard, Conectores) ----
    background + borde + radio + sombra + hover; cada card añade sus extras
    (padding, layout, min-height, sombra elevada, focus) en su propio CSS. */

@@ -26,6 +26,7 @@ export function CardMenu({ onCopyLink, onShare, onDuplicate, onDelete }: Props) 
   return (
     <div className="cm" ref={ref}>
       <button
+        type="button"
         className={`cm__btn ${open ? 'is-open' : ''}`}
         onClick={(e) => {
           e.stopPropagation();
@@ -40,20 +41,20 @@ export function CardMenu({ onCopyLink, onShare, onDuplicate, onDelete }: Props) 
 
       {open && (
         <div className="cm__panel" role="menu">
-          <button className="cm__item" role="menuitem" onClick={run(onCopyLink)}>
+          <button type="button" className="cm__item" role="menuitem" onClick={run(onCopyLink)}>
             <LinkIcon size={15} className="cm__ico" />
             Copiar enlace
           </button>
-          <button className="cm__item" role="menuitem" onClick={run(onShare)}>
+          <button type="button" className="cm__item" role="menuitem" onClick={run(onShare)}>
             <ShareIcon size={15} className="cm__ico" />
             Compartir
           </button>
-          <button className="cm__item" role="menuitem" onClick={run(onDuplicate)}>
+          <button type="button" className="cm__item" role="menuitem" onClick={run(onDuplicate)}>
             <CopyIcon size={15} className="cm__ico" />
             Duplicar
           </button>
           <div className="cm__divider" />
-          <button className="cm__item cm__item--danger" role="menuitem" onClick={run(onDelete)}>
+          <button type="button" className="cm__item cm__item--danger" role="menuitem" onClick={run(onDelete)}>
             <TrashIcon size={15} className="cm__ico" />
             Eliminar
           </button>

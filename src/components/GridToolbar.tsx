@@ -48,7 +48,7 @@ export function GridToolbar({
           onChange={(e) => onQuery(e.target.value)}
         />
       </div>
-      <button className="tb-sort" onClick={onSort}>
+      <button type="button" className="tb-sort" onClick={onSort}>
         <SortIcon size={15} />
         Ordenar
       </button>

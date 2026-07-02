@@ -170,7 +170,7 @@ function Legend() {
   const [open, setOpen] = useState(false);
   return (
     <div className="dv-legend">
-      <button className="dv-legend__toggle" onClick={() => setOpen((o) => !o)}>
+      <button type="button" className="dv-legend__toggle" onClick={() => setOpen((o) => !o)}>
         <span className="dv-legend__ico">■</span>
         Leyenda
         <ChevronDownIcon size={14} className={open ? 'is-open' : ''} style={{ transform: open ? 'rotate(0deg)' : 'rotate(-90deg)', transition: 'transform 0.2s' }} />
@@ -255,18 +255,18 @@ function NodePanel({
     <aside className="dv-panel">
       {/* top actions */}
       <div className="dv-panel__top-actions">
-        <button className="btn btn--primary dv-panel__save" style={{ flex: 1 }}>Guardar cambios</button>
-        <button className="btn btn--ghost dv-panel__export" style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+        <button type="button" className="btn btn--primary dv-panel__save" style={{ flex: 1 }}>Guardar cambios</button>
+        <button type="button" className="btn btn--ghost dv-panel__export">
           <UploadIcon size={14} /> Exportar
         </button>
-        <button className="dv-panel__analyze">Analizar proceso</button>
+        <button type="button" className="dv-panel__analyze">Analizar proceso</button>
       </div>
 
       <div className="dv-panel__body">
         {/* node type badge + close */}
         <div className="dv-panel__head">
           <span className={`dv-badge dv-badge--${node.type}`}>{NODE_LABELS[node.type]}</span>
-          <button className="dv-panel__close" onClick={onClose} aria-label="Cerrar panel">
+          <button type="button" className="icon-btn" onClick={onClose} aria-label="Cerrar panel">
             <CloseIcon size={16} />
           </button>
         </div>
@@ -338,12 +338,12 @@ function NodePanel({
 
       {/* bottom actions */}
       <div className="dv-panel__footer">
-        <button className="btn btn--ghost dv-panel__insert">
+        <button type="button" className="btn btn--ghost dv-panel__insert">
           <PlusIcon size={14} />
           Insertar paso después
         </button>
-        <button className="dv-panel__discard mono">Descartar cambios</button>
-        <button className="dv-panel__delete" onClick={onDelete}>
+        <button type="button" className="dv-panel__discard mono">Descartar cambios</button>
+        <button type="button" className="btn-danger-text dv-panel__delete" onClick={onDelete}>
           <TrashIcon size={14} />
           Eliminar este paso
         </button>
@@ -356,10 +356,10 @@ function NodePanel({
 function ZoomControls({ zoom, onZoom }: { zoom: number; onZoom: (z: number) => void }) {
   return (
     <div className="dv-zoom">
-      <button onClick={() => onZoom(Math.min(zoom + 0.15, 2))} aria-label="Acercar">+</button>
+      <button type="button" onClick={() => onZoom(Math.min(zoom + 0.15, 2))} aria-label="Acercar">+</button>
       <span className="mono">{Math.round(zoom * 100)}%</span>
-      <button onClick={() => onZoom(Math.max(zoom - 0.15, 0.3))} aria-label="Alejar">−</button>
-      <button onClick={() => onZoom(1)} aria-label="Restablecer">⊡</button>
+      <button type="button" onClick={() => onZoom(Math.max(zoom - 0.15, 0.3))} aria-label="Alejar">−</button>
+      <button type="button" onClick={() => onZoom(1)} aria-label="Restablecer">⊡</button>
     </div>
   );
 }
@@ -396,7 +396,7 @@ export default function DiagramaView() {
     return (
       <div style={{ padding: 40, color: 'var(--ink-2)' }}>
         Proceso no encontrado o no es un flujograma.{' '}
-        <button className="btn btn--ghost" onClick={() => navigate('/procesos')}>Volver</button>
+        <button type="button" className="btn btn--ghost" onClick={() => navigate('/procesos')}>Volver</button>
       </div>
     );
   }
@@ -405,7 +405,7 @@ export default function DiagramaView() {
     return (
       <div style={{ padding: 40, color: 'var(--ink-2)' }}>
         Diagrama no disponible aún para este proceso.{' '}
-        <button className="btn btn--ghost" onClick={() => navigate('/procesos')}>Volver</button>
+        <button type="button" className="btn btn--ghost" onClick={() => navigate('/procesos')}>Volver</button>
       </div>
     );
   }
@@ -417,9 +417,9 @@ export default function DiagramaView() {
         {/* mini topbar encima del canvas */}
         <div className="dv-canvas-bar">
           <button
+            type="button"
             className="btn btn--ghost dv-back"
             onClick={() => navigate('/procesos')}
-            style={{ display: 'flex', alignItems: 'center', gap: 6 }}
           >
             <ArrowRightIcon size={14} style={{ transform: 'rotate(180deg)' }} />
             Volver
@@ -470,11 +470,11 @@ export default function DiagramaView() {
       ) : (
         <div className="dv-panel dv-panel--empty">
           <div className="dv-panel__top-actions">
-            <button className="btn btn--primary dv-panel__save" style={{ flex: 1 }}>Guardar cambios</button>
-            <button className="btn btn--ghost" style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+            <button type="button" className="btn btn--primary dv-panel__save" style={{ flex: 1 }}>Guardar cambios</button>
+            <button type="button" className="btn btn--ghost">
               <UploadIcon size={14} /> Exportar
             </button>
-            <button className="dv-panel__analyze">Analizar proceso</button>
+            <button type="button" className="dv-panel__analyze">Analizar proceso</button>
           </div>
           <div className="dv-panel__placeholder">
             <ProcessIcon size={36} style={{ color: 'var(--ink-4)' }} />

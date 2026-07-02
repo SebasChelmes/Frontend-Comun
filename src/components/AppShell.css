@@ -57,22 +57,7 @@
   gap: 14px;
   position: relative;
 }
-.app-iconbtn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 9px;
-  border: 1px solid var(--line);
-  background: var(--surface);
-  color: var(--ink-2);
-  cursor: pointer;
-  transition: background 0.15s ease;
-}
-.app-iconbtn:hover {
-  background: var(--surface-2);
-}
+/* botón-ícono del topbar: ahora .icon-btn.icon-btn--bordered (global.css) */
 .app-crumb {
   font-size: 11px;
   letter-spacing: 0.1em;

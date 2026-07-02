@@ -72,7 +72,7 @@ export default function Login() {
                 />
                 <button
                   type="button"
-                  className="field__eye"
+                  className="icon-btn field__eye"
                   onClick={() => setShowPassword((s) => !s)}
                   aria-label={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
                   aria-pressed={showPassword}

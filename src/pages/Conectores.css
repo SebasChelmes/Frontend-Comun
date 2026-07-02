@@ -29,28 +29,10 @@
   border-bottom: 1px solid var(--line);
   margin-top: 18px;
 }
+/* extras propios; base en .tab (global.css) */
 .cn-tab {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  font-family: var(--font-sans);
   font-size: 13.5px;
-  font-weight: 500;
-  color: var(--ink-3);
-  background: none;
-  border: none;
-  border-bottom: 2px solid transparent;
   padding: 10px 16px;
-  margin-bottom: -1px;
-  cursor: pointer;
-  transition: color 0.15s, border-color 0.15s;
-}
-.cn-tab:hover {
-  color: var(--ink);
-}
-.cn-tab.is-active {
-  color: var(--accent);
-  border-bottom-color: var(--accent);
 }
 
 /* ---- cuerpo de cada tab ---- */
@@ -220,6 +202,10 @@
   color: var(--accent);
   text-decoration: none;
   cursor: pointer;
+  /* reset de estilos de <button> (ahora es un button, no un <a>) */
+  background: none;
+  border: none;
+  padding: 0;
 }
 .cn-card__cta--muted {
   color: var(--ink-4);
@@ -232,25 +218,10 @@
   display: flex;
   border-bottom: 1px solid var(--line);
 }
+/* extras propios; base en .tab (global.css) */
 .cn-subtab {
-  font-family: var(--font-sans);
   font-size: 13.5px;
-  font-weight: 500;
-  color: var(--ink-3);
-  background: none;
-  border: none;
-  border-bottom: 2px solid transparent;
   padding: 8px 14px;
-  margin-bottom: -1px;
-  cursor: pointer;
-  transition: color 0.15s, border-color 0.15s;
-}
-.cn-subtab:hover {
-  color: var(--ink);
-}
-.cn-subtab.is-active {
-  color: var(--accent);
-  border-bottom-color: var(--accent);
 }
 
 /* estado vacío: ahora lo aporta <EmptyState variant="plain"> */

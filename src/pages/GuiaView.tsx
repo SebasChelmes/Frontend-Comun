@@ -41,6 +41,7 @@ function StepNav({
           const hasPain  = (s.painPoints?.length ?? 0) > 0;
           return (
             <button
+              type="button"
               key={s.id}
               ref={isActive ? activeRef : undefined}
               className={`gv-nav__item${isActive ? ' is-active' : ''}`}
@@ -97,6 +98,7 @@ function StepContent({
           {editing ? (
             <>
               <button
+                type="button"
                 className="btn btn--primary gv-step__save"
                 onClick={() => {
                   onSave({ title, description });
@@ -107,6 +109,7 @@ function StepContent({
                 Guardar paso
               </button>
               <button
+                type="button"
                 className="btn btn--ghost"
                 onClick={() => {
                   setTitle(step.title);
@@ -120,14 +123,14 @@ function StepContent({
           ) : (
             <>
               <button
+                type="button"
                 className="btn btn--ghost gv-step__edit-btn"
                 onClick={() => setEditing(true)}
-                style={{ display: 'flex', alignItems: 'center', gap: 7 }}
               >
                 <EditIcon size={14} />
                 Editar paso
               </button>
-              <button className="btn btn--primary" style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
+              <button type="button" className="btn btn--primary">
                 <UploadIcon size={14} />
                 Exportar guía
               </button>
@@ -217,33 +220,33 @@ function StepContent({
       <div className="gv-step__footer">
         <div className="gv-step__nav">
           <button
+            type="button"
             className="btn btn--ghost gv-step__prev"
             onClick={onPrev}
             disabled={step.number === 1}
-            style={{ display: 'flex', alignItems: 'center', gap: 6 }}
           >
             <ArrowRightIcon size={14} style={{ transform: 'rotate(180deg)' }} />
             Anterior
           </button>
           <button
+            type="button"
             className="btn btn--ghost gv-step__insert"
-            style={{ display: 'flex', alignItems: 'center', gap: 6 }}
           >
             <PlusIcon size={14} />
             Insertar paso aquí
           </button>
           <button
+            type="button"
             className="btn btn--primary gv-step__next"
             onClick={onNext}
             disabled={step.number === total}
-            style={{ display: 'flex', alignItems: 'center', gap: 6 }}
           >
             Siguiente
             <ArrowRightIcon size={14} />
           </button>
         </div>
 
-        <button className="gv-step__delete" onClick={onDelete}>
+        <button type="button" className="btn-danger-text gv-step__delete" onClick={onDelete}>
           <TrashIcon size={14} />
           Eliminar este paso
         </button>
@@ -286,7 +289,7 @@ export default function GuiaView() {
     return (
       <div style={{ padding: 40, color: 'var(--ink-2)' }}>
         Proceso no encontrado o no es una guía.{' '}
-        <button className="btn btn--ghost" onClick={() => navigate('/procesos')}>Volver</button>
+        <button type="button" className="btn btn--ghost" onClick={() => navigate('/procesos')}>Volver</button>
       </div>
     );
   }
@@ -295,7 +298,7 @@ export default function GuiaView() {
     return (
       <div style={{ padding: 40, color: 'var(--ink-2)' }}>
         Guía sin pasos aún.{' '}
-        <button className="btn btn--ghost" onClick={() => navigate('/procesos')}>Volver</button>
+        <button type="button" className="btn btn--ghost" onClick={() => navigate('/procesos')}>Volver</button>
       </div>
     );
   }
@@ -305,9 +308,9 @@ export default function GuiaView() {
       {/* topbar de la guía */}
       <header className="gv-topbar">
         <button
+          type="button"
           className="btn btn--ghost gv-back"
           onClick={() => navigate('/procesos')}
-          style={{ display: 'flex', alignItems: 'center', gap: 6 }}
         >
           <ArrowRightIcon size={14} style={{ transform: 'rotate(180deg)' }} />
           Procesos
@@ -320,18 +323,20 @@ export default function GuiaView() {
 
         <div className="gv-topbar__actions">
           <button
+            type="button"
             className="btn btn--ghost"
-            style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 13 }}
+            style={{ fontSize: 13 }}
           >
             <PlusIcon size={14} />
             Nuevo paso
           </button>
-          <button className="btn btn--primary" style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 13 }}>
+          <button type="button" className="btn btn--primary" style={{ fontSize: 13 }}>
             <UploadIcon size={14} />
             Exportar PDF
           </button>
           <button
-            className="gv-topbar__close"
+            type="button"
+            className="icon-btn"
             onClick={() => navigate('/procesos')}
             aria-label="Cerrar"
           >

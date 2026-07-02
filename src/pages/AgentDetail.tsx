@@ -73,6 +73,7 @@ export default function AgentDetail() {
         <nav className="ad__tabs">
           {TABS.map(({ id: tid, label, Icon }) => (
             <button
+              type="button"
               key={tid}
               className={`ad__tab ${tab === tid ? 'is-active' : ''}`}
               onClick={() => setTab(tid)}
@@ -140,7 +141,7 @@ function ChatPanel({ agent }: { agent: Agent }) {
       </div>
 
       <div className="ad__composer">
-        <button className="ad__attach" aria-label="Adjuntar archivo" title="Adjuntar archivo">
+        <button type="button" className="icon-btn icon-btn--bordered icon-btn--lg" aria-label="Adjuntar archivo" title="Adjuntar archivo">
           <PaperclipIcon size={18} />
         </button>
         <input
@@ -150,7 +151,7 @@ function ChatPanel({ agent }: { agent: Agent }) {
           onChange={(e) => setText(e.target.value)}
           onKeyDown={(e) => e.key === 'Enter' && send()}
         />
-        <button className="ad__send" onClick={send} aria-label="Enviar" disabled={!text.trim()}>
+        <button type="button" className="ad__send" onClick={send} aria-label="Enviar" disabled={!text.trim()}>
           <SendIcon size={17} />
         </button>
       </div>

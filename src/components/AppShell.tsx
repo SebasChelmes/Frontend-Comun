@@ -57,7 +57,8 @@ export function AppShell() {
         <div className="app-content">
           <div className="app-topbar">
             <button
-              className="app-iconbtn"
+              type="button"
+              className="icon-btn icon-btn--bordered"
               onClick={() => {
                 setCollapsed((c) => !c);
                 setAnimating(true);
@@ -75,13 +76,13 @@ export function AppShell() {
                   <StarIcon size={14} className="app-upsell__star" />
                   Pasá a <b>PRO</b>
                 </span>
-                <button className="app-upsell__btn">Mejorar plan</button>
+                <button type="button" className="app-upsell__btn">Mejorar plan</button>
               </div>
             )}
 
             <div className="app-topbar__right">
               <ModelSelector />
-              <button className="app-iconbtn app-bell" aria-label="Notificaciones">
+              <button type="button" className="icon-btn icon-btn--bordered app-bell" aria-label="Notificaciones">
                 <BellIcon size={17} />
                 <span className="app-bell__dot" />
               </button>

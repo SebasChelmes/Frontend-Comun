@@ -166,25 +166,12 @@
 .field__pw .field__input {
   padding-right: 44px;
 }
+/* extras propios (posición); base en .icon-btn (global.css) */
 .field__eye {
   position: absolute;
   right: 10px;
   top: 50%;
   transform: translateY(-50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 4px;
-  border: none;
-  background: transparent;
-  color: var(--ink-3);
-  cursor: pointer;
-  border-radius: 8px;
-  transition: color 0.12s ease, background 0.12s ease;
-}
-.field__eye:hover {
-  color: var(--ink);
-  background: var(--surface-2);
 }
 
 .login-submit {

@@ -173,21 +173,7 @@
   color: var(--ink);
   word-break: break-all;
 }
-.mcp-folder__del {
-  flex: none;
-  background: none;
-  border: none;
-  color: var(--ink-3);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  padding: 3px;
-  border-radius: 6px;
-  transition: color 0.15s;
-}
-.mcp-folder__del:hover {
-  color: var(--danger);
-}
+/* botón eliminar carpeta: ahora .icon-btn.icon-btn--sm.icon-btn--danger (global.css) */
 .mcp-add {
   display: flex;
   gap: 10px;

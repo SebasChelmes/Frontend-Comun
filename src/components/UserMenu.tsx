@@ -39,13 +39,13 @@ export function UserMenu({ onClose }: { onClose: () => void }) {
       </div>
 
       <div className="um__group">
-        <button className="um__item" role="menuitem">
+        <button type="button" className="um__item" role="menuitem">
           <SettingsIcon size={17} className="um__ico" />
           Configuración
           <span className="um__shortcut mono">Ctrl ,</span>
         </button>
 
-        <button className="um__item" onClick={() => toggle('idioma')} aria-expanded={section === 'idioma'}>
+        <button type="button" className="um__item" onClick={() => toggle('idioma')} aria-expanded={section === 'idioma'}>
           <GlobeIcon size={17} className="um__ico" />
           Idioma
           <ChevronDownIcon size={14} className={`um__chev ${section === 'idioma' ? 'is-open' : ''}`} />
@@ -54,6 +54,7 @@ export function UserMenu({ onClose }: { onClose: () => void }) {
           <div className="um__sub">
             {LANGUAGES.map((l) => (
               <button
+                type="button"
                 key={l}
                 className={`um__subitem ${lang === l ? 'is-active' : ''}`}
                 onClick={() => setLang(l)}
@@ -65,7 +66,7 @@ export function UserMenu({ onClose }: { onClose: () => void }) {
           </div>
         )}
 
-        <button className="um__item" role="menuitem">
+        <button type="button" className="um__item" role="menuitem">
           <HelpIcon size={17} className="um__ico" />
           Obtener ayuda
         </button>
@@ -75,6 +76,7 @@ export function UserMenu({ onClose }: { onClose: () => void }) {
 
       <div className="um__group">
         <button
+          type="button"
           className="um__item"
           role="menuitem"
           onClick={() => {
@@ -86,7 +88,7 @@ export function UserMenu({ onClose }: { onClose: () => void }) {
           Plan / Suscripción
         </button>
 
-        <button className="um__item" onClick={() => toggle('info')} aria-expanded={section === 'info'}>
+        <button type="button" className="um__item" onClick={() => toggle('info')} aria-expanded={section === 'info'}>
           <InfoIcon size={17} className="um__ico" />
           Más información
           <ChevronDownIcon size={14} className={`um__chev ${section === 'info' ? 'is-open' : ''}`} />
@@ -94,7 +96,7 @@ export function UserMenu({ onClose }: { onClose: () => void }) {
         {section === 'info' && (
           <div className="um__sub">
             {MORE_INFO.map(({ label, Icon }) => (
-              <button key={label} className="um__subitem um__subitem--ico">
+              <button type="button" key={label} className="um__subitem um__subitem--ico">
                 <Icon size={15} className="um__subico" />
                 {label}
               </button>
@@ -106,7 +108,7 @@ export function UserMenu({ onClose }: { onClose: () => void }) {
       <div className="um__divider" />
 
       <div className="um__group">
-        <button className="um__item um__item--logout" onClick={() => navigate('/login')}>
+        <button type="button" className="um__item um__item--logout" onClick={() => navigate('/login')}>
           <LogoutIcon size={17} className="um__ico" />
           Cerrar sesión
         </button>

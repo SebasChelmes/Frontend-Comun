@@ -359,17 +359,7 @@
   align-items: center;
   justify-content: space-between;
 }
-.dv-panel__close {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--ink-3);
-  padding: 4px;
-  border-radius: 7px;
-  display: flex;
-  transition: color 0.12s, background 0.12s;
-}
-.dv-panel__close:hover { color: var(--ink); background: var(--surface-2); }
+/* botón cerrar del panel: ahora .icon-btn (global.css) */
 
 /* type badge */
 .dv-badge {
@@ -490,23 +480,11 @@
   transition: color 0.12s;
 }
 .dv-panel__discard:hover { color: var(--ink-2); }
+/* extras propios; el resto del estilo viene de .btn-danger-text (global.css) */
 .dv-panel__delete {
   display: flex;
-  align-items: center;
   justify-content: center;
-  gap: 7px;
-  background: none;
-  border: none;
-  font-family: var(--font-sans);
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--danger);
-  cursor: pointer;
-  padding: 6px;
-  border-radius: var(--r-xs);
-  transition: background 0.12s;
 }
-.dv-panel__delete:hover { background: color-mix(in srgb, var(--danger) 8%, transparent); }
 
 /* placeholder cuando no hay nodo seleccionado */
 .dv-panel__placeholder {

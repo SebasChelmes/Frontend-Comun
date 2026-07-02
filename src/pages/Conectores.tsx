@@ -101,9 +101,9 @@ function ProviderCard({ p }: { p: Provider }) {
 
       <div className="cn-card__foot">
         <span />
-        <a className="cn-card__cta">
+        <button type="button" className="cn-card__cta">
           {p.ctaLabel} <ArrowRightIcon size={13} strokeWidth={2} />
-        </a>
+        </button>
       </div>
     </article>
   );
@@ -142,7 +142,7 @@ function ProveedoresTab() {
   return (
     <div className="cn-body">
       <TabHead>
-        <button className="btn btn--primary page-new">
+        <button type="button" className="btn btn--primary page-new">
           <PlusIcon size={15} />
           Agregar proveedor
         </button>
@@ -170,7 +170,7 @@ function PropiosTab({ subTab, onSubTab }: { subTab: SubTabId; onSubTab: (t: SubT
   return (
     <div className="cn-body">
       <TabHead desc="Conectá tus APIs y bases de datos para que los agentes puedan operar sobre ellos.">
-        <button className="btn btn--primary page-new">
+        <button type="button" className="btn btn--primary page-new">
           <PlusIcon size={15} />
           Nuevo conector
           <ChevronDownIcon size={14} />
@@ -178,13 +178,13 @@ function PropiosTab({ subTab, onSubTab }: { subTab: SubTabId; onSubTab: (t: SubT
       </TabHead>
 
       <div className="cn-subtabs">
-        <button className={`cn-subtab ${subTab === 'todos' ? 'is-active' : ''}`} onClick={() => onSubTab('todos')}>
+        <button type="button" className={`tab cn-subtab ${subTab === 'todos' ? 'is-active' : ''}`} onClick={() => onSubTab('todos')}>
           Todos
         </button>
-        <button className={`cn-subtab ${subTab === 'rest' ? 'is-active' : ''}`} onClick={() => onSubTab('rest')}>
+        <button type="button" className={`tab cn-subtab ${subTab === 'rest' ? 'is-active' : ''}`} onClick={() => onSubTab('rest')}>
           REST API
         </button>
-        <button className={`cn-subtab ${subTab === 'db' ? 'is-active' : ''}`} onClick={() => onSubTab('db')}>
+        <button type="button" className={`tab cn-subtab ${subTab === 'db' ? 'is-active' : ''}`} onClick={() => onSubTab('db')}>
           Base de datos
         </button>
       </div>
@@ -204,7 +204,7 @@ function WebhooksTab() {
   return (
     <div className="cn-body">
       <TabHead>
-        <button className="btn btn--primary page-new">
+        <button type="button" className="btn btn--primary page-new">
           <PlusIcon size={15} />
           Nuevo webhook
         </button>
@@ -237,15 +237,15 @@ export default function Conectores() {
       </header>
 
       <div className="cn-tabs">
-        <button className={`cn-tab ${tab === 'proveedores' ? 'is-active' : ''}`} onClick={() => setTab('proveedores')}>
+        <button type="button" className={`tab cn-tab ${tab === 'proveedores' ? 'is-active' : ''}`} onClick={() => setTab('proveedores')}>
           <GlobeIcon size={14} />
           Proveedores
         </button>
-        <button className={`cn-tab ${tab === 'propios' ? 'is-active' : ''}`} onClick={() => setTab('propios')}>
+        <button type="button" className={`tab cn-tab ${tab === 'propios' ? 'is-active' : ''}`} onClick={() => setTab('propios')}>
           <LinkIcon size={14} />
           Conectores propios
         </button>
-        <button className={`cn-tab ${tab === 'webhooks' ? 'is-active' : ''}`} onClick={() => setTab('webhooks')}>
+        <button type="button" className={`tab cn-tab ${tab === 'webhooks' ? 'is-active' : ''}`} onClick={() => setTab('webhooks')}>
           <WebhookIcon size={14} />
           Webhooks
         </button>

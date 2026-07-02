@@ -45,7 +45,7 @@ export default function PanelDeAgencia() {
             Gestionar equipo
             <ArrowRightIcon size={15} />
           </button>
-          <button type="button" className="btn btn--primary" style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
+          <button type="button" className="btn btn--primary">
             <PlusIcon size={15} />
             Agregar cliente
           </button>

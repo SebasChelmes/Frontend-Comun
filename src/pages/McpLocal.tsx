@@ -124,7 +124,7 @@ export default function McpLocal() {
                 <span className="mcp-folder__path mono">{f}</span>
                 <button
                   type="button"
-                  className="mcp-folder__del"
+                  className="icon-btn icon-btn--sm icon-btn--danger"
                   onClick={() => setFolders((p) => p.filter((x) => x !== f))}
                   aria-label={`Eliminar ${f}`}
                 >
