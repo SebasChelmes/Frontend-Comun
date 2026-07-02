@@ -23,20 +23,12 @@
   margin-top: 22px;
 }
 
-/* ---- card — mismo chrome que ProcessCard (.pc) ---- */
+/* ---- card — chrome compartido en .card-surface (global.css); acá los extras ---- */
 .pa-card {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--r-lg);
-  box-shadow: var(--shadow-card);
   padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 18px;
-  transition: border-color 0.15s ease;
-}
-.pa-card:hover {
-  border-color: var(--line-strong);
 }
 
 /* ---- top: avatar + nombre + badge ---- */

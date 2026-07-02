@@ -54,7 +54,7 @@ export default function PanelDeAgencia() {
 
       <div className="page-grid pa-grid">
         {CLIENTS.map((c) => (
-          <div key={c.id} className="pa-card">
+          <div key={c.id} className="pa-card card-surface">
             {/* top */}
             <div className="pa-card__top">
               <div className="pa-card__avatar">
