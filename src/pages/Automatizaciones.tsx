@@ -14,13 +14,12 @@ export default function Automatizaciones() {
         </div>
         <button type="button" className="btn btn--primary auto-head__cta">
           <PlusIcon size={15} />
-          Nueva
+          Nueva automatización
         </button>
       </div>
 
       {/* ── empty state ── */}
       <div className="auto-empty">
-        {/* tres cajas de ícono con color */}
         <div className="auto-empty__icons">
           <div className="auto-icon-box auto-icon-box--teal">
             <MailIcon size={22} />
@@ -37,11 +36,6 @@ export default function Automatizaciones() {
         <p className="auto-empty__desc">
           Creá tu primera automatización para que tus agentes actúen sin intervención manual.
         </p>
-
-        <button type="button" className="btn btn--primary" style={{ marginTop: 4, display: 'flex', alignItems: 'center', gap: 7 }}>
-          <PlusIcon size={15} />
-          Nueva automatización
-        </button>
       </div>
     </div>
   );

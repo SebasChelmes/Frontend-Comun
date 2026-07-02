@@ -65,16 +65,19 @@ export function AppShell() {
               <SidebarToggleIcon size={17} />
             </button>
             <span className="app-crumb mono">{crumb}</span>
+
+            {/* upsell centrado absolutamente en el topbar */}
+            {showUpgrade && (
+              <div className="app-upsell">
+                <span className="app-upsell__lead">
+                  <StarIcon size={14} className="app-upsell__star" />
+                  Pasá a <b>PRO</b>
+                </span>
+                <button className="app-upsell__btn">Mejorar plan</button>
+              </div>
+            )}
+
             <div className="app-topbar__right">
-              {showUpgrade && (
-                <div className="app-upsell">
-                  <span className="app-upsell__lead">
-                    <StarIcon size={14} className="app-upsell__star" />
-                    Pasá a <b>PRO</b>
-                  </span>
-                  <button className="app-upsell__btn">Mejorar plan</button>
-                </div>
-              )}
               <ModelSelector />
               <button className="app-iconbtn app-bell" aria-label="Notificaciones">
                 <BellIcon size={17} />
