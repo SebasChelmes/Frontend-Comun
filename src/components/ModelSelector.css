@@ -34,7 +34,7 @@
 }
 .ms__chev {
   color: var(--ink-3);
-  transition: transform 0.28s cubic-bezier(0.33, 1, 0.68, 1);
+  transition: transform 0.24s var(--ease-out);
 }
 .ms__chev.is-open {
   transform: rotate(180deg);
@@ -53,10 +53,10 @@
   box-shadow: var(--shadow-elevated);
   padding: 8px;
   transform-origin: top right;
-  animation: ms-pop 0.28s cubic-bezier(0.33, 1, 0.68, 1);
+  animation: ms-pop 0.24s var(--ease-out);
 }
 @keyframes ms-pop {
-  from { opacity: 0; transform: translateY(-9px) scale(0.95); }
+  from { opacity: 0; transform: translateY(-10px); }
   to { opacity: 1; transform: none; }
 }
 

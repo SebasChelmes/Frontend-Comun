@@ -166,6 +166,9 @@ export const ShieldIcon = (p: IconProps) =>
 export const DocIcon = (p: IconProps) =>
   base({ ...p, children: (<><path d="M6 3h8l4 4v14H6Z" /><path d="M14 3v4h4" /><path d="M9 13h6M9 16.5h6" /></>) });
 
+export const ImageIcon = (p: IconProps) =>
+  base({ ...p, children: (<><rect x="3" y="4" width="18" height="16" rx="2" /><circle cx="8.5" cy="9.5" r="1.6" /><path d="m4 17 5-5 4 4 3-3 4 4" /></>) });
+
 export const PlayCircleIcon = (p: IconProps) =>
   base({ ...p, children: (<><circle cx="12" cy="12" r="9" /><path d="m10 8.5 5 3.5-5 3.5Z" /></>) });
 

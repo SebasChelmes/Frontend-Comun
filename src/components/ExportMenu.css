@@ -1,0 +1,82 @@
+.xm {
+  position: relative;
+  flex: none;
+}
+
+/* trigger — base .btn.btn--primary (global.css) + chevron */
+.xm__btn {
+  font-size: 13px;
+  gap: 7px;
+  padding: 9px 14px;
+}
+.xm__chev {
+  transition: transform 0.24s var(--ease-out);
+  opacity: 0.85;
+}
+.xm__chev.is-open {
+  transform: rotate(180deg);
+}
+
+/* panel — mismo look que .ms__panel */
+.xm__panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 40;
+  width: 210px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-elevated);
+  padding: 8px;
+  transform-origin: top right;
+  animation: xm-pop 0.24s var(--ease-out);
+}
+@keyframes xm-pop {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: none; }
+}
+
+.xm__label {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-4);
+  padding: 6px 10px 7px;
+}
+
+.xm__item {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  width: 100%;
+  text-align: left;
+  padding: 8px 10px;
+  border: none;
+  background: transparent;
+  border-radius: 10px;
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--ink-2);
+  cursor: pointer;
+  transition: background 0.12s ease, color 0.12s ease;
+}
+.xm__item:hover {
+  background: var(--surface-2);
+  color: var(--ink);
+}
+.xm__ico {
+  color: var(--ink-3);
+  flex: none;
+}
+.xm__item:hover .xm__ico {
+  color: var(--accent);
+}
+.xm__name {
+  flex: 1;
+}
+.xm__ext {
+  font-size: 11px;
+  color: var(--ink-4);
+}

@@ -67,4 +67,8 @@
   --r-md: 14px;
   --r-sm: 12px;
   --r-xs: 11px;
+
+  /* Motion — curva única de UI (easeOutCubic): frena suave al final.
+     Todos los dropdowns, submenús, chevrons y el colapso del sidebar la usan. */
+  --ease-out: cubic-bezier(0.33, 1, 0.68, 1);
 }

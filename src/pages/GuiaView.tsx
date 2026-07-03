@@ -3,16 +3,17 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { getGuide, type GuideStep } from '../data/guides';
 import { PROCESSES } from '../data/processes';
 import { SEVERITY_COLOR } from '../data/severity';
+import { ExportMenu } from '../components/ExportMenu';
 import {
   ArrowRightIcon,
   BoltIcon,
   CheckCircleIcon,
   CloseIcon,
   EditIcon,
+  ImageIcon,
   PaperclipIcon,
   PlusIcon,
   TrashIcon,
-  UploadIcon,
   UserIcon,
 } from '../components/icons';
 import './GuiaView.css';
@@ -121,20 +122,14 @@ function StepContent({
               </button>
             </>
           ) : (
-            <>
-              <button
-                type="button"
-                className="btn btn--ghost gv-step__edit-btn"
-                onClick={() => setEditing(true)}
-              >
-                <EditIcon size={14} />
-                Editar paso
-              </button>
-              <button type="button" className="btn btn--primary">
-                <UploadIcon size={14} />
-                Exportar guía
-              </button>
-            </>
+            <button
+              type="button"
+              className="btn btn--ghost gv-step__edit-btn"
+              onClick={() => setEditing(true)}
+            >
+              <EditIcon size={14} />
+              Editar paso
+            </button>
           )}
         </div>
       </div>
@@ -189,6 +184,15 @@ function StepContent({
           <p className="gv-step__desc">{description}</p>
         )}
       </div>
+
+      {/* captura de pantalla del paso (placeholder — funcionalidad futura) */}
+      {!editing && (
+        <div className="gv-step__shot" role="img" aria-label="Espacio para la captura de pantalla del paso">
+          <ImageIcon size={24} className="gv-step__shot-icon" />
+          <span className="gv-step__shot-title">Captura de pantalla del paso</span>
+          <span className="gv-step__shot-hint">Se mostrará aquí al activar la funcionalidad</span>
+        </div>
+      )}
 
       {/* adjunto placeholder */}
       {step.hasAttachment && !editing && (
@@ -265,6 +269,10 @@ export default function GuiaView() {
   const [steps,    setSteps]    = useState(guide?.steps ?? []);
   const [activeId, setActiveId] = useState(guide?.steps[0]?.id ?? '');
 
+  // nombre del proceso editable inline (estado local, como la edición de pasos)
+  const [procTitle,    setProcTitle]    = useState(process?.title ?? '');
+  const [editingTitle, setEditingTitle] = useState(false);
+
   const activeStep = steps.find((s) => s.id === activeId);
 
   function goTo(delta: number) {
@@ -317,23 +325,39 @@ export default function GuiaView() {
         </button>
 
         <div className="gv-topbar__center">
-          <span className="gv-topbar__title">{process.title}</span>
+          {editingTitle ? (
+            <input
+              className="gv-topbar__title-input"
+              value={procTitle}
+              autoFocus
+              onChange={(e) => setProcTitle(e.target.value)}
+              onBlur={() => setEditingTitle(false)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') setEditingTitle(false);
+                if (e.key === 'Escape') {
+                  setProcTitle(process.title);
+                  setEditingTitle(false);
+                }
+              }}
+            />
+          ) : (
+            <>
+              <span className="gv-topbar__title">{procTitle}</span>
+              <button
+                type="button"
+                className="icon-btn icon-btn--sm gv-topbar__edit"
+                onClick={() => setEditingTitle(true)}
+                aria-label="Editar nombre del proceso"
+              >
+                <EditIcon size={14} />
+              </button>
+            </>
+          )}
           <span className="gv-topbar__badge mono">{steps.length} pasos</span>
         </div>
 
         <div className="gv-topbar__actions">
-          <button
-            type="button"
-            className="btn btn--ghost"
-            style={{ fontSize: 13 }}
-          >
-            <PlusIcon size={14} />
-            Nuevo paso
-          </button>
-          <button type="button" className="btn btn--primary" style={{ fontSize: 13 }}>
-            <UploadIcon size={14} />
-            Exportar PDF
-          </button>
+          <ExportMenu />
           <button
             type="button"
             className="icon-btn"

@@ -9,6 +9,7 @@ import {
   CheckCircleIcon,
   ChevronDownIcon,
   CloseIcon,
+  EditIcon,
   PlusIcon,
   ProcessIcon,
   TrashIcon,
@@ -377,6 +378,10 @@ export default function DiagramaView() {
   const [zoom, setZoom]         = useState(1);
   const canvasRef               = useRef<HTMLDivElement>(null);
 
+  // nombre del proceso editable inline (estado local)
+  const [procTitle,    setProcTitle]    = useState(process?.title ?? '');
+  const [editingTitle, setEditingTitle] = useState(false);
+
   const CANVAS_W = 800;
   const CANVAS_H = nodes.length ? Math.max(...nodes.map((n) => n.y)) + 160 : 600;
 
@@ -424,7 +429,34 @@ export default function DiagramaView() {
             <ArrowRightIcon size={14} style={{ transform: 'rotate(180deg)' }} />
             Volver
           </button>
-          <span className="dv-canvas-bar__title">{process.title}</span>
+          {editingTitle ? (
+            <input
+              className="dv-canvas-bar__title-input"
+              value={procTitle}
+              autoFocus
+              onChange={(e) => setProcTitle(e.target.value)}
+              onBlur={() => setEditingTitle(false)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') setEditingTitle(false);
+                if (e.key === 'Escape') {
+                  setProcTitle(process.title);
+                  setEditingTitle(false);
+                }
+              }}
+            />
+          ) : (
+            <>
+              <span className="dv-canvas-bar__title">{procTitle}</span>
+              <button
+                type="button"
+                className="icon-btn icon-btn--sm dv-canvas-bar__edit"
+                onClick={() => setEditingTitle(true)}
+                aria-label="Editar nombre del proceso"
+              >
+                <EditIcon size={14} />
+              </button>
+            </>
+          )}
           <span className="dv-canvas-bar__meta mono">{process.meta}</span>
         </div>
 

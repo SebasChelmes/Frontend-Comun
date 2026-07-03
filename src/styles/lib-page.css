@@ -50,7 +50,7 @@
   opacity: 0;
   transform: translateY(-4px);
   pointer-events: none;
-  transition: opacity 0.16s ease, transform 0.16s ease;
+  transition: opacity 0.16s var(--ease-out), transform 0.16s var(--ease-out);
   z-index: 50;
 }
 .lib-info:hover::after {
@@ -193,7 +193,7 @@
 .lib-faq__label-icon { color: var(--accent); }
 .lib-faq__chev {
   color: var(--ink-3);
-  transition: transform 0.2s;
+  transition: transform 0.24s var(--ease-out);
   flex: none;
 }
 .lib-faq__chev.is-open { transform: rotate(180deg); }
