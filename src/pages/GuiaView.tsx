@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { getGuide, type GuideStep } from '../data/guides';
 import { PROCESSES } from '../data/processes';
 import { SEVERITY_COLOR } from '../data/severity';
+import { ConfirmDialog } from '../components/ConfirmDialog';
 import { ExportMenu } from '../components/ExportMenu';
 import {
   ArrowRightIcon,
@@ -63,21 +64,18 @@ function StepNav({
 function StepContent({
   step,
   total,
-  onPrev,
-  onNext,
   onDelete,
   onSave,
 }: {
   step: GuideStep;
   total: number;
-  onPrev: () => void;
-  onNext: () => void;
   onDelete: () => void;
   onSave: (patch: { title: string; description: string }) => void;
 }) {
-  const [editing,     setEditing]     = useState(false);
-  const [title,       setTitle]       = useState(step.title);
-  const [description, setDescription] = useState(step.description);
+  const [editing,       setEditing]       = useState(false);
+  const [title,         setTitle]         = useState(step.title);
+  const [description,   setDescription]   = useState(step.description);
+  const [confirmDelete, setConfirmDelete] = useState(false);
 
   // sync when step changes
   useEffect(() => {
@@ -220,40 +218,32 @@ function StepContent({
         </div>
       )}
 
-      {/* navegación prev/next + acciones destructivas */}
+      {/* acciones de pie: insertar paso + eliminar */}
       <div className="gv-step__footer">
         <div className="gv-step__nav">
-          <button
-            type="button"
-            className="btn btn--ghost gv-step__prev"
-            onClick={onPrev}
-            disabled={step.number === 1}
-          >
-            <ArrowRightIcon size={14} style={{ transform: 'rotate(180deg)' }} />
-            Anterior
-          </button>
-          <button
-            type="button"
-            className="btn btn--ghost gv-step__insert"
-          >
+          <button type="button" className="btn btn--ghost gv-step__insert">
             <PlusIcon size={14} />
             Insertar paso aquí
           </button>
-          <button
-            type="button"
-            className="btn btn--primary gv-step__next"
-            onClick={onNext}
-            disabled={step.number === total}
-          >
-            Siguiente
-            <ArrowRightIcon size={14} />
-          </button>
         </div>
 
-        <button type="button" className="btn-danger-text gv-step__delete" onClick={onDelete}>
+        <button
+          type="button"
+          className="btn-danger-text gv-step__delete"
+          onClick={() => setConfirmDelete(true)}
+        >
           <TrashIcon size={14} />
           Eliminar este paso
         </button>
+
+        {confirmDelete && (
+          <ConfirmDialog
+            title="¿Eliminar este paso?"
+            description="Esta acción no se puede deshacer."
+            onConfirm={() => { onDelete(); setConfirmDelete(false); }}
+            onCancel={() => setConfirmDelete(false)}
+          />
+        )}
       </div>
     </article>
   );
@@ -274,12 +264,6 @@ export default function GuiaView() {
   const [editingTitle, setEditingTitle] = useState(false);
 
   const activeStep = steps.find((s) => s.id === activeId);
-
-  function goTo(delta: number) {
-    const idx = steps.findIndex((s) => s.id === activeId);
-    const next = steps[idx + delta];
-    if (next) setActiveId(next.id);
-  }
 
   function deleteStep() {
     if (steps.length <= 1) return;
@@ -317,11 +301,11 @@ export default function GuiaView() {
       <header className="gv-topbar">
         <button
           type="button"
-          className="btn btn--ghost gv-back"
+          className="icon-btn gv-back"
           onClick={() => navigate('/procesos')}
+          aria-label="Volver a Procesos"
         >
-          <ArrowRightIcon size={14} style={{ transform: 'rotate(180deg)' }} />
-          Procesos
+          <ArrowRightIcon size={16} style={{ transform: 'rotate(180deg)' }} />
         </button>
 
         <div className="gv-topbar__center">
@@ -386,8 +370,6 @@ export default function GuiaView() {
             key={activeStep.id}
             step={activeStep}
             total={steps.length}
-            onPrev={() => goTo(-1)}
-            onNext={() => goTo(+1)}
             onDelete={deleteStep}
             onSave={saveStep}
           />

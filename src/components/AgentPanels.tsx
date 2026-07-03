@@ -1,6 +1,7 @@
 import { useState, type ComponentType, type ReactNode } from 'react';
 
 import type { Agent } from '../data/agents';
+import { ConfirmDialog } from './ConfirmDialog';
 import { EmptyIcon, EmptyState } from './EmptyState';
 import {
   BookIcon,
@@ -208,12 +209,16 @@ function SkillCard({
   title,
   desc,
   deletable,
+  onDelete,
 }: {
   name: string;
   title: string;
   desc: string;
   deletable?: boolean;
+  onDelete?: () => void;
 }) {
+  const [confirmDelete, setConfirmDelete] = useState(false);
+
   return (
     <div className="ap__card">
       <div className="ap__card-top">
@@ -221,7 +226,12 @@ function SkillCard({
           <BookIcon size={15} />
         </span>
         <div className="ap__card-tools">
-          <button type="button" className="icon-btn icon-btn--sm" aria-label={deletable ? 'Eliminar' : 'Copiar'}>
+          <button
+            type="button"
+            className="icon-btn icon-btn--sm"
+            aria-label={deletable ? 'Eliminar' : 'Copiar'}
+            onClick={deletable ? () => setConfirmDelete(true) : undefined}
+          >
             {deletable ? <TrashIcon size={13} /> : <CopyIcon size={13} />}
           </button>
           <button type="button" className="icon-btn icon-btn--sm" aria-label="Más">
@@ -232,22 +242,38 @@ function SkillCard({
       <div className="ap__card-name ap__card-name--skill mono">{name}</div>
       <div className="ap__card-title">{title}</div>
       <p className="ap__card-desc">{desc}</p>
+
+      {confirmDelete && (
+        <ConfirmDialog
+          title={`¿Eliminar la skill "${title}"?`}
+          description="Esta acción no se puede deshacer."
+          onConfirm={() => { onDelete?.(); setConfirmDelete(false); }}
+          onCancel={() => setConfirmDelete(false)}
+        />
+      )}
     </div>
   );
 }
 
 /* ---------- Skills ---------- */
 export function SkillsPanel({ agent }: { agent: Agent }) {
+  const [skills, setSkills] = useState(SAMPLE_SKILLS);
+
   return (
     <div className="ap">
       <PanelHead
         title="Skills activas"
-        sub={`${SAMPLE_SKILLS.length} skill asignada a ${agent.name}`}
+        sub={`${skills.length} skill asignada a ${agent.name}`}
         action={ghostManage}
       />
       <div className="ap__grid">
-        {SAMPLE_SKILLS.map((s) => (
-          <SkillCard key={s.name} {...s} deletable />
+        {skills.map((s) => (
+          <SkillCard
+            key={s.name}
+            {...s}
+            deletable
+            onDelete={() => setSkills((list) => list.filter((sk) => sk.name !== s.name))}
+          />
         ))}
       </div>
       <div className="ap__note">

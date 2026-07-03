@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { type DiagramEdge, type DiagramNode, getDiagram } from '../data/diagrams';
 import { PROCESSES } from '../data/processes';
 import { SEVERITY_COLOR } from '../data/severity';
+import { ConfirmDialog } from '../components/ConfirmDialog';
 import {
   ArrowRightIcon,
   BoltIcon,
@@ -239,10 +240,11 @@ function NodePanel({
   onClose: () => void;
   onDelete: () => void;
 }) {
-  const [label,    setLabel]    = useState(node.label.replace('\n', ' '));
-  const [actor,    setActor]    = useState(node.actor    ?? '');
-  const [durMin,   setDurMin]   = useState(node.durationMin ?? 0);
-  const [durMax,   setDurMax]   = useState(node.durationMax ?? 0);
+  const [label,         setLabel]         = useState(node.label.replace('\n', ' '));
+  const [actor,         setActor]         = useState(node.actor    ?? '');
+  const [durMin,        setDurMin]        = useState(node.durationMin ?? 0);
+  const [durMax,        setDurMax]        = useState(node.durationMax ?? 0);
+  const [confirmDelete, setConfirmDelete] = useState(false);
 
   // sync when node changes
   useEffect(() => {
@@ -344,11 +346,24 @@ function NodePanel({
           Insertar paso después
         </button>
         <button type="button" className="dv-panel__discard mono">Descartar cambios</button>
-        <button type="button" className="btn-danger-text dv-panel__delete" onClick={onDelete}>
+        <button
+          type="button"
+          className="btn-danger-text dv-panel__delete"
+          onClick={() => setConfirmDelete(true)}
+        >
           <TrashIcon size={14} />
           Eliminar este paso
         </button>
       </div>
+
+      {confirmDelete && (
+        <ConfirmDialog
+          title="¿Eliminar este paso?"
+          description="Esta acción eliminará el nodo y sus conexiones."
+          onConfirm={() => { onDelete(); setConfirmDelete(false); }}
+          onCancel={() => setConfirmDelete(false)}
+        />
+      )}
     </aside>
   );
 }
@@ -423,11 +438,11 @@ export default function DiagramaView() {
         <div className="dv-canvas-bar">
           <button
             type="button"
-            className="btn btn--ghost dv-back"
+            className="icon-btn dv-back"
             onClick={() => navigate('/procesos')}
+            aria-label="Volver a Procesos"
           >
-            <ArrowRightIcon size={14} style={{ transform: 'rotate(180deg)' }} />
-            Volver
+            <ArrowRightIcon size={16} style={{ transform: 'rotate(180deg)' }} />
           </button>
           {editingTitle ? (
             <input

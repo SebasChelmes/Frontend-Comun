@@ -10,6 +10,7 @@ import {
 } from '../components/AgentPanels';
 import { Avatar } from '../components/Avatar';
 import {
+  ArrowRightIcon,
   BookIcon,
   CalendarIcon,
   ChatIcon,
@@ -50,18 +51,21 @@ export default function AgentDetail() {
 
   return (
     <div className="ad">
-      {/* breadcrumb + identidad */}
-      <div className="ad__crumb mono">
-          <button type="button" className="ad__crumb-link" onClick={() => navigate('/agentes')}>Hub de Agentes</button>
-          <span className="ad__crumb-sep">›</span>
-          <span>{agent.name}</span>
-        </div>
+      {/* retroceso + identidad */}
+      <button
+        type="button"
+        className="icon-btn ad__back"
+        onClick={() => navigate('/agentes')}
+        aria-label="Volver al hub de agentes"
+      >
+        <ArrowRightIcon size={16} style={{ transform: 'rotate(180deg)' }} />
+      </button>
 
         <header className="ad__head">
-          <Avatar agent={agent} size={54} iconSize={26} />
+          <Avatar agent={agent} size={48} iconSize={24} />
           <div className="ad__id">
             <h1 className="ad__name">{agent.name}</h1>
-            <div className="ad__role mono">{agent.category}</div>
+            <span className="ad__cat">{agent.category}</span>
           </div>
           <span className="ad__status">
             <span className="ad__status-dot" style={{ background: status.color }} />
@@ -71,15 +75,14 @@ export default function AgentDetail() {
 
         {/* tabs */}
         <nav className="ad__tabs">
-          {TABS.map(({ id: tid, label, Icon }) => (
+          {TABS.map(({ id: tid, label }) => (
             <button
               type="button"
               key={tid}
-              className={`ad__tab ${tab === tid ? 'is-active' : ''}`}
+              className={`tab ad__tab${tab === tid ? ' is-active' : ''}`}
               onClick={() => setTab(tid)}
             >
-              <Icon size={19} />
-              <span className="ad__tab-label">{label}</span>
+              {label}
             </button>
           ))}
         </nav>

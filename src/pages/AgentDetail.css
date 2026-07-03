@@ -6,29 +6,9 @@
   min-height: 0;
 }
 
-/* breadcrumb */
-.ad__crumb {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  color: var(--ink-3);
-}
-.ad__crumb-link {
-  font: inherit;
-  letter-spacing: inherit;
-  color: inherit;
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-}
-.ad__crumb-link:hover {
-  color: var(--ink);
-}
-.ad__crumb-sep {
-  color: var(--ink-4);
+/* retroceso */
+.ad__back {
+  flex: none;
 }
 
 /* identidad */
@@ -41,15 +21,31 @@
 .ad__id {
   flex: 1;
   min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 .ad__name {
-  font-size: 24px;
+  font-size: 20px;
+  font-weight: 600;
   color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-.ad__role {
-  font-size: 12px;
-  color: var(--ink-3);
-  margin-top: 4px;
+/* badge de categoría inline (mismo row que el nombre) */
+.ad__cat {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--ink-2);
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+  padding: 3px 10px;
+  white-space: nowrap;
 }
 .ad__status {
   display: inline-flex;
@@ -68,39 +64,19 @@
   border-radius: 50%;
 }
 
-/* tabs (ícono + etiqueta debajo, activo con borde inferior accent) */
+/* tabs — texto solo, sin íconos; .tab (global.css) maneja color/borde activo */
 .ad__tabs {
   display: flex;
-  gap: 4px;
+  gap: 2px;
   margin-top: 22px;
   border-bottom: 1px solid var(--line);
-  overflow-x: auto; /* red de seguridad en anchos chicos / sidebar colapsado */
+  overflow-x: auto;
 }
+/* tamaño y espacio propios; el comportamiento visual viene de .tab (global.css) */
 .ad__tab {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px;
-  padding: 8px 14px 9px;
-  border: none;
-  background: transparent;
-  color: var(--ink-3);
-  cursor: pointer;
-  border-bottom: 2px solid transparent;
-  margin-bottom: -1px;
-  transition: color 0.12s ease, border-color 0.12s ease;
-}
-.ad__tab-label {
-  font-size: 11.5px;
-  line-height: 1;
-  letter-spacing: 0.01em;
-}
-.ad__tab:hover {
-  color: var(--ink);
-}
-.ad__tab.is-active {
-  color: var(--accent);
-  border-bottom-color: var(--accent);
+  padding: 9px 14px;
+  font-size: 13px;
+  transition: color 0.15s var(--ease-out), border-color 0.15s var(--ease-out);
 }
 
 /* panel */
