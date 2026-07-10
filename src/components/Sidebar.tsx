@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 import { useApp } from '../context/AppContext';
 import { useDismiss } from '../hooks/useDismiss';
-import { BrandGlyph } from './BrandMark';
+import { BrandGlyph, ProceonLogo } from './BrandMark';
 import { UserMenu } from './UserMenu';
 import {
   AgentsIcon,
@@ -78,8 +78,7 @@ export function Sidebar() {
     <aside className="sb">
       {/* brand */}
       <div className="sb__brand">
-        <BrandGlyph size={28} />
-        <span className="sb__brand-word">ProceOn</span>
+        <ProceonLogo height={22} />
         <span className="sb__plan mono">{planLabel}</span>
       </div>
 

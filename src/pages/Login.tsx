@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { ProceonLogo } from '../components/BrandMark';
 import { ArrowRightIcon, EyeIcon, EyeOffIcon, MailIcon } from '../components/icons';
 import { DesignControls } from '../components/DesignControls';
 import './Login.css';
@@ -24,7 +25,7 @@ export default function Login() {
         {/* brand panel */}
         <div className="login-brand">
           <div className="login-brand__top">
-            <img src="/logo-proceon.svg" alt="ProceOn" height={36} />
+            <ProceonLogo height={34} />
           </div>
 
           <div className="login-brand__mid">
