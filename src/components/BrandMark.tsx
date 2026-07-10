@@ -1,22 +1,12 @@
-/** El glyph cuadrado de Sebach AI (la "S"). `size` controla el lado. */
-export function BrandGlyph({ size = 28, radius = 8, font = 15 }: { size?: number; radius?: number; font?: number }) {
+/** Ícono cuadrado de ProceOn. `size` controla el lado en px. */
+export function BrandGlyph({ size = 28 }: { size?: number }) {
   return (
-    <span
-      style={{
-        width: size,
-        height: size,
-        borderRadius: radius,
-        background: 'var(--accent)',
-        color: '#fff',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        fontWeight: 600,
-        fontSize: font,
-        flex: 'none',
-      }}
-    >
-      S
-    </span>
+    <img
+      src="/favicon.svg"
+      alt="ProceOn"
+      width={size}
+      height={size}
+      style={{ flex: 'none', display: 'block' }}
+    />
   );
 }

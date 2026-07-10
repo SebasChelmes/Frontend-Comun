@@ -20,7 +20,7 @@ export default function Inicio() {
         <div>
           <h1 className="page-title">Inicio</h1>
           <p className="dc-sub">
-            Panorama de tu empresa en Sebach AI — valor, actividad y gobernanza.
+            Panorama de tu empresa en ProceOn — valor, actividad y gobernanza.
           </p>
         </div>
       </header>

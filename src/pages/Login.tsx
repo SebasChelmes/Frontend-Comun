@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { BrandGlyph } from '../components/BrandMark';
 import { ArrowRightIcon, EyeIcon, EyeOffIcon, MailIcon } from '../components/icons';
 import { DesignControls } from '../components/DesignControls';
 import './Login.css';
@@ -24,11 +23,8 @@ export default function Login() {
       <form className="login-card" onSubmit={enter}>
         {/* brand panel */}
         <div className="login-brand">
-          <div className="login-brand__ghost" aria-hidden>S</div>
-
           <div className="login-brand__top">
-            <BrandGlyph size={30} radius={9} font={16} />
-            <span className="login-brand__word">Sebach AI</span>
+            <img src="/logo-proceon.svg" alt="ProceOn" height={36} />
           </div>
 
           <div className="login-brand__mid">
@@ -36,7 +32,7 @@ export default function Login() {
             <p>Mapeá, analizá y automatizá — todo en un mismo lugar, con un solo acceso.</p>
           </div>
 
-          <div className="login-brand__foot mono">PLATAFORMA SEBACH AI</div>
+          <div className="login-brand__foot mono">PLATAFORMA PROCEON</div>
         </div>
 
         {/* form panel */}

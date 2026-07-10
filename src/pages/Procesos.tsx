@@ -34,7 +34,7 @@ export default function Procesos() {
     setProcesses((list) => list.filter((x) => x.id !== p.id));
   }
   function linkFor(p: Process) {
-    return `https://app.sebach.ai/procesos/${p.id}`;
+    return `https://app.proceon.ai/procesos/${p.id}`;
   }
   function copyLink(p: Process) {
     navigator.clipboard?.writeText(linkFor(p));

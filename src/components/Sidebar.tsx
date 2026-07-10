@@ -79,7 +79,7 @@ export function Sidebar() {
       {/* brand */}
       <div className="sb__brand">
         <BrandGlyph size={28} />
-        <span className="sb__brand-word">Sebach AI</span>
+        <span className="sb__brand-word">ProceOn</span>
         <span className="sb__plan mono">{planLabel}</span>
       </div>
 
@@ -223,7 +223,7 @@ export function SidebarRail() {
 
   return (
     <aside className="sbr">
-      <BrandGlyph size={30} radius={9} />
+      <BrandGlyph size={30} />
       {RAIL_ITEMS.map(({ label, Icon, path }) => {
         const active = isActive(path);
         return (
