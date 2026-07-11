@@ -33,9 +33,9 @@ export function ProceonLogo({ height = 28 }: { height?: number }) {
         flexShrink: 0,
       }}
     >
-      {/* Ícono */}
+      {/* Ícono — variante trazo oscuro / fondo transparente */}
       <img
-        src="/favicon.svg"
+        src="/icon-proceon-dark.svg"
         alt=""
         width={height}
         height={height}
